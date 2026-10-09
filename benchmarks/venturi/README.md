@@ -16,6 +16,8 @@ Create blinded design labels A/B/C with a private label-to-model mapping. Models
 Record scores per criterion and comments. Missing dimensions or undocumented additions must be explicit. Invalid topology blocks CFD even if the human total is highest. With one attempt per model, results compare these attempts and do not estimate general model performance.
 
 ## Next CFD phase
+The initial recovery pilot and the agent-decided validity follow-up are complete. See [cfd-results.md](cfd-results.md) and [validity-audit-results.md](validity-audit-results.md). These bounded experiments exposed unresolved numerical sensitivity and do not establish a validated transition-flow prediction.
+
 The user subsequently authorized CFD on all three designs in order Luna, Sol, Astra, at a common transitional flow. See [cfd-protocol.md](cfd-protocol.md) for fixed conditions, budgets, recovery rules, and evidence requirements. The earlier best-design-only plan below is superseded for this pilot.
 
 After scores are entered, select the best valid design. Freeze fluid, inlet flow/velocity, viscosity, density, outlet pressure, and the physical objective. Perform a small solver check and mesh-refinement study before an overnight run. Use convergence, mass balance, and pressure loss/recovery checks. A long runtime by itself does not improve accuracy.

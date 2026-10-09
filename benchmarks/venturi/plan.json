@@ -14,5 +14,6 @@
   "drawing_sha256": "45e55fa4b43acb9ef5c3e8823b1a3645c75ffebff21e84eba378f9be896bb925",
   "human_scoring_required": true,
   "cfd_status": "sequential_pilot_complete",
+  "validity_audit_status": "complete_validity_unestablished",
   "overnight_status": "not_scheduled"
 }

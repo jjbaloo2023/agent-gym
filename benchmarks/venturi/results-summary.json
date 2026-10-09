@@ -46,6 +46,8 @@
   "cfd_started": true,
   "cfd_status": "sequential_pilot_complete",
   "cfd_report": "benchmarks/venturi/cfd-results.md",
+  "validity_audit_status": "complete_validity_unestablished",
+  "validity_audit_report": "benchmarks/venturi/validity-audit-results.md",
   "geometry_identical": true,
   "requested_models": [
     "gpt-6-luna",
