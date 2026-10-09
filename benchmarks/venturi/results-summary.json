@@ -1,8 +1,48 @@
 {
-  "status": "awaiting_human_scores",
+  "status": "human_scored_tie",
   "source_page": 35,
   "source_pdf_sha256": "45e55fa4b43acb9ef5c3e8823b1a3645c75ffebff21e84eba378f9be896bb925",
-  "human_scores": null,
+  "human_scores": [
+    {
+      "design_label": "A",
+      "model": "gpt-6.1-sol",
+      "run_id": "1e23a78943344f9580d25d7e170a1ea3",
+      "drawing_fidelity_40": 40,
+      "parameterization_20": 20,
+      "topology_15": 15,
+      "mesh_readiness_15": 15,
+      "explanation_10": 10,
+      "total_100": 100,
+      "scorer": "user",
+      "comments": "User awarded full marks after confirming intentional open inlet/outlet end planes."
+    },
+    {
+      "design_label": "B",
+      "model": "gpt-6-astra",
+      "run_id": "64ad8199331a459fa474fd540c3d772d",
+      "drawing_fidelity_40": 40,
+      "parameterization_20": 20,
+      "topology_15": 15,
+      "mesh_readiness_15": 15,
+      "explanation_10": 10,
+      "total_100": 100,
+      "scorer": "user",
+      "comments": "User awarded full marks after confirming intentional open inlet/outlet end planes."
+    },
+    {
+      "design_label": "C",
+      "model": "gpt-6-luna",
+      "run_id": "e591fbae89bb4fb38fb9dbfd2ab09c72",
+      "drawing_fidelity_40": 40,
+      "parameterization_20": 20,
+      "topology_15": 15,
+      "mesh_readiness_15": 15,
+      "explanation_10": 10,
+      "total_100": 100,
+      "scorer": "user",
+      "comments": "User awarded full marks after confirming intentional open inlet/outlet end planes."
+    }
+  ],
   "cfd_started": false,
   "geometry_identical": true,
   "requested_models": [

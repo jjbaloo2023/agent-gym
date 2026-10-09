@@ -1,0 +1,4 @@
+"design_label","model","run_id","drawing_fidelity_40","parameterization_20","topology_15","mesh_readiness_15","explanation_10","total_100","scorer","comments"
+"A","gpt-6.1-sol","1e23a78943344f9580d25d7e170a1ea3","40","20","15","15","10","100","user","User awarded full marks after confirming intentional open inlet/outlet end planes."
+"B","gpt-6-astra","64ad8199331a459fa474fd540c3d772d","40","20","15","15","10","100","user","User awarded full marks after confirming intentional open inlet/outlet end planes."
+"C","gpt-6-luna","e591fbae89bb4fb38fb9dbfd2ab09c72","40","20","15","15","10","100","user","User awarded full marks after confirming intentional open inlet/outlet end planes."

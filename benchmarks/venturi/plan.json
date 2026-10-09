@@ -1,5 +1,5 @@
 {
-  "status": "awaiting_human_scores",
+  "status": "human_scored_tie",
   "models": [
     "gpt-6-luna",
     "gpt-6.1-sol",
