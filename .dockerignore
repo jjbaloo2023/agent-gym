@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!agent_gym/
+!agent_gym/*.py
+!tests/
+!tests/*.py

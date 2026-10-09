@@ -6,7 +6,7 @@ A task specifies versioned inputs, units, constraints, action space, budgets, an
 Keep task, agent, execution backend, and scoring independently replaceable. Compare agent frameworks by wrapping this contract, not by embedding a framework into the task.
 
 ## Current implementation
-One analytical task, reset/step interface, deterministic hill climber, atomic checkpoint with embedded trace, and independent process replicas. No distributed scheduling, containers, provider API, dataset exporter, or external scientific tool is implemented.
+One analytical task, reset/step interface, deterministic hill climber, atomic checkpoint with embedded trace, and independent process replicas. Docker Compose provides a pinned Python image, a persistent checkpoint volume, and bounded non-root execution. No distributed scheduling, provider API, dataset exporter, or external scientific tool is implemented.
 
 One writer per run directory is required. Checkpoints do not implement concurrent-writer locking or recover arbitrary external solver side effects. Embedded history is deliberately simple; replace it with a transactional event store plus content-addressed artifacts before long episodes.
 

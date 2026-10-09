@@ -11,6 +11,16 @@ The runnable prototype is an analytical laminar pipe-flow inverse-design task. A
 
 This is **not yet CAD, CFD, an LLM agent, or a Gymnasium integration**. It uses the Hagen-Poiseuille relation for steady, fully developed, incompressible laminar flow in a circular pipe. Those assumptions do not generalize to arbitrary geometries.
 
+## Run in Docker
+With Docker Desktop running in Linux-container mode:
+```sh
+docker compose build
+docker compose run --rm --entrypoint python gym -m unittest discover -s tests -v
+docker compose run --rm gym --run-dir /data/demo --steps 40
+docker compose run --rm gym --run-dir /data/demo --steps 80 --resume
+```
+Checkpoints persist in a Docker-managed volume outside OneDrive and the repository. The container is limited to two CPU equivalents and 2 GiB RAM. See [container instructions](docs/containers.md) for parallel runs, shells, and artifact export. Rebuild after source changes.
+
 ## Run
 Python 3.11+; standard library only. From the repository root:
 ```sh

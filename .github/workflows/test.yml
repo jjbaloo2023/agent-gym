@@ -16,3 +16,11 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -v
       - run: python -m agent_gym --run-dir runs/smoke --steps 10 --replicas 2 --workers 2
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose build
+      - run: docker compose run --rm --entrypoint python gym -m unittest discover -s tests -v
+      - run: docker compose run --rm gym --run-dir /data/ci --steps 5 --replicas 2 --workers 2
+      - run: docker compose run --rm gym --run-dir /data/ci --steps 10 --replicas 2 --workers 2 --resume
