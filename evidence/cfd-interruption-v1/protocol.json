@@ -1,0 +1,12 @@
+{
+  "flow_m3_s": 5e-05,
+  "nu_m2_s": 1.004e-06,
+  "rho_kg_m3": 998.2,
+  "injection": "SIGSTOP after a complete positive checkpoint",
+  "checkpoint_interval_iterations": 50,
+  "stall_limit_s": 2,
+  "wall_limit_s_per_launch": 120,
+  "field_relative_l2_limit": 0.0001,
+  "flux_relative_imbalance_limit": 1e-06,
+  "claim": "solver process stall recovery; not physical CFD validation or power-loss recovery"
+}

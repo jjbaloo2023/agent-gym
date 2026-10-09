@@ -23,3 +23,5 @@ The user subsequently authorized CFD on all three designs in order Luna, Sol, As
 After scores are entered, select the best valid design. Freeze fluid, inlet flow/velocity, viscosity, density, outlet pressure, and the physical objective. Perform a small solver check and mesh-refinement study before an overnight run. Use convergence, mass balance, and pressure loss/recovery checks. A long runtime by itself does not improve accuracy.
 
 No overnight job is scheduled. Before dispatch, set a hard runtime/resource budget and verify checkpoints, computer sleep/power settings, and restart behavior.
+
+A later [controlled interruption demo](../../evidence/cfd-interruption-v1/README.md) suspends a real solver, detects the stall, terminates the process, and restarts from a saved checkpoint. Its compact bundle includes raw logs, fields, and an offline verifier. This scripted recovery test does not change the numerical-validity findings above.

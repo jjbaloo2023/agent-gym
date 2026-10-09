@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "files": {
+    "case-inputs.tar.gz": {
+      "bytes": 245940,
+      "sha256": "847fd80effd0db515fbf5a0481ab1adb71238171a7884ef837b72aa323b72030"
+    },
+    "checkpoint.tar.gz": {
+      "bytes": 401100,
+      "sha256": "b30c349dd9fe714ed2a2697afb5ea61fe15701b00fd1d001f9403387b9e0f959"
+    },
+    "control-final.tar.gz": {
+      "bytes": 402446,
+      "sha256": "fe9f63f808af3790adbca5ece3ef41fb886ebc36be62e1dcef599528120e3a1f"
+    },
+    "interrupted.log.gz": {
+      "bytes": 9619,
+      "sha256": "7c83d37d2239f8d5128edb6781f6d2da04a2f9cf8e6c8b2685cd62fdb9a782d9"
+    },
+    "protocol.json": {
+      "bytes": 405,
+      "sha256": "60f52477f225d79d558aac3f4b8d0f1146ac5ac907edc78b7b268038bb746ff7"
+    },
+    "README.md": {
+      "bytes": 2652,
+      "sha256": "97f0bb7a0feef284a71bd93b2f9dc8aa48c4a32aa1cf98b9df3579a87ebcdf15"
+    },
+    "recovered-final.tar.gz": {
+      "bytes": 402407,
+      "sha256": "7538c3d504114eff4c5573cce8a21fb0404be52a743e2509b36af23be09c649c"
+    },
+    "reproduce.py": {
+      "bytes": 10656,
+      "sha256": "46e1742029e4b47cdc358e26646803ca35ce5de81576cec51d750d2b1ce4adac"
+    },
+    "restarted.log.gz": {
+      "bytes": 94673,
+      "sha256": "f77a1e08cfa80e8d570caa105030a9b9dc34b64ec09a16d3a9e5fd62afd58ff7"
+    },
+    "trajectory.jsonl": {
+      "bytes": 3342,
+      "sha256": "7ff178cadf90adedab14e04850f8d147dd2207bf2fd9cd1ae9a99c72ebaf6726"
+    },
+    "uninterrupted.log.gz": {
+      "bytes": 101470,
+      "sha256": "685dfa80b21822455b01e7590875e1f827bfaaa8ad05bed497a82729f541c742"
+    },
+    "verification.json": {
+      "bytes": 1725,
+      "sha256": "68dca4fd829db1d9c5829e1dd245c9be259e1670ce318a9e0bc83c3b1d488dda"
+    },
+    "versions.json": {
+      "bytes": 433,
+      "sha256": "6511d0794094e4f860266d84060d1f990ea3456924dc28763cc2d1840c8c248a"
+    }
+  }
+}

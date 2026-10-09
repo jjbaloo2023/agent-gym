@@ -1,10 +1,19 @@
 # Agent Gym
-A scientific workflow laboratory for measuring agent reliability, portability, persistence, and scaling.
+A test system for agents that use scientific software. Each run records inputs, agent actions, tool results, failures, corrections and verification checks.
 
-Three eventual uses share the same execution and evidence core:
-1. **Agent evaluation**: compare agents, tools, recovery strategies, budgets, and environments.
-2. **RL environments**: expose bounded actions, observations, rewards, and termination to training systems.
-3. **Domain datasets**: curate verified demonstrations with explicit source rights and destination eligibility.
+The current focus is agent evaluation. RL environments and domain-specific training datasets are planned, not implemented. Dataset use requires source-rights and destination review.
+
+## Current state
+
+| Component | What works | Limit |
+| --- | --- | --- |
+| Analytical task | Pipe search, deterministic hill climbing, checkpoint restart, process replicas | No LLM or CFD solver |
+| Scientific MCP | FreeCAD Venturi construction, Gmsh mesh, OpenFOAM conversion and mesh checks | No CFD solve tool or general CAD programming |
+| Model evaluation | Luna, Sol and Astra completed CAD, sequential CFD, and self-directed correction experiments | CFD ran through shell tools; physical accuracy remains unvalidated |
+| Recovery demo | A real solver was suspended, detected as stalled, killed, then restarted from a saved checkpoint | One process-stall test; not power-loss or interrupted-write recovery |
+| Evidence | A compact run bundle is committed, with trajectory, logs, inputs, fields and verification | Full experiment outputs remain outside Git |
+
+See the [CFD pilot](benchmarks/venturi/cfd-results.md), [validity audit](benchmarks/venturi/validity-audit-results.md), and [inspectable recovery run](evidence/cfd-interruption-v1/README.md). Exit code zero, a mesh check, or small residuals do not establish physical accuracy.
 
 ## First experiment
 The runnable prototype is an analytical laminar pipe-flow inverse-design task. An agent changes pipe radius to match a target pressure drop. A deterministic hill-climbing baseline accepts improving proposals. It establishes scoring, checkpoint/restart, and process-level parallel runs without API fees or solver installation.
@@ -31,17 +40,29 @@ python -m unittest discover -s tests -v
 ```
 Steps are a total episode budget; resume continues to that total. A run directory belongs to one writer. Existing runs cannot be overwritten accidentally. Each replica has a distinct directory and seed.
 
-## Evidence
+## Run records
 Each checkpoint contains task configuration and its hash, baseline identity, seed, Python/platform metadata, RNG state, incumbent, every candidate, validity, acceptance, and physical metrics. Writes use temporary-file replacement. The recorded seed and RNG state allow deterministic restart; machine metadata supports comparison but does not prove cross-platform parity.
 
 The agent sees only task observations and solver feedback. Future hidden scoring, reference answers, and held-out cases belong outside the agent workspace.
 
+OpenFOAM field checkpoints are separate from the analytical JSON checkpoint. The controlled demo checks that restart loads the saved time and compares the recovered fields with an uninterrupted control. Verify its committed evidence without WSL or OpenFOAM:
+
+```sh
+python scripts/verify-cfd-evidence.py evidence/cfd-interruption-v1
+```
+
+The bundle README gives solver replay instructions. File hashes detect changes; they are not external signatures. Current verification runs on the same local machine as execution.
+
 ## Scientific CAD and meshing
-The WSL scientific MCP now builds an editable axisymmetric Venturi with FreeCAD, meshes its fluid STEP with Gmsh, and converts/checks the mesh in OpenFOAM 14. See [scientific MCP setup](docs/scientific-mcp.md) and [Venturi benchmark](benchmarks/venturi/README.md). Model attempts and CFD are pending drawing approval and human scoring.
+The WSL scientific MCP builds an editable axisymmetric Venturi with FreeCAD, meshes its fluid STEP with Gmsh, and converts/checks the mesh in OpenFOAM 14. See [scientific MCP setup](docs/scientific-mcp.md) and [Venturi benchmark](benchmarks/venturi/README.md). Drawing approval, CAD scoring, CFD pilots and numerical-validity audits are complete. The user awarded all three CAD attempts 100/100. This does not imply a CFD accuracy score.
 
 ## Scientific workflow target
 Dimensioned 2D blueprint -> structured geometry specification -> CAD/STEP -> mesh -> OpenFOAM case -> solver -> physical validation -> report.
 
-Start with a specified laminar pipe before arbitrary blueprint images. Validate geometry, units, topology, mesh quality, boundary conditions, convergence, mass balance, and agreement with an analytical reference. A solver exit code alone is not success.
+Use bounded tasks before general workflows. Check geometry, units, mesh, boundary conditions, convergence and mass balance. Assess numerical sensitivity, then compare with physical reference data. Keep execution success, numerical verification and physical validation separate.
+
+Portability and scaling remain experiment goals. Process replicas and environment records exist; a cross-platform scientific suite and distributed scheduler do not. The analytical Docker boundary does not apply to WSL scientific processes.
+
+Documentation uses short sentences and fixed terms. The [writing guide](docs/writing.md) follows ASD-STE100 principles without claiming formal compliance.
 
 See [architecture](docs/architecture.md), [roadmap](docs/roadmap.md), and [data provenance](docs/data-policy.md).

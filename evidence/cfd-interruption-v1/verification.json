@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "checks": {
+    "actual_stall_injected": true,
+    "failed_process_killed": true,
+    "restart_loaded_saved_time": true,
+    "control_converged": true,
+    "restart_converged": true,
+    "fields_match_control": true,
+    "target_flow": true,
+    "flux_balance": true,
+    "source_unchanged": true
+  },
+  "control": {
+    "returncode": 0,
+    "wall_s": 9.6087,
+    "converged": true,
+    "injected": false
+  },
+  "interrupted": {
+    "returncode": -9,
+    "wall_s": 3.4373,
+    "converged": false,
+    "injected": true
+  },
+  "restart": {
+    "returncode": 0,
+    "wall_s": 8.7999,
+    "converged": true,
+    "injected": false
+  },
+  "restart_time": 50.0,
+  "reference_final_time": "741",
+  "recovered_final_time": "741",
+  "field_comparison": {
+    "p": {
+      "count": 8246,
+      "absolute_rms": 1.0717021843865807e-16,
+      "relative_l2": 1.10357343362047e-14
+    },
+    "U": {
+      "count": 24738,
+      "absolute_rms": 4.2222845255612863e-16,
+      "relative_l2": 4.568823678240716e-15
+    },
+    "phi": {
+      "count": 15161,
+      "absolute_rms": 2.8531381351999283e-21,
+      "relative_l2": 4.498171150174928e-15
+    }
+  },
+  "inlet_flux_m3_s": -5e-05,
+  "outlet_flux_m3_s": 5.0000000179444e-05,
+  "relative_flux_imbalance": 3.588879952769186e-09,
+  "protocol": {
+    "flow_m3_s": 5e-05,
+    "nu_m2_s": 1.004e-06,
+    "rho_kg_m3": 998.2,
+    "injection": "SIGSTOP after a complete positive checkpoint",
+    "checkpoint_interval_iterations": 50,
+    "stall_limit_s": 2,
+    "wall_limit_s_per_launch": 120,
+    "field_relative_l2_limit": 0.0001,
+    "flux_relative_imbalance_limit": 1e-06,
+    "claim": "solver process stall recovery; not physical CFD validation or power-loss recovery"
+  }
+}

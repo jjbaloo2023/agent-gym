@@ -1,0 +1,9 @@
+{
+  "openfoam": "",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "case_origin": "Luna C, laminar recovery, 8246 cells",
+  "run_path": "/home/gym/agent-gym-demos/interruption-v2",
+  "dataset_eligibility": "unreviewed",
+  "source_rights": "Locally generated mesh and solver evidence; source drawing/PDF and model text not included"
+}
