@@ -13,6 +13,6 @@
   "drawing_source": "https://eng.najah.edu/sites/eng.najah.edu/files/labs/thermal-fluid-manual.pdf",
   "drawing_sha256": "45e55fa4b43acb9ef5c3e8823b1a3645c75ffebff21e84eba378f9be896bb925",
   "human_scoring_required": true,
-  "cfd_status": "not_started",
+  "cfd_status": "sequential_pilot_complete",
   "overnight_status": "not_scheduled"
 }

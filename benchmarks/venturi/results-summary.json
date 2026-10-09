@@ -43,7 +43,9 @@
       "comments": "User awarded full marks after confirming intentional open inlet/outlet end planes."
     }
   ],
-  "cfd_started": false,
+  "cfd_started": true,
+  "cfd_status": "sequential_pilot_complete",
+  "cfd_report": "benchmarks/venturi/cfd-results.md",
   "geometry_identical": true,
   "requested_models": [
     "gpt-6-luna",
