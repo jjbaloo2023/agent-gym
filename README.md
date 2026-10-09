@@ -9,7 +9,7 @@ Three eventual uses share the same execution and evidence core:
 ## First experiment
 The runnable prototype is an analytical laminar pipe-flow inverse-design task. An agent changes pipe radius to match a target pressure drop. A deterministic hill-climbing baseline accepts improving proposals. It establishes scoring, checkpoint/restart, and process-level parallel runs without API fees or solver installation.
 
-This is **not yet CAD, CFD, an LLM agent, or a Gymnasium integration**. It uses the Hagen-Poiseuille relation for steady, fully developed, incompressible laminar flow in a circular pipe. Those assumptions do not generalize to arbitrary geometries.
+This analytical experiment runs without CAD, CFD, an LLM agent, or Gymnasium. The separate scientific MCP below adds CAD and meshing. It uses the Hagen-Poiseuille relation for steady, fully developed, incompressible laminar flow in a circular pipe. Those assumptions do not generalize to arbitrary geometries.
 
 ## Run in Docker
 With Docker Desktop running in Linux-container mode:
@@ -35,6 +35,9 @@ Steps are a total episode budget; resume continues to that total. A run director
 Each checkpoint contains task configuration and its hash, baseline identity, seed, Python/platform metadata, RNG state, incumbent, every candidate, validity, acceptance, and physical metrics. Writes use temporary-file replacement. The recorded seed and RNG state allow deterministic restart; machine metadata supports comparison but does not prove cross-platform parity.
 
 The agent sees only task observations and solver feedback. Future hidden scoring, reference answers, and held-out cases belong outside the agent workspace.
+
+## Scientific CAD and meshing
+The WSL scientific MCP now builds an editable axisymmetric Venturi with FreeCAD, meshes its fluid STEP with Gmsh, and converts/checks the mesh in OpenFOAM 14. See [scientific MCP setup](docs/scientific-mcp.md) and [Venturi benchmark](benchmarks/venturi/README.md). Model attempts and CFD are pending drawing approval and human scoring.
 
 ## Scientific workflow target
 Dimensioned 2D blueprint -> structured geometry specification -> CAD/STEP -> mesh -> OpenFOAM case -> solver -> physical validation -> report.

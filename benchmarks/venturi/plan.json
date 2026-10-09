@@ -1,0 +1,14 @@
+{
+  "status": "awaiting_drawing_approval",
+  "models": ["gpt-6-luna", "gpt-6.1-sol", "gpt-6-astra"],
+  "reasoning_effort": "medium",
+  "attempts_per_model": 1,
+  "max_tool_calls_per_attempt": 12,
+  "max_wall_minutes_per_attempt": 15,
+  "cad_family": "five-section axisymmetric Venturi",
+  "drawing_source": null,
+  "drawing_sha256": null,
+  "human_scoring_required": true,
+  "cfd_status": "not_started",
+  "overnight_status": "not_scheduled"
+}
