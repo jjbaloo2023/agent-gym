@@ -1,13 +1,17 @@
 {
-  "status": "awaiting_drawing_approval",
-  "models": ["gpt-6-luna", "gpt-6.1-sol", "gpt-6-astra"],
+  "status": "awaiting_human_scores",
+  "models": [
+    "gpt-6-luna",
+    "gpt-6.1-sol",
+    "gpt-6-astra"
+  ],
   "reasoning_effort": "medium",
   "attempts_per_model": 1,
   "max_tool_calls_per_attempt": 12,
   "max_wall_minutes_per_attempt": 15,
   "cad_family": "five-section axisymmetric Venturi",
-  "drawing_source": null,
-  "drawing_sha256": null,
+  "drawing_source": "https://eng.najah.edu/sites/eng.najah.edu/files/labs/thermal-fluid-manual.pdf",
+  "drawing_sha256": "45e55fa4b43acb9ef5c3e8823b1a3645c75ffebff21e84eba378f9be896bb925",
   "human_scoring_required": true,
   "cfd_status": "not_started",
   "overnight_status": "not_scheduled"

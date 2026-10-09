@@ -1,0 +1,140 @@
+{
+  "status": "awaiting_human_scores",
+  "source_page": 35,
+  "source_pdf_sha256": "45e55fa4b43acb9ef5c3e8823b1a3645c75ffebff21e84eba378f9be896bb925",
+  "human_scores": null,
+  "cfd_started": false,
+  "geometry_identical": true,
+  "requested_models": [
+    "gpt-6-luna",
+    "gpt-6.1-sol",
+    "gpt-6-astra"
+  ],
+  "attempts_per_model": 1,
+  "attempts": [
+    {
+      "label": "A",
+      "run_id": "1e23a78943344f9580d25d7e170a1ea3",
+      "dimensions": {
+        "inlet_diameter_mm": 26.0,
+        "throat_diameter_mm": 16.0,
+        "inlet_length_mm": 0.0,
+        "convergent_length_mm": 25.0,
+        "throat_length_mm": 16.0,
+        "diffuser_length_mm": 89.0,
+        "outlet_length_mm": 0.0,
+        "wall_thickness_mm": 2.0
+      },
+      "native_editability_verified": true,
+      "step_valid": true,
+      "analytical_volume_mm3": 43448.226399146835,
+      "mesh": {
+        "gmsh_version": "4.12.1",
+        "units": "m",
+        "nodes": 5739,
+        "cells": 26130,
+        "size_mm": 2.0,
+        "patches": {
+          "inlet": [
+            3
+          ],
+          "outlet": [
+            5
+          ],
+          "walls": [
+            1,
+            2,
+            4
+          ]
+        },
+        "length_m": 0.13
+      },
+      "mesh_check": "Mesh OK.",
+      "tool_invocations": 4,
+      "errors": 0
+    },
+    {
+      "label": "B",
+      "run_id": "64ad8199331a459fa474fd540c3d772d",
+      "dimensions": {
+        "inlet_diameter_mm": 26.0,
+        "throat_diameter_mm": 16.0,
+        "inlet_length_mm": 0.0,
+        "convergent_length_mm": 25.0,
+        "throat_length_mm": 16.0,
+        "diffuser_length_mm": 89.0,
+        "outlet_length_mm": 0.0,
+        "wall_thickness_mm": 2.0
+      },
+      "native_editability_verified": true,
+      "step_valid": true,
+      "analytical_volume_mm3": 43448.226399146835,
+      "mesh": {
+        "gmsh_version": "4.12.1",
+        "units": "m",
+        "nodes": 5767,
+        "cells": 26323,
+        "size_mm": 2.0,
+        "patches": {
+          "inlet": [
+            3
+          ],
+          "outlet": [
+            5
+          ],
+          "walls": [
+            1,
+            2,
+            4
+          ]
+        },
+        "length_m": 0.13
+      },
+      "mesh_check": "Mesh OK.",
+      "tool_invocations": 4,
+      "errors": 0
+    },
+    {
+      "label": "C",
+      "run_id": "e591fbae89bb4fb38fb9dbfd2ab09c72",
+      "dimensions": {
+        "inlet_diameter_mm": 26.0,
+        "throat_diameter_mm": 16.0,
+        "inlet_length_mm": 0.0,
+        "convergent_length_mm": 25.0,
+        "throat_length_mm": 16.0,
+        "diffuser_length_mm": 89.0,
+        "outlet_length_mm": 0.0,
+        "wall_thickness_mm": 2.0
+      },
+      "native_editability_verified": true,
+      "step_valid": true,
+      "analytical_volume_mm3": 43448.226399146835,
+      "mesh": {
+        "gmsh_version": "4.12.1",
+        "units": "m",
+        "nodes": 2064,
+        "cells": 8246,
+        "size_mm": 3.0,
+        "patches": {
+          "inlet": [
+            3
+          ],
+          "outlet": [
+            5
+          ],
+          "walls": [
+            1,
+            2,
+            4
+          ]
+        },
+        "length_m": 0.13
+      },
+      "mesh_check": "Mesh OK.",
+      "tool_invocations": 4,
+      "errors": 0
+    }
+  ],
+  "reasoning_effort": "medium"
+}
