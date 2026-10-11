@@ -1,0 +1,86 @@
+{
+  "benchmark": "epsin-enth-md-v1",
+  "attempt": 1,
+  "model": {
+    "reported_runtime_identity": "gpt-6-luna",
+    "reasoning_effort": "medium",
+    "source": "benchmarks/enth/plan.json",
+    "identity_caveat": "This is the model label supplied by the benchmark plan for this delegated pilot; no independent runtime identity attestation was exposed to this agent."
+  },
+  "scope": "bounded preparation pilot only; no MD launched",
+  "statuses": {
+    "preparation": "blocked_missing_original_inputs",
+    "execution": "not_started",
+    "analysis": "not_started",
+    "scientific_agreement": "not_assessed"
+  },
+  "evidence": {
+    "repository_inputs_present": [
+      {
+        "path": "benchmarks/enth/README.md",
+        "sha256": "0BC7E17BD8F1E4D158D73E8F8B105ACB5B240B2131D487FE49A3EECC332A10A",
+        "role": "benchmark protocol and scope"
+      },
+      {
+        "path": "benchmarks/enth/plan.json",
+        "sha256": "2481B12CDE1DC821E4028BC560FE875E849AD9D14D11114F4788BFA8FDDA57EB",
+        "role": "pilot bounds and unresolved choices"
+      },
+      {
+        "path": "benchmarks/enth/task.md",
+        "sha256": "567323294857AC20E0FD0D7B02D8E12B7F8951B87CDEC102A52D43B3BF00B4F8",
+        "role": "pilot instructions"
+      },
+      {
+        "path": "benchmarks/enth/environment.md",
+        "sha256": "EBD6937932AD3746510A8E91111613A7F82049DD3B634CB6E6A9F2529CDBA3AA",
+        "role": "parent-provided CPU GROMACS and systemd resource-boundary verification"
+      }
+    ],
+    "input_inventory": "Recursive listing of benchmarks/enth found README.md, plan.json, task.md, environment.md and this pilot's two result files; no molecular structure, coordinate, topology, force-field parameter, MDP, restraint, equilibration, trajectory, or analysis input was present. Repository file listing also found no supplied ENTH simulation input outside this directory.",
+    "paper_source": {
+      "citation": "Joseph et al., Communications Biology 3, 743 (2020), DOI 10.1038/s42003-020-01471-6",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7722716/",
+      "inspected_claims": "The article describes ENTH placed on POPC with a single PIP2, H0 interaction/insertion, then pulling ENTH away to reach inserted, adsorbed, and solution states; Figure 4 compares H0 secondary structure/helicity. The source available in this inspection does not supply the original system files or enough numeric pulling/restraint details to recreate them unambiguously."
+    },
+    "environment": "Per benchmarks/enth/environment.md, GROMACS 2023.3 Ubuntu package build was verified under WSL and a transient systemd service demonstrated CPUQuota=200%, MemoryMax=4G, MemorySwapMax=0 and RuntimeMaxSec. This verifies installation/resource-boundary mechanics only; it does not validate an ENTH system or an MD trajectory.",
+    "actions": [
+      "Read benchmarks/enth/README.md, plan.json, task.md and environment.md.",
+      "Listed repository files and recursively inventoried benchmarks/enth.",
+      "Computed SHA256 for the four existing benchmark/environment input files.",
+      "Inspected the article landing/full-text result and searched for the paper by DOI/title to verify Figure 4 narrative.",
+      "Did not install packages, create molecular inputs, launch GROMACS, or perform analysis."
+    ]
+  },
+  "blockers": [
+    {
+      "item": "No original CHARMM-GUI generated system or archived simulation files supplied",
+      "detail": "Missing processed coordinates, topology/includes and CHARMM36 parameter provenance; initial/equilibration structures; production inputs; original pulling setup and state trajectory/frame definitions."
+    },
+    {
+      "item": "KCl value is ambiguous",
+      "detail": "The benchmark protocol transcribes the publication as 0.15 mM. This is unusual for physiological ionic strength, but must not be changed to 0.15 M without source confirmation. This choice affects ion count and system composition."
+    },
+    {
+      "item": "H0 residue mapping is not defined in supplied inputs",
+      "detail": "Need the exact construct/chain and residue-number mapping from 1H0A to the simulated ENTH construct, including treatment of missing/renumbered residues and the precise residues used for helicity."
+    },
+    {
+      "item": "Pulling protocol and state boundaries are unspecified locally",
+      "detail": "Need pulling axis/reference groups, spring constant, initial/final coordinates or schedule, rate/trajectory, and objective criteria/time windows for inserted, adsorbed, and solvent states."
+    },
+    {
+      "item": "PIP2 chemical model is unspecified locally",
+      "detail": "Need exact PIP2 lipid species, protonation/charge state, CHARMM36 parameter/topology version, and any restraints or placement constraints."
+    },
+    {
+      "item": "Pilot enforcement gates remain incomplete for launching MD",
+      "detail": "Although the WSL systemd CPU/memory/time boundary is reported verified, this preparation attempt did not establish executable aggregate artifact-size, atom-count, step-count, and call-ledger enforcement around a molecular workflow."
+    }
+  ],
+  "next_minimum_executable_experiment": "Obtain the original CHARMM-GUI GROMACS package and source trajectory/metadata for one published configuration, including topology/includes, coordinates, equilibration/restart, MDPs, pull code/parameters, and state-frame annotations; resolve the 0.15 mM KCl value with the source; establish 1H0A chain/residue-to-H0 mapping and PIP2 species/protonation. Then preflight topology/parameter completeness and enforce the documented CPU, memory, wall-time, atom, step, aggregate-output, and single-simulation caps before one ≤50,000-step 2-fs continuation/smoke trajectory. Validate finite energies, constraints, temperature, pressure/volume, and membrane integrity before analysis. This experiment would test workflow execution only, not reproduce Figure 4's biological conclusion.",
+  "artifact_hashes": {
+    "benchmarks/enth/luna-pilot.md": "D6822AAF9A35ED84D21604645A030CFEC9DCCF144BA0B3A03163399C319022ED",
+    "benchmarks/enth/luna-pilot.json": "self-hash omitted; report SHA256 after final write"
+  }
+}

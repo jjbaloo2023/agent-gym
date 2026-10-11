@@ -1,0 +1,7 @@
+RuntimeMaxUSec=13min 57s
+CPUQuotaPerSecUSec=2s
+MemoryMax=4294967296
+MemorySwapMax=0
+TasksMax=64
+User=gym
+ActiveState=active

@@ -1,0 +1,287 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 3082,
+    "sha256": "d13f5597e2fd25748100e291ed515dae3edd4bf10bb174a7e7379567b7b9c313"
+  },
+  {
+    "path": "provenance/command-ledger.json",
+    "bytes": 16209,
+    "sha256": "56731e16b0ee1e9fb9bc044f7e2474939c204fdf998e7615ec75f174fa5791d2"
+  },
+  {
+    "path": "provenance/enth_validation.executed.py",
+    "bytes": 53501,
+    "sha256": "f5c4f3bfe5d6c9e3edab3ed018922b5bd289da20d671b60af78a825ad6216a4d"
+  },
+  {
+    "path": "provenance/geometry.json",
+    "bytes": 2737,
+    "sha256": "3fec79dedac115e112f52465703afb01e20750b54cc1e47ec7d80ac9ed6bff80"
+  },
+  {
+    "path": "provenance/input-checks.json",
+    "bytes": 1556,
+    "sha256": "c21b66455e22ac7f197ca76255a153d4b51e23fcc3221994b6fdc9d723800402"
+  },
+  {
+    "path": "provenance/preparation.json",
+    "bytes": 18960,
+    "sha256": "87e025b05cfdd80c7a5c09099b4c5c0ffe9db1757d476a3d34b64ced7aa443de"
+  },
+  {
+    "path": "provenance/supervisor-result.json",
+    "bytes": 11587,
+    "sha256": "e8e8e032a99ad883d983edf75263b6e49b75651978e8f3b3e0de2a70387ac0a0"
+  },
+  {
+    "path": "provenance/supervisor-start.json",
+    "bytes": 553,
+    "sha256": "666aedad82a71842415b92a4901584a8722407a730acf1f10cd0dd3bc14af863"
+  },
+  {
+    "path": "provenance/supervisor.executed.py",
+    "bytes": 4764,
+    "sha256": "5ce0526d21afb448789d46846e0d2ad2c3197fd1889e8b07e8eee0a59b847dd6"
+  },
+  {
+    "path": "provenance/worker.executed.py",
+    "bytes": 14810,
+    "sha256": "3dfcaf2b23ced7c2385083408786c73b0754297967cd63cba8f6395ba837f346"
+  },
+  {
+    "path": "run/boxed.gro",
+    "bytes": 1322824,
+    "sha256": "5be165768574b4f7f80f3244d1cd2a4a2d291850bc752247aab0accf9a0ce89e"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/atomtypes.atp",
+    "bytes": 24025,
+    "sha256": "6a0b57cde3eb0784d4481f7b25291cd7a95696ed5d3b67afb73e9a6d92544ecd"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/cmap.itp",
+    "bytes": 82367,
+    "sha256": "e458027fcf39c7b2bea3d98afbe0ddc8b60c3d13a4f3fe6259c9e49c7e585241"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/ffbonded.itp",
+    "bytes": 1225536,
+    "sha256": "c523f2f1c5482f3884cf7dba02cf7dbfeb7858a2f161c062592f90bb6be474cc"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/ffnonbonded.itp",
+    "bytes": 1843981,
+    "sha256": "46d767047a18a1d0081b7207601743d809f361daa5e82795dc053805eab1a01e"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/forcefield.doc",
+    "bytes": 10363,
+    "sha256": "64fe10e4bfe7036def8b811bf3af61af81f5562038bcbd213eaac930fcc4ae55"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/forcefield.itp",
+    "bytes": 650,
+    "sha256": "fa4bd60d5a16bdaaeea078a7532ed9bd1b4bb4c3a1ce065f1f8074c4b14b3796"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/gb.itp",
+    "bytes": 1873,
+    "sha256": "f52bf473c68c3116131a7f041dbb596c316b8718a12d542575e38582fb57f284"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/ions.itp",
+    "bytes": 1568,
+    "sha256": "739ee08ddac7b07ba4c00f40252f924521c5ae0a5b04d97a7a9128181a7b2d43"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.arn",
+    "bytes": 78,
+    "sha256": "3f932f441307ef90c024c50e80d1c3afa786c37b5f1a19c6ecf3e5ff30199a9b"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.c.tdb",
+    "bytes": 942,
+    "sha256": "46503d5b654ec76e8ecd89936bf491819a4009a0c39b3db8f079dfca260cdcd3"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.hdb",
+    "bytes": 6911,
+    "sha256": "0650c0f1584cb74c6f3f485b7679c6a342b51d4bef56bdae46a2b06446bc7cd8"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.n.tdb",
+    "bytes": 1186,
+    "sha256": "4fb4a3a8004a5c8fcbc7b8aeea12a829adb57198e1739718f8a74379e344cf6b"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.r2b",
+    "bytes": 161,
+    "sha256": "8af60fc0c27ad5e9b8470f3dbc8c2c9ee5beaa887934d5fa58a8ef7e13dba75d"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.rtp",
+    "bytes": 2132134,
+    "sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/merged.vsd",
+    "bytes": 4292,
+    "sha256": "7d012b350964ac4d2490a950eb191aadbc2946c0a60931931d8177ff13deb01c"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/nbfix.itp",
+    "bytes": 5009,
+    "sha256": "50cec9395a30fa8338e612b468e499f2f83ed09d790b91689f4e52d0ade3eedc"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/old_c36_cmap.itp",
+    "bytes": 54970,
+    "sha256": "0ce42fd9ee0bc34e802207542cd6c6ddbd939aa1644024c9772e90990f1f4165"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/spc.itp",
+    "bytes": 484,
+    "sha256": "322005f9af5398ae6ebf502ae8e00ad877ce6036a39d751040c50c98b35b2f47"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/spce.itp",
+    "bytes": 490,
+    "sha256": "7b9f79b2d6d03bfbcdf8de2e9eb80f707acec7285fc2b4029c3849ba45851d14"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/tip3p.itp",
+    "bytes": 817,
+    "sha256": "9ad5e7cbf08c82c59d9173141802e6601ffec4f74ed303a3276b2cd9f67228c5"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/tip4p.itp",
+    "bytes": 1011,
+    "sha256": "dcb5363aca163b8dcc9e69d5cadda0d3708ebcd2ba0157499da2189aec0732ba"
+  },
+  {
+    "path": "run/charmm36-jul2020.ff/watermodels.dat",
+    "bytes": 198,
+    "sha256": "46b7afe5f33e8353d3cce4a615dcfe4119cda9f01fb7cbd08d7ffd27a42ebe1a"
+  },
+  {
+    "path": "run/em.mdp",
+    "bytes": 261,
+    "sha256": "6b0a868263e88a3fbb536fb10271ccc8c89ac837ae1659bdaef3911964dc586b"
+  },
+  {
+    "path": "run/em_relax.mdp",
+    "bytes": 257,
+    "sha256": "ed263d21cf60e4342a42d6afb6ea6b6e2a9bd60eab0098a1c00728c591d4bf5f"
+  },
+  {
+    "path": "run/em_relax.tpr",
+    "bytes": 8113940,
+    "sha256": "e69f759c25d9a78991475f874fd4c4f76106141fa47da37a19cbc5862f76189b"
+  },
+  {
+    "path": "run/inserted_complex.pdb",
+    "bytes": 2166505,
+    "sha256": "b1a4473fdbe096552aeb6f9f88b38297cc3abcf2ab7f20344eefc0dbd1aef87f"
+  },
+  {
+    "path": "run/ions.gro",
+    "bytes": 3552984,
+    "sha256": "fb6c50c649d7917eb4ae27e429b62a79be1da5ca3494fade6f2576d3a93c09a2"
+  },
+  {
+    "path": "run/ions.tpr",
+    "bytes": 8113692,
+    "sha256": "1748a511d2cf7f81b661691ee7ac2830acc5d52c77a7b388c8c5eb27a518ac62"
+  },
+  {
+    "path": "run/mdout.mdp",
+    "bytes": 10512,
+    "sha256": "c0281cd56f2be0f249b5b084fd29452c3903c5d2ab3e6a826ccbf16aded6124c"
+  },
+  {
+    "path": "run/npt_release.mdp",
+    "bytes": 640,
+    "sha256": "b2dea2de81a293d10d6cb9fd4a6901cc7f1e049ece3af1f56c8268d57d7848dc"
+  },
+  {
+    "path": "run/npt_restraint.mdp",
+    "bytes": 648,
+    "sha256": "bdc9f5bdaa09d7c7289d383a8f2ecfd8c80eba6c43f7f08ee412cb9abfdac063"
+  },
+  {
+    "path": "run/nvt.mdp",
+    "bytes": 619,
+    "sha256": "7376f2881bb2e12a25692c1d44e0e6b343b96a521a365abc3aec1720cde610c7"
+  },
+  {
+    "path": "run/posre_Other.itp",
+    "bytes": 321061,
+    "sha256": "81a177ebcc5f3af1e3215cd7e2b1de5cafaff8079be142cdfd025d4398bc3336"
+  },
+  {
+    "path": "run/posre_Other_chain_B.itp",
+    "bytes": 2412,
+    "sha256": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e"
+  },
+  {
+    "path": "run/posre_Protein_chain_A.itp",
+    "bytes": 40170,
+    "sha256": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0"
+  },
+  {
+    "path": "run/processed.gro",
+    "bytes": 1322824,
+    "sha256": "ce1efa3f7e0f12f1b988bb257d35f5125499482a71688519107b98b0b4c0873f"
+  },
+  {
+    "path": "run/solv.gro",
+    "bytes": 3553024,
+    "sha256": "f52afdfc04ebb27524f45883404779e8d3930017c69d270db8d6988c809bbb17"
+  },
+  {
+    "path": "run/topol.top",
+    "bytes": 1676,
+    "sha256": "30376fcc30096bee22ef6796204c0abcce22efeb7c69f940223a8f0411effdaa"
+  },
+  {
+    "path": "run/topol_Other.itp",
+    "bytes": 7155027,
+    "sha256": "1e214ea2deed09a7ec5a90d2f55602c5033e0ccf06b2ead3f3ea686ebed544c3"
+  },
+  {
+    "path": "run/topol_Other_chain_B.itp",
+    "bytes": 41292,
+    "sha256": "a934bd72c8ef512733defabb725f7615a5d14928077848a70b81b579b4f32923"
+  },
+  {
+    "path": "run/topol_Protein_chain_A.itp",
+    "bytes": 709885,
+    "sha256": "9022147a1c5ab4e484468e0455add9cc5a4e135157e186081eb6a1f8d8c65b0f"
+  },
+  {
+    "path": "source-inputs/c36.tgz",
+    "bytes": 592201,
+    "sha256": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364"
+  },
+  {
+    "path": "source-inputs/pdb_1h0a.pdb",
+    "bytes": 172449,
+    "sha256": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681"
+  },
+  {
+    "path": "source-inputs/popc_bilayer.tar.gz",
+    "bytes": 4550565,
+    "sha256": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8"
+  },
+  {
+    "path": "source-inputs/popc_template.pdb",
+    "bytes": 10437,
+    "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+  },
+  {
+    "path": "source-inputs/sapi24_template.pdb",
+    "bytes": 11669,
+    "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+  }
+]

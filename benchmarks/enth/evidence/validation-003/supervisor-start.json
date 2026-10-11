@@ -1,0 +1,16 @@
+{
+  "started_utc": "2026-10-10T11:20:43Z",
+  "command": [
+    "/opt/agent-gym-cad/bin/python",
+    "/mnt/c/Users/Jophi/OneDrive/Documents/ChatGPT/Agent_gym/scripts/enth_validation.py",
+    "--workdir",
+    "/home/gym/agent-gym-md/validation-003",
+    "--prepare-only"
+  ],
+  "worker_sha256": "f1c0997f4cf908c929fa7b94d967044d329cd63e9d77a60312ee73b39f4923be",
+  "wall_limit_seconds": 1800,
+  "output_limit_bytes": 1073741824,
+  "output_poll_seconds": 0.5,
+  "single_file_limit_bytes": 268435456,
+  "note": "Aggregate output is monitored, not a filesystem quota; overshoot between polls is possible."
+}

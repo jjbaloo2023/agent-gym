@@ -1,0 +1,32 @@
+{
+  "benchmark": "epsin-enth-md-v1",
+  "status": "validation_partial_failed_strict_checks",
+  "validation_run": "validation-006",
+  "validation_report": "validation-results.md",
+  "saved_dynamics_ps": 58,
+  "biological_agreement": "not_tested",
+  "paper": "https://doi.org/10.1038/s42003-020-01471-6",
+  "target": "Figure 4: H0 helicity in inserted, adsorbed and solvent states",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "attempts": 1,
+  "bounds": {
+    "wall_seconds": 1800,
+    "cpu_threads": 2,
+    "memory_mib": 4096,
+    "gpu": false,
+    "cloud_spend_usd": 0,
+    "max_tool_calls": 20,
+    "max_atoms": 100000,
+    "max_md_steps": 50000,
+    "max_timestep_fs": 2,
+    "max_output_mib": 1024,
+    "concurrent_simulations": 1
+  },
+  "production_gate": "Smoke test only; full replication requires a separate compute budget and resolved scientific inputs.",
+  "unresolved": [
+    "Published KCl is 0.15 mM; confirm whether intended value is 0.15 M",
+    "Original CHARMM-GUI topology, coordinates, equilibration and restraint inputs",
+    "H0 residue mapping, pulling constants, positions and PIP2 protonation"
+  ]
+}

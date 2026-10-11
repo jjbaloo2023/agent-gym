@@ -1,0 +1,637 @@
+{
+  "benchmark": "epsin-enth-md-v1",
+  "model": "gpt-6-luna (delegated preparation; runtime label per task)",
+  "attempt_root": "/home/gym/agent-gym-md/validation-005",
+  "started_utc": "2026-10-10T11:21:55Z",
+  "bounds": {
+    "wall_seconds": 1800,
+    "cpu_threads": 2,
+    "memory_mib": 4096,
+    "max_atoms": 100000,
+    "max_md_steps": 50000,
+    "dt_ps": 0.002,
+    "max_output_bytes": 1073741824,
+    "gpu": false,
+    "cloud_spend_usd": 0,
+    "concurrent_simulations": 1
+  },
+  "scientific_agreement_status": "not_assessed",
+  "preparation_status": "prepared",
+  "execution_status": "not_started",
+  "analysis_status": "not_started",
+  "sources": {
+    "pdb_1h0a": "https://files.rcsb.org/download/1H0A.pdb",
+    "c36_gromacs": "https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-jul2020.ff.tgz",
+    "popc_bilayer": "https://www.charmm-gui.org/archive/pure_bilayer/popc.tar.gz",
+    "popc_template": "https://www.charmm-gui.org/archive/csml/popc.pdb",
+    "sapi24_template": "https://www.charmm-gui.org/archive/csml/sapi24.pdb"
+  },
+  "inputs": [
+    {
+      "source": "pdb_1h0a",
+      "url": "https://files.rcsb.org/download/1H0A.pdb",
+      "path": "inputs/pdb_1h0a.pdb",
+      "bytes": 172449,
+      "sha256": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681"
+    },
+    {
+      "source": "c36_gromacs",
+      "url": "https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-jul2020.ff.tgz",
+      "path": "inputs/c36.tgz",
+      "bytes": 592201,
+      "sha256": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364"
+    },
+    {
+      "source": "popc_bilayer",
+      "url": "https://www.charmm-gui.org/archive/pure_bilayer/popc.tar.gz",
+      "path": "inputs/popc_bilayer.tar.gz",
+      "bytes": 4550565,
+      "sha256": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8"
+    },
+    {
+      "source": "popc_template",
+      "url": "https://www.charmm-gui.org/archive/csml/popc.pdb",
+      "path": "inputs/popc_template.pdb",
+      "bytes": 10437,
+      "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+    },
+    {
+      "source": "sapi24_template",
+      "url": "https://www.charmm-gui.org/archive/csml/sapi24.pdb",
+      "path": "inputs/sapi24_template.pdb",
+      "bytes": 11669,
+      "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "gmx",
+        "--version"
+      ],
+      "elapsed_seconds": 0.005,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "              :-) GROMACS - gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-005\nCommand line:\n  gmx --version\n\nGROMACS version:    2023.3-Ubuntu_2023.3_1ubuntu3\nPrecision:          mixed\nMemory model:       64 bit\nMPI library:        thread_mpi\nOpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 128)\nGPU support:        disabled\nSIMD instructions:  SSE4.1\nCPU FFT library:    fftw-3.3.10-sse2-avx\nGPU FFT library:    none\nMulti-GPU FFT:      none\nRDTSCP usage:       enabled\nTNG support:        enabled\nHwloc support:      hwloc-2.8.0\nTracing support:    disabled\nC compiler:         /usr/bin/cc GNU 13.2.0\nC compiler flags:   -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -O3 -DNDEBUG\nC++ compiler:       /usr/bin/c++ GNU 13.2.0\nC++ compiler flags: -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -Wno-cast-function-type-strict SHELL:-fopenmp -O3 -DNDEBUG\nBLAS library:       External - detected on the system\nLAPACK library:     External - detected on the system\n\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "gmx",
+        "pdb2gmx",
+        "-f",
+        "/home/gym/agent-gym-md/validation-005/run/inserted_complex.pdb",
+        "-o",
+        "processed.gro",
+        "-p",
+        "topol.top",
+        "-ff",
+        "charmm36-jul2020",
+        "-water",
+        "tip3p"
+      ],
+      "elapsed_seconds": 0.672,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Using the Charmm36-jul2020 force field in directory /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff\n\ngoing to rename /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.r2b\nReading /home/gym/agent-gym-md/validation-005/run/inserted_complex.pdb...\nRead '', 16444 atoms\n\nAnalyzing pdb file\nSplitting chemical chains based on TER records or chain id changing.\n\nThere are 3 chains and 0 blocks of water and 271 residues with 16444 atoms\n\n  chain  #res #atoms\n\n  1 ' '   112  15008  \n\n  2 'B'     1    150  \n\n  3 'A'   158   1286  \n\nthere were 0 atoms with zero occupancy and 67 atoms with          occupancy unequal to one (out of 16444 atoms). Check your pdb file.\n\nReading residue database... (Charmm36-jul2020)\n\nProcessing chain 1 (15008 atoms, 112 residues)\n\nProblem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 112 residues with 15008 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 14896, now 14896\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are 39872 dihedrals,  224 impropers, 28672 angles\n          39872 pairs,     14896 bonds and     0 virtual sites\n\nTotal mass 85130.549 a.m.u.\n\nTotal charge 0.000 e\n\nWriting topology\n\nProcessing chain 2 'B' (150 atoms, 1 residues)\n\nProblem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 1 residues with 150 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 150, now 150\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are  392 dihedrals,    2 impropers,  280 angles\n           389 pairs,      150 bonds and     0 virtual sites\n\nTotal mass 1043.076 a.m.u.\n\nTotal charge -4.000 e\n\nWriting topology\n\nProcessing chain 3 'A' (1286 atoms, 158 residues)\n\nIdentified residue MET1 as a starting terminus.\n\nIdentified residue ALA158 as a ending terminus.\nStart terminus MET-1: NH3+\nEnd terminus ALA-158: COO-\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 158 residues with 2578 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 2597, now 2597\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are  156 cmap torsion pairs\n\nThere are 6816 dihedrals,  461 impropers, 4684 angles\n          6738 pairs,     2597 bonds and     0 virtual sites\n\nTotal mass 18390.034 a.m.u.\n\nTotal charge 4.000 e\n\nWriting topology\n\nIncluding chain 1 in system: 15008 atoms 112 residues\n\nIncluding chain 2 in system: 150 atoms 1 residues\n\nIncluding chain 3 in system: 2578 atoms 158 residues\n\nNow there are 17736 atoms and 271 residues\n\nTotal mass in system 104563.659 a.m.u.\n\nTotal charge in system 0.000 e\n\nWriting coordinate file...\n\n\t\t--------- PLEASE NOTE ------------\n\nYou have successfully generated a topology from: /home/gym/agent-gym-md/validation-005/run/inserted_complex.pdb.\n\nThe Charmm36-jul2020 force field and the tip3p water model are used.\n\n\t\t--------- ETON ESAELP ------------\n",
+      "stderr": "          :-) GROMACS - gmx pdb2gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-005/run\nCommand line:\n  gmx pdb2gmx -f /home/gym/agent-gym-md/validation-005/run/inserted_complex.pdb -o processed.gro -p topol.top -ff charmm36-jul2020 -water tip3p\n\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.r2b\nthere were 0 atoms with zero occupancy and 67 atoms with          occupancy unequal to one (out of 16444 atoms). Check your pdb file.\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.rtp\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.hdb\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb\n8 out of 8 lines of specbond.dat converted successfully\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 39872 pairs\nBefore cleaning: 39872 dihedrals\n8 out of 8 lines of specbond.dat converted successfully\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 392 pairs\nBefore cleaning: 392 dihedrals\nAnalysing hydrogen-bonding network for automated assignment of histidine\n protonation. 262 donors and 245 acceptors were found.\nThere are 297 hydrogen bonds\nWill use HISE for residue 15\nWill use HISE for residue 67\nWill use HISD for residue 73\nWill use HISE for residue 146\n8 out of 8 lines of specbond.dat converted successfully\nSpecial Atom Distance matrix:\n                    MET1   MET10   HIS15   MET40   MET57   MET59   HIS67\n                     SD7    SD79  NE2122   SD314   SD446   SD460  NE2537\n   MET10    SD79   1.513\n   HIS15  NE2122   2.349   1.166\n   MET40   SD314   2.352   2.570   2.309\n   MET57   SD446   3.199   2.814   2.045   1.245\n   MET59   SD460   2.401   1.732   0.934   1.481   1.151\n   HIS67  NE2537   2.904   2.494   1.711   2.212   1.926   1.423\n   HIS73  NE2593   1.770   1.574   1.261   1.471   1.756   0.917   1.226\n   MET78   SD633   2.889   2.950   2.363   1.278   1.355   1.574   1.326\n   MET81   SD656   2.966   2.818   2.127   1.072   0.738   1.232   1.484\n   CYS96   SG777   3.376   3.149   2.389   1.284   0.523   1.480   1.865\n  MET100   SD810   4.009   3.896   3.091   1.983   1.448   2.250   2.038\n  HIS146 NE21196   3.554   4.036   3.775   1.494   2.159   2.890   3.377\n                   HIS73   MET78   MET81   CYS96  MET100\n                  NE2593   SD633   SD656   SG777   SD810\n   MET78   SD633   1.405\n   MET81   SD656   1.432   0.617\n   CYS96   SG777   1.880   1.041   0.504\n  MET100   SD810   2.454   1.178   1.111   0.945\n  HIS146 NE21196   2.897   2.097   2.013   1.951   2.196\nOpening force field file /home/gym/agent-gym-md/validation-005/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 6771 pairs\nBefore cleaning: 6816 dihedrals\n\nGROMACS reminds you: \"A weed scientist goes into a shop. He asks: 'Hey, you got any of that inhibitor of 3-phosphoshikimate-carboxyvinyl transferase?' Shopkeeper: 'You mean Roundup?' Scientist: 'Yeah, that's it. I can never remember that dang name!'\" (John Pickett)\n\n"
+    }
+  ],
+  "forcefield": {
+    "name": "charmm36-jul2020",
+    "directory": "inputs/forcefield/charmm36-jul2020.ff",
+    "release": "MacKerell CHARMM36 July 2020",
+    "protein_model_toggle": "USE_OLD_C36 enabled",
+    "sapi24_pdb_alias": {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.rtp",
+      "original_sha256": "a1af35d25eda0bdf7cec29d666b148e0e99cfed11ea2c1525688d399287c038d",
+      "aliased_sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082",
+      "change": "RTP section label [ SAPI24 ] renamed to [ SAP ]; all atom and bonded parameter records retained unchanged"
+    }
+  },
+  "elapsed_seconds": 3.251,
+  "gromacs_version_command_returncode": 0,
+  "gromacs_version_excerpt": "              :-) GROMACS - gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-005\nCommand line:\n  gmx --version\n\nGROMACS version:    2023.3-Ubuntu_2023.3_1ubuntu3\nPrecision:          mixed\nMemory model:       64 bit\nMPI library:        thread_mpi\nOpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 128)\nGPU support:        disabled\nSIMD instructions:  SSE4.1\nCPU FFT library:    fftw-3.3.10-sse2-avx\nGPU FFT library:    none\nMulti-GPU FFT:      none\nRDTSCP usage:       enabled\nTNG support:        enabled\nHwloc support:      hwloc-2.8.0\nTracing support:    disabled\nC compiler:         /usr/bin/cc GNU 13.2.0\nC compiler flags:   -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -O3 -DNDEBUG\nC++ compiler:       /usr/bin/c++ GNU 13.2.0\nC++ compiler flags: -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -Wno-cast-function-type-strict SHELL:-fopenmp -O3 -DNDEBUG\nBLAS library:       External - detected on the system\nLAPACK library:     External - detected on the system\n\n",
+  "popc_atom_name_translation": {
+    "method": "colored molecular graph isomorphism from CHARMM-GUI archived CHARMM27 PSF to the official CHARMM36 GROMACS POPC RTP; source PDB coordinates are unchanged",
+    "source_psf": {
+      "path": "inputs/pdb_archive/popc/popc_n128.psf",
+      "bytes": 6508711,
+      "sha256": "26a765e9bbc80575985631a6f8d947026de6708f65843296f7af828c322e9aa5"
+    },
+    "source_char27_rtf": {
+      "path": "inputs/pdb_archive/popc/top_all27_prot_lipid.rtf",
+      "bytes": 305058,
+      "sha256": "de119216a9ffa5c963abfd741f66b3040afb19ccc7e8c9ac912e6398f36b11bb"
+    },
+    "target_c36_rtp": {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.rtp",
+      "bytes": 2132134,
+      "sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082"
+    },
+    "psf_counts": {
+      "psf_popc_residue_count": 128,
+      "psf_atoms_per_popc": 134
+    },
+    "target_atom_count": 134,
+    "renamed_coordinate_residues": 128,
+    "atom_name_mapping": {
+      "C1": "C1",
+      "C11": "C12",
+      "C15": "C11",
+      "C2": "C2",
+      "C211": "C211",
+      "C212": "C212",
+      "C213": "C213",
+      "C214": "C214",
+      "C215": "C215",
+      "C216": "C216",
+      "C217": "C217",
+      "C218": "C218",
+      "C22": "C22",
+      "C23": "C23",
+      "C24": "C24",
+      "C25": "C25",
+      "C26": "C26",
+      "C27": "C27",
+      "C28": "C28",
+      "C3": "C3",
+      "C310": "C310",
+      "C311": "C311",
+      "C312": "C312",
+      "C313": "C313",
+      "C314": "C314",
+      "C315": "C315",
+      "C316": "C316",
+      "C32": "C32",
+      "C33": "C33",
+      "C34": "C34",
+      "C35": "C35",
+      "C36": "C36",
+      "C37": "C37",
+      "C38": "C38",
+      "C39": "C39",
+      "N": "N",
+      "P1": "P",
+      "C21": "C21",
+      "C210": "C210",
+      "C29": "C29",
+      "C31": "C31",
+      "O1": "O12",
+      "O2": "O11",
+      "O21": "O21",
+      "O31": "O31",
+      "H101": "H101",
+      "H91": "H91",
+      "HS": "HS",
+      "O22": "O22",
+      "O32": "O32",
+      "H10X": "H10X",
+      "H10Y": "H10Y",
+      "H11": "H12A",
+      "H12": "H12B",
+      "H11R": "H11R",
+      "H11S": "H11S",
+      "H11X": "H11X",
+      "H11Y": "H11Y",
+      "H12R": "H12R",
+      "H12S": "H12S",
+      "H12X": "H12X",
+      "H12Y": "H12Y",
+      "H13R": "H13R",
+      "H13S": "H13S",
+      "H13X": "H13X",
+      "H13Y": "H13Y",
+      "H14R": "H14R",
+      "H14S": "H14S",
+      "H14X": "H14X",
+      "H14Y": "H14Y",
+      "H15R": "H15R",
+      "H15S": "H15S",
+      "H15X": "H15X",
+      "H15Y": "H15Y",
+      "H16R": "H16R",
+      "H16S": "H16S",
+      "H17R": "H17R",
+      "H17S": "H17S",
+      "H2R": "H2R",
+      "H2S": "H2S",
+      "H2X": "H2X",
+      "H2Y": "H2Y",
+      "H3R": "H3R",
+      "H3S": "H3S",
+      "H3X": "H3X",
+      "H3Y": "H3Y",
+      "H4R": "H4R",
+      "H4S": "H4S",
+      "H4X": "H4X",
+      "H4Y": "H4Y",
+      "H51": "H11A",
+      "H52": "H11B",
+      "H5R": "H5R",
+      "H5S": "H5S",
+      "H5X": "H5X",
+      "H5Y": "H5Y",
+      "H6R": "H6R",
+      "H6S": "H6S",
+      "H6X": "H6X",
+      "H6Y": "H6Y",
+      "H7R": "H7R",
+      "H7S": "H7S",
+      "H7X": "H7X",
+      "H7Y": "H7Y",
+      "H8R": "H8R",
+      "H8S": "H8S",
+      "H8X": "H8X",
+      "H8Y": "H8Y",
+      "H9X": "H9X",
+      "H9Y": "H9Y",
+      "HA": "HA",
+      "HB": "HB",
+      "HX": "HX",
+      "HY": "HY",
+      "O3": "O13",
+      "O4": "O14",
+      "C12": "C13",
+      "C13": "C14",
+      "C14": "C15",
+      "H16X": "H16X",
+      "H16Y": "H16Y",
+      "H16Z": "H16Z",
+      "H18R": "H18R",
+      "H18S": "H18S",
+      "H18T": "H18T",
+      "H21": "H13A",
+      "H22": "H13B",
+      "H23": "H13C",
+      "H31": "H14A",
+      "H32": "H14B",
+      "H33": "H14C",
+      "H41": "H15A",
+      "H42": "H15B",
+      "H43": "H15C"
+    },
+    "old_bond_count": 133,
+    "new_bond_count": 133,
+    "parameters_changed": false
+  },
+  "lipid_template_atom_evidence": {
+    "popc_coordinate_template": {
+      "atoms": 134,
+      "hydrogens": 82,
+      "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+    },
+    "popc_bilayer_coordinate_atoms": 17152,
+    "popc_bilayer_hydrogens": 10496,
+    "sapi24_coordinate_template": {
+      "atoms": 150,
+      "hydrogens": 81,
+      "pdb_resname": "SAP",
+      "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+    },
+    "hydrogen_policy": "Preserve supplied all-atom POPC and SAPI24 coordinates; do not pass -ignh. Protein hydrogens absent from 1H0A are built from CHARMM amino-acid HDB."
+  },
+  "reconstruction": {
+    "bilayer_archive_structure": "inputs/pdb_archive/popc/popc_n128.pdb",
+    "box_angstrom": [
+      66.1151,
+      66.1151,
+      63.73387
+    ],
+    "protein_minimum_xy_image_clearance_angstrom": 20.503100000000003,
+    "popc_start_count": 128,
+    "popc_removed_for_protein_and_pip2": 16,
+    "popc_retained": 112,
+    "leaflet_counts": {
+      "upper_popc_start": 64,
+      "lower_popc_start": 64,
+      "upper_popc_retained": 48,
+      "lower_popc_retained": 64,
+      "upper_pip2_inserted": 1
+    },
+    "paper_composition_deviation": "Scaled to 128 total archived POPC molecules due the 100,000 atom cap; additional POPCs were removed near the protein to avoid overlaps. The paper reports 99 POPC plus one PIP2 above and 100 POPC below.",
+    "pip2": "one CHARMM-GUI SAPI24, P4-protonated, net charge -4",
+    "pip2_pdb_resname": "SAP",
+    "protein_chain": "rat epsin ENTH 1H0A chain A, residues modeled 1-158",
+    "assumed_h0": "chain A residues 1-18; paper-specific residue definition unavailable",
+    "anchor_angstrom": [
+      33.05755,
+      33.05755,
+      49.636875000000025
+    ],
+    "upper_headgroup_z_angstrom": 49.636875000000025,
+    "placement_assumption": "align crystallographic I3P centroid to upper-leaflet phosphate plane; orient protein centroid away from membrane along I3P-to-protein vector; replace nearest upper-leaflet POPC by SAPI24",
+    "pdb": {
+      "path": "run/inserted_complex.pdb",
+      "bytes": 1271485,
+      "sha256": "c682671bf3d2e2757266d80ac03b6ee39097b1abb899a976b68e9d66ba5a0124"
+    }
+  },
+  "position_restraint_files": [
+    {
+      "path": "run/posre_Other.itp",
+      "bytes": 180817,
+      "sha256": "dc406a044ff414c001bbb86bca07152d1d5b689de4155c39c717c3706bb18a0a"
+    },
+    {
+      "path": "run/posre_Other_chain_B.itp",
+      "bytes": 2412,
+      "sha256": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e"
+    },
+    {
+      "path": "run/posre_Protein_chain_A.itp",
+      "bytes": 40170,
+      "sha256": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0"
+    }
+  ],
+  "summary": "A reconstructed ENTH/POPC/SAPI24 coordinate set and GROMACS topology were generated. Solvation, MD, and analysis were intentionally skipped by --prepare-only.",
+  "output_bytes": 49299231,
+  "output_files": [
+    {
+      "path": "inputs/c36.tgz",
+      "bytes": 592201,
+      "sha256": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp",
+      "bytes": 24025,
+      "sha256": "6a0b57cde3eb0784d4481f7b25291cd7a95696ed5d3b67afb73e9a6d92544ecd"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/cmap.itp",
+      "bytes": 82367,
+      "sha256": "e458027fcf39c7b2bea3d98afbe0ddc8b60c3d13a4f3fe6259c9e49c7e585241"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/ffbonded.itp",
+      "bytes": 1225536,
+      "sha256": "c523f2f1c5482f3884cf7dba02cf7dbfeb7858a2f161c062592f90bb6be474cc"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/ffnonbonded.itp",
+      "bytes": 1843981,
+      "sha256": "46d767047a18a1d0081b7207601743d809f361daa5e82795dc053805eab1a01e"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/forcefield.doc",
+      "bytes": 10363,
+      "sha256": "64fe10e4bfe7036def8b811bf3af61af81f5562038bcbd213eaac930fcc4ae55"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/forcefield.itp",
+      "bytes": 650,
+      "sha256": "fa4bd60d5a16bdaaeea078a7532ed9bd1b4bb4c3a1ce065f1f8074c4b14b3796"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/gb.itp",
+      "bytes": 1873,
+      "sha256": "f52bf473c68c3116131a7f041dbb596c316b8718a12d542575e38582fb57f284"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/ions.itp",
+      "bytes": 1568,
+      "sha256": "739ee08ddac7b07ba4c00f40252f924521c5ae0a5b04d97a7a9128181a7b2d43"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.arn",
+      "bytes": 78,
+      "sha256": "3f932f441307ef90c024c50e80d1c3afa786c37b5f1a19c6ecf3e5ff30199a9b"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb",
+      "bytes": 942,
+      "sha256": "46503d5b654ec76e8ecd89936bf491819a4009a0c39b3db8f079dfca260cdcd3"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.hdb",
+      "bytes": 6911,
+      "sha256": "0650c0f1584cb74c6f3f485b7679c6a342b51d4bef56bdae46a2b06446bc7cd8"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb",
+      "bytes": 1186,
+      "sha256": "4fb4a3a8004a5c8fcbc7b8aeea12a829adb57198e1739718f8a74379e344cf6b"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.r2b",
+      "bytes": 161,
+      "sha256": "8af60fc0c27ad5e9b8470f3dbc8c2c9ee5beaa887934d5fa58a8ef7e13dba75d"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.rtp",
+      "bytes": 2132134,
+      "sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.vsd",
+      "bytes": 4292,
+      "sha256": "7d012b350964ac4d2490a950eb191aadbc2946c0a60931931d8177ff13deb01c"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/nbfix.itp",
+      "bytes": 5009,
+      "sha256": "50cec9395a30fa8338e612b468e499f2f83ed09d790b91689f4e52d0ade3eedc"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/old_c36_cmap.itp",
+      "bytes": 54970,
+      "sha256": "0ce42fd9ee0bc34e802207542cd6c6ddbd939aa1644024c9772e90990f1f4165"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/spc.itp",
+      "bytes": 484,
+      "sha256": "322005f9af5398ae6ebf502ae8e00ad877ce6036a39d751040c50c98b35b2f47"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/spce.itp",
+      "bytes": 490,
+      "sha256": "7b9f79b2d6d03bfbcdf8de2e9eb80f707acec7285fc2b4029c3849ba45851d14"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/tip3p.itp",
+      "bytes": 817,
+      "sha256": "9ad5e7cbf08c82c59d9173141802e6601ffec4f74ed303a3276b2cd9f67228c5"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/tip4p.itp",
+      "bytes": 1011,
+      "sha256": "dcb5363aca163b8dcc9e69d5cadda0d3708ebcd2ba0157499da2189aec0732ba"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/watermodels.dat",
+      "bytes": 198,
+      "sha256": "46b7afe5f33e8353d3cce4a615dcfe4119cda9f01fb7cbd08d7ffd27a42ebe1a"
+    },
+    {
+      "path": "inputs/pdb_1h0a.pdb",
+      "bytes": 172449,
+      "sha256": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/crystal_image.str",
+      "bytes": 1031,
+      "sha256": "6c742cb86c01e0c845596fcb402cf3f69969151c2752b94d3a6aa9d852300c25"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n128.crd",
+      "bytes": 2078471,
+      "sha256": "0fd1ccd451e6c729464bf3490f9f045674ffa4458c5c745e51e2ded78223f829"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n128.pdb",
+      "bytes": 2254142,
+      "sha256": "352419bf25b110e9d12ab894d04e4ce7448e233fb5367d490486fec2d544c8e2"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n128.psf",
+      "bytes": 6508711,
+      "sha256": "26a765e9bbc80575985631a6f8d947026de6708f65843296f7af828c322e9aa5"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n256.crd",
+      "bytes": 3840691,
+      "sha256": "f6670bfe4c8335121761abfd817fb8542544b76e09e8a812daed5540eb8d7ebd"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n256.pdb",
+      "bytes": 4165284,
+      "sha256": "ce0c198415e0f3e4f59cd28ba3390714c094fab02baf700c89f4ee5414e0ce13"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n256.psf",
+      "bytes": 12335151,
+      "sha256": "3809e67eafd3b7dacce7f9f64f39a9260b13728826ae2d0dc583449e185338eb"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/top_all27_prot_lipid.rtf",
+      "bytes": 305058,
+      "sha256": "de119216a9ffa5c963abfd741f66b3040afb19ccc7e8c9ac912e6398f36b11bb"
+    },
+    {
+      "path": "inputs/popc_bilayer.tar.gz",
+      "bytes": 4550565,
+      "sha256": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8"
+    },
+    {
+      "path": "inputs/popc_template.pdb",
+      "bytes": 10437,
+      "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+    },
+    {
+      "path": "inputs/sapi24_template.pdb",
+      "bytes": 11669,
+      "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+    },
+    {
+      "path": "run/inserted_complex.pdb",
+      "bytes": 1271485,
+      "sha256": "c682671bf3d2e2757266d80ac03b6ee39097b1abb899a976b68e9d66ba5a0124"
+    },
+    {
+      "path": "run/posre_Other.itp",
+      "bytes": 180817,
+      "sha256": "dc406a044ff414c001bbb86bca07152d1d5b689de4155c39c717c3706bb18a0a"
+    },
+    {
+      "path": "run/posre_Other_chain_B.itp",
+      "bytes": 2412,
+      "sha256": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e"
+    },
+    {
+      "path": "run/posre_Protein_chain_A.itp",
+      "bytes": 40170,
+      "sha256": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0"
+    },
+    {
+      "path": "run/processed.gro",
+      "bytes": 798212,
+      "sha256": "2de21473fba37ffd84c05028437cc43b8262fd4da6e649ccc80825d867c41ff4"
+    },
+    {
+      "path": "run/topol.top",
+      "bytes": 1687,
+      "sha256": "1c259075cead79ddf509b5a14994de1629798f0b239a7520c7e44879502e0f3e"
+    },
+    {
+      "path": "run/topol_Other.itp",
+      "bytes": 4027680,
+      "sha256": "5dc6ee57b604478fdf78fe6d488a59bacfb35542844a4bf7dcc4f8af6e94953b"
+    },
+    {
+      "path": "run/topol_Other_chain_B.itp",
+      "bytes": 41334,
+      "sha256": "73e1589c41a8fa281ba4fc2398f41fc3ece4083e90db37c5816835e779c5e38d"
+    },
+    {
+      "path": "run/topol_Protein_chain_A.itp",
+      "bytes": 709927,
+      "sha256": "60b3f5d16da82549e4d6bd76b53f8fe297520db39f018a36d366846c66b66010"
+    },
+    {
+      "path": "supervisor-start.json",
+      "bytes": 601,
+      "sha256": "185569179d60ef40c7609bf743f9307abfce56e5418ba3db984225db4e2148c1"
+    },
+    {
+      "path": "workflow.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workflow.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifact_hashes": {
+    "inputs/c36.tgz": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364",
+    "inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp": "6a0b57cde3eb0784d4481f7b25291cd7a95696ed5d3b67afb73e9a6d92544ecd",
+    "inputs/forcefield/charmm36-jul2020.ff/cmap.itp": "e458027fcf39c7b2bea3d98afbe0ddc8b60c3d13a4f3fe6259c9e49c7e585241",
+    "inputs/forcefield/charmm36-jul2020.ff/ffbonded.itp": "c523f2f1c5482f3884cf7dba02cf7dbfeb7858a2f161c062592f90bb6be474cc",
+    "inputs/forcefield/charmm36-jul2020.ff/ffnonbonded.itp": "46d767047a18a1d0081b7207601743d809f361daa5e82795dc053805eab1a01e",
+    "inputs/forcefield/charmm36-jul2020.ff/forcefield.doc": "64fe10e4bfe7036def8b811bf3af61af81f5562038bcbd213eaac930fcc4ae55",
+    "inputs/forcefield/charmm36-jul2020.ff/forcefield.itp": "fa4bd60d5a16bdaaeea078a7532ed9bd1b4bb4c3a1ce065f1f8074c4b14b3796",
+    "inputs/forcefield/charmm36-jul2020.ff/gb.itp": "f52bf473c68c3116131a7f041dbb596c316b8718a12d542575e38582fb57f284",
+    "inputs/forcefield/charmm36-jul2020.ff/ions.itp": "739ee08ddac7b07ba4c00f40252f924521c5ae0a5b04d97a7a9128181a7b2d43",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.arn": "3f932f441307ef90c024c50e80d1c3afa786c37b5f1a19c6ecf3e5ff30199a9b",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb": "46503d5b654ec76e8ecd89936bf491819a4009a0c39b3db8f079dfca260cdcd3",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.hdb": "0650c0f1584cb74c6f3f485b7679c6a342b51d4bef56bdae46a2b06446bc7cd8",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb": "4fb4a3a8004a5c8fcbc7b8aeea12a829adb57198e1739718f8a74379e344cf6b",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.r2b": "8af60fc0c27ad5e9b8470f3dbc8c2c9ee5beaa887934d5fa58a8ef7e13dba75d",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.rtp": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.vsd": "7d012b350964ac4d2490a950eb191aadbc2946c0a60931931d8177ff13deb01c",
+    "inputs/forcefield/charmm36-jul2020.ff/nbfix.itp": "50cec9395a30fa8338e612b468e499f2f83ed09d790b91689f4e52d0ade3eedc",
+    "inputs/forcefield/charmm36-jul2020.ff/old_c36_cmap.itp": "0ce42fd9ee0bc34e802207542cd6c6ddbd939aa1644024c9772e90990f1f4165",
+    "inputs/forcefield/charmm36-jul2020.ff/spc.itp": "322005f9af5398ae6ebf502ae8e00ad877ce6036a39d751040c50c98b35b2f47",
+    "inputs/forcefield/charmm36-jul2020.ff/spce.itp": "7b9f79b2d6d03bfbcdf8de2e9eb80f707acec7285fc2b4029c3849ba45851d14",
+    "inputs/forcefield/charmm36-jul2020.ff/tip3p.itp": "9ad5e7cbf08c82c59d9173141802e6601ffec4f74ed303a3276b2cd9f67228c5",
+    "inputs/forcefield/charmm36-jul2020.ff/tip4p.itp": "dcb5363aca163b8dcc9e69d5cadda0d3708ebcd2ba0157499da2189aec0732ba",
+    "inputs/forcefield/charmm36-jul2020.ff/watermodels.dat": "46b7afe5f33e8353d3cce4a615dcfe4119cda9f01fb7cbd08d7ffd27a42ebe1a",
+    "inputs/pdb_1h0a.pdb": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681",
+    "inputs/pdb_archive/popc/crystal_image.str": "6c742cb86c01e0c845596fcb402cf3f69969151c2752b94d3a6aa9d852300c25",
+    "inputs/pdb_archive/popc/popc_n128.crd": "0fd1ccd451e6c729464bf3490f9f045674ffa4458c5c745e51e2ded78223f829",
+    "inputs/pdb_archive/popc/popc_n128.pdb": "352419bf25b110e9d12ab894d04e4ce7448e233fb5367d490486fec2d544c8e2",
+    "inputs/pdb_archive/popc/popc_n128.psf": "26a765e9bbc80575985631a6f8d947026de6708f65843296f7af828c322e9aa5",
+    "inputs/pdb_archive/popc/popc_n256.crd": "f6670bfe4c8335121761abfd817fb8542544b76e09e8a812daed5540eb8d7ebd",
+    "inputs/pdb_archive/popc/popc_n256.pdb": "ce0c198415e0f3e4f59cd28ba3390714c094fab02baf700c89f4ee5414e0ce13",
+    "inputs/pdb_archive/popc/popc_n256.psf": "3809e67eafd3b7dacce7f9f64f39a9260b13728826ae2d0dc583449e185338eb",
+    "inputs/pdb_archive/popc/top_all27_prot_lipid.rtf": "de119216a9ffa5c963abfd741f66b3040afb19ccc7e8c9ac912e6398f36b11bb",
+    "inputs/popc_bilayer.tar.gz": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8",
+    "inputs/popc_template.pdb": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4",
+    "inputs/sapi24_template.pdb": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5",
+    "run/inserted_complex.pdb": "c682671bf3d2e2757266d80ac03b6ee39097b1abb899a976b68e9d66ba5a0124",
+    "run/posre_Other.itp": "dc406a044ff414c001bbb86bca07152d1d5b689de4155c39c717c3706bb18a0a",
+    "run/posre_Other_chain_B.itp": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e",
+    "run/posre_Protein_chain_A.itp": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0",
+    "run/processed.gro": "2de21473fba37ffd84c05028437cc43b8262fd4da6e649ccc80825d867c41ff4",
+    "run/topol.top": "1c259075cead79ddf509b5a14994de1629798f0b239a7520c7e44879502e0f3e",
+    "run/topol_Other.itp": "5dc6ee57b604478fdf78fe6d488a59bacfb35542844a4bf7dcc4f8af6e94953b",
+    "run/topol_Other_chain_B.itp": "73e1589c41a8fa281ba4fc2398f41fc3ece4083e90db37c5816835e779c5e38d",
+    "run/topol_Protein_chain_A.itp": "60b3f5d16da82549e4d6bd76b53f8fe297520db39f018a36d366846c66b66010",
+    "supervisor-start.json": "185569179d60ef40c7609bf743f9307abfce56e5418ba3db984225db4e2148c1",
+    "workflow.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workflow.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation.md": "7870acd280ba9c00220beb1a6f6d5a7d4b8d7effaa93bc49e5f628ec7768b7a7"
+  },
+  "artifact_hashes_note": "The JSON report's own SHA256 is omitted to avoid a self-referential hash; compute it after the final write."
+}

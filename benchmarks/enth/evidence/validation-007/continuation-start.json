@@ -1,0 +1,8 @@
+{
+  "original_started_utc": "2026-10-10T14:04:25Z",
+  "started_utc": "2026-10-10T14:20:27.210478+00:00",
+  "elapsed_at_resume_seconds": 962.210543,
+  "absolute_total_wall_limit_seconds": 1800,
+  "worker_sha256": "f9532be8779d85134489a6f6d8c41d57aee1fc4663b83b60857cac3c0090ee3f",
+  "note": "Same trajectory/checkpoint and original absolute deadline; no new wall allocation"
+}

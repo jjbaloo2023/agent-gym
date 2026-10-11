@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-10T14:04:25Z",
+  "command": [
+    "/opt/agent-gym-cad/bin/python",
+    "/home/gym/agent-gym-md/validation-007/worker.executed.py",
+    "--workdir",
+    "/home/gym/agent-gym-md/validation-007"
+  ],
+  "worker_sha256": "f8332cdad68b18c9ecc4a1c02afc09a8c3dfccc5afeac1069ae3ff6e4f03f7a7",
+  "wall_limit_seconds": 1800,
+  "output_limit_bytes": 1073741824,
+  "output_poll_seconds": 0.5,
+  "single_file_limit_bytes": 268435456,
+  "note": "Aggregate output is monitored, not a filesystem quota; overshoot between polls is possible."
+}

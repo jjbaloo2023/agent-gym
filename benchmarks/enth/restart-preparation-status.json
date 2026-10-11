@@ -1,0 +1,15 @@
+{
+  "status": "incomplete_preflight_parser_mismatch",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "source_run": "validation-007",
+  "regression_tests_passed": 26,
+  "actual_preflight_passed": false,
+  "failure": "Checkpoint dump parser expected natoms label; actual dump did not match. Correct against observed GROMACS output before retrying.",
+  "preserved_partial_directory": "/home/gym/agent-gym-md/restart-bundle-001",
+  "archive_created": false,
+  "new_dynamics_executed": false,
+  "cloud_upload_performed": false,
+  "local_longrun_launched": false,
+  "next_attempt": "Use a new preparation directory and preserve the partial preparation; do not overwrite validation-007."
+}

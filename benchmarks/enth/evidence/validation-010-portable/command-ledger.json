@@ -1,0 +1,127 @@
+{
+  "completed": [
+    {
+      "command": [
+        "gmx",
+        "pdb2gmx",
+        "-f",
+        "inserted_complex.pdb",
+        "-o",
+        "processed.gro",
+        "-p",
+        "topol.top",
+        "-ff",
+        "charmm36-jul2020",
+        "-water",
+        "tip3p"
+      ],
+      "elapsed_seconds": 1.817,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Using the Charmm36-jul2020 force field in directory /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff\n\ngoing to rename /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.r2b\nReading inserted_complex.pdb...\nRead '', 28102 atoms\n\nAnalyzing pdb file\nSplitting chemical chains based on TER records or chain id changing.\n\nThere are 3 chains and 0 blocks of water and 358 residues with 28102 atoms\n\n  chain  #res #atoms\n\n  1 ' '   199  26666  \n\n  2 'B'     1    150  \n\n  3 'A'   158   1286  \n\nthere were 0 atoms with zero occupancy and 67 atoms with          occupancy unequal to one (out of 28102 atoms). Check your pdb file.\n\nReading residue database... (Charmm36-jul2020)\n\nProcessing chain 1 (26666 atoms, 199 residues)\n\nProblem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 199 residues with 26666 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 26467, now 26467\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are 70844 dihedrals,  398 impropers, 50944 angles\n          70844 pairs,     26467 bonds and     0 virtual sites\n\nTotal mass 151258.744 a.m.u.\n\nTotal charge 0.000 e\n\nWriting topology\n\nProcessing chain 2 'B' (150 atoms, 1 residues)\n\nProblem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 1 residues with 150 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 150, now 150\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are  392 dihedrals,    2 impropers,  280 angles\n           389 pairs,      150 bonds and     0 virtual sites\n\nTotal mass 1043.076 a.m.u.\n\nTotal charge -4.000 e\n\nWriting topology\n\nProcessing chain 3 'A' (1286 atoms, 158 residues)\n\nIdentified residue MET1 as a starting terminus.\n\nIdentified residue ALA158 as a ending terminus.\nStart terminus MET-1: NH3+\nEnd terminus ALA-158: COO-\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 158 residues with 2578 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 2597, now 2597\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are  156 cmap torsion pairs\n\nThere are 6816 dihedrals,  461 impropers, 4684 angles\n          6738 pairs,     2597 bonds and     0 virtual sites\n\nTotal mass 18390.034 a.m.u.\n\nTotal charge 4.000 e\n\nWriting topology\n\nIncluding chain 1 in system: 26666 atoms 199 residues\n\nIncluding chain 2 in system: 150 atoms 1 residues\n\nIncluding chain 3 in system: 2578 atoms 158 residues\n\nNow there are 29394 atoms and 358 residues\n\nTotal mass in system 170691.854 a.m.u.\n\nTotal charge in system 0.000 e\n\nWriting coordinate file...\n\n\t\t--------- PLEASE NOTE ------------\n\nYou have successfully generated a topology from: inserted_complex.pdb.\n\nThe Charmm36-jul2020 force field and the tip3p water model are used.\n\n\t\t--------- ETON ESAELP ------------\n",
+      "stderr": "          :-) GROMACS - gmx pdb2gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-010/run\nCommand line:\n  gmx pdb2gmx -f inserted_complex.pdb -o processed.gro -p topol.top -ff charmm36-jul2020 -water tip3p\n\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.r2b\nthere were 0 atoms with zero occupancy and 67 atoms with          occupancy unequal to one (out of 28102 atoms). Check your pdb file.\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.rtp\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.hdb\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb\n8 out of 8 lines of specbond.dat converted successfully\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 70844 pairs\nBefore cleaning: 70844 dihedrals\n8 out of 8 lines of specbond.dat converted successfully\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 392 pairs\nBefore cleaning: 392 dihedrals\nAnalysing hydrogen-bonding network for automated assignment of histidine\n protonation. 262 donors and 245 acceptors were found.\nThere are 297 hydrogen bonds\nWill use HISE for residue 15\nWill use HISE for residue 67\nWill use HISD for residue 73\nWill use HISE for residue 146\n8 out of 8 lines of specbond.dat converted successfully\nSpecial Atom Distance matrix:\n                    MET1   MET10   HIS15   MET40   MET57   MET59   HIS67\n                     SD7    SD79  NE2122   SD314   SD446   SD460  NE2537\n   MET10    SD79   1.513\n   HIS15  NE2122   2.349   1.166\n   MET40   SD314   2.352   2.570   2.309\n   MET57   SD446   3.199   2.814   2.045   1.245\n   MET59   SD460   2.401   1.732   0.934   1.481   1.151\n   HIS67  NE2537   2.904   2.494   1.711   2.212   1.926   1.423\n   HIS73  NE2593   1.770   1.574   1.261   1.471   1.756   0.917   1.226\n   MET78   SD633   2.889   2.950   2.363   1.278   1.355   1.574   1.326\n   MET81   SD656   2.966   2.818   2.127   1.072   0.738   1.232   1.484\n   CYS96   SG777   3.376   3.149   2.389   1.284   0.523   1.480   1.865\n  MET100   SD810   4.009   3.896   3.091   1.983   1.448   2.250   2.038\n  HIS146 NE21196   3.554   4.036   3.775   1.494   2.159   2.890   3.377\n                   HIS73   MET78   MET81   CYS96  MET100\n                  NE2593   SD633   SD656   SG777   SD810\n   MET78   SD633   1.405\n   MET81   SD656   1.431   0.616\n   CYS96   SG777   1.879   1.041   0.504\n  MET100   SD810   2.454   1.178   1.111   0.945\n  HIS146 NE21196   2.897   2.097   2.013   1.951   2.196\nOpening force field file /home/gym/agent-gym-md/validation-010/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 6771 pairs\nBefore cleaning: 6816 dihedrals\n\nGROMACS reminds you: \"I wanted to make a clever chemistry joke, but the best ones Argon.\" (39.948)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "editconf",
+        "-f",
+        "processed.gro",
+        "-o",
+        "boxed.gro",
+        "-c",
+        "-box",
+        "8.26438",
+        "8.26438",
+        "11.11020"
+      ],
+      "elapsed_seconds": 0.108,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Note that major changes are planned in future for editconf, to improve usability and utility.\nRead 29394 atoms\nVolume: 758.83 nm^3, corresponds to roughly 341400 electrons\nNo velocities found\n    system size : 10.113 10.095  8.710 (nm)\n    center      :  4.075  4.223  3.231 (nm)\n    box vectors :  8.264  8.264 11.110 (nm)\n    box angles  :  90.00  90.00  90.00 (degrees)\n    box volume  : 758.83               (nm^3)\n    shift       :  0.057 -0.091  2.324 (nm)\nnew center      :  4.132  4.132  5.555 (nm)\nnew box vectors :  8.264  8.264 11.110 (nm)\nnew box angles  :  90.00  90.00  90.00 (degrees)\nnew box volume  : 758.83               (nm^3)\n",
+      "stderr": "         :-) GROMACS - gmx editconf, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-010/run\nCommand line:\n  gmx editconf -f processed.gro -o boxed.gro -c -box 8.26438 8.26438 11.11020\n\n\nGROMACS reminds you: \"I wanted to make a clever chemistry joke, but the best ones Argon.\" (39.948)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "solvate",
+        "-cp",
+        "boxed.gro",
+        "-cs",
+        "spc216.gro",
+        "-o",
+        "solv.gro",
+        "-p",
+        "topol.top"
+      ],
+      "elapsed_seconds": 0.527,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "\nWARNING: Masses and atomic (Van der Waals) radii will be guessed\n         based on residue and atom names, since they could not be\n         definitively assigned from the information in your input\n         files. These guessed numbers might deviate from the mass\n         and radius of the atom type. Please check the output\n         files if necessary. Note, that this functionality may\n         be removed in a future GROMACS version. Please, consider\n         using another file format for your input.\n\nNOTE: From version 5.0 gmx solvate uses the Van der Waals radii\nfrom the source below. This means the results may be different\ncompared to previous GROMACS versions.\n\n++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++\nA. Bondi\nvan der Waals Volumes and Radii\nJ. Phys. Chem. 68 (1964) pp. 441-451\n-------- -------- --- Thank You --- -------- --------\n\nAdding line for 16520 solvent molecules with resname (SOL) to topology file (topol.top)\n",
+      "stderr": "          :-) GROMACS - gmx solvate, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-010/run\nCommand line:\n  gmx solvate -cp boxed.gro -cs spc216.gro -o solv.gro -p topol.top\n\nReading solute configuration\nReading solvent configuration\n\nInitialising inter-atomic distances...\nGenerating solvent configuration\nWill generate new solvent configuration of 5x5x6 boxes\nSolvent box contains 82476 atoms in 27492 residues\nRemoved 8019 solvent atoms due to solvent-solvent overlap\nRemoved 24897 solvent atoms due to solute-solvent overlap\nSorting configuration\nFound 1 molecule type:\n    SOL (   3 atoms): 16520 residues\nGenerated solvent containing 49560 atoms in 16520 residues\nWriting generated configuration to solv.gro\n\nOutput configuration contains 78954 atoms in 16878 residues\nVolume                 :     758.826 (nm^3)\nDensity                :     1028.03 (g/l)\nNumber of solvent molecules:  16520   \n\nProcessing topology\n\nBack Off! I just backed up topol.top to ./#topol.top.1#\n\nGROMACS reminds you: \"Everything's formed from particles\" (Van der Graaf Generator)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "em.mdp",
+        "-c",
+        "solv.gro",
+        "-p",
+        "topol.top",
+        "-o",
+        "ions.tpr"
+      ],
+      "elapsed_seconds": 40.923,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -864034817\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nturning H bonds into constraints...\n\nExcluding 2 bonded neighbours molecule type 'SOL'\n\nturning H bonds into constraints...\nAnalysing residue names:\nThere are:   200      Other residues\nThere are:   158    Protein residues\nThere are: 16520      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.434 nm between atom 27428 and 27436\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 72x72x96, spacing 0.115 0.115 0.116\n\nEstimate for the relative computational load of the PME mesh part: 0.10\n\nThis run will generate roughly 6 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-010/run\nCommand line:\n  gmx grompp -f em.mdp -c solv.gro -p topol.top -o ions.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group rest is 169609.00\nThe integrator does not provide a ensemble temperature, there is no system ensemble temperature\n\nGROMACS reminds you: \"We can make it into a friend class. But I don't like having friends.\" (Joe Jordan)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "genion",
+        "-s",
+        "ions.tpr",
+        "-o",
+        "ions.gro",
+        "-p",
+        "topol.top",
+        "-pname",
+        "K",
+        "-nname",
+        "CL",
+        "-neutral",
+        "-conc",
+        "0.00015"
+      ],
+      "elapsed_seconds": 0.124,
+      "returncode": 0,
+      "stdin": "SOL\n",
+      "stdout": "",
+      "stderr": "          :-) GROMACS - gmx genion, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-010/run\nCommand line:\n  gmx genion -s ions.tpr -o ions.gro -p topol.top -pname K -nname CL -neutral -conc 0.00015\n\nReading file ions.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file ions.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nNo ions to add, will just copy input configuration.\n\nGROMACS reminds you: \"We can make it into a friend class. But I don't like having friends.\" (Joe Jordan)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "em_relax.mdp",
+        "-c",
+        "ions.gro",
+        "-p",
+        "topol.top",
+        "-o",
+        "em_relax.tpr"
+      ],
+      "elapsed_seconds": 55.107,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -1077491283\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nExcluding 2 bonded neighbours molecule type 'SOL'\nAnalysing residue names:\nThere are:   200      Other residues\nThere are:   158    Protein residues\nThere are: 16520      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.434 nm between atom 27428 and 27436\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 72x72x96, spacing 0.115 0.115 0.116\n\nEstimate for the relative computational load of the PME mesh part: 0.10\n\nThis run will generate roughly 6 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-010/run\nCommand line:\n  gmx grompp -f em_relax.mdp -c ions.gro -p topol.top -o em_relax.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group rest is 187299.00\nThe integrator does not provide a ensemble temperature, there is no system ensemble temperature\n\nGROMACS reminds you: \"Do You Have Sex Maniacs or Schizophrenics or Astrophysicists in Your Family?\" (Gogol Bordello)\n\n"
+    }
+  ],
+  "pending": null
+}

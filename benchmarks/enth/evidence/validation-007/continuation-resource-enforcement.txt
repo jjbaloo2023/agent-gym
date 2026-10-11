@@ -1,0 +1,12 @@
+RuntimeMaxUSec=18min 15s
+MemoryCurrent=119545856
+CPUUsageNSec=80219790000
+CPUQuotaPerSecUSec=2s
+MemoryMax=4294967296
+MemorySwapMax=0
+TasksMax=64
+User=gym
+ProtectHome=read-only
+ProtectSystem=strict
+NoNewPrivileges=yes
+ActiveState=active

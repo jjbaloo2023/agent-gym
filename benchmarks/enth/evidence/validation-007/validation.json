@@ -1,0 +1,1365 @@
+{
+  "benchmark": "epsin-enth-md-v1",
+  "model": "gpt-6-astra",
+  "attribution": "Astra retry assisted by inherited Luna-era worker, reconstructed inputs and parent orchestration; not an independent from-scratch model score",
+  "minimization_protocol": "Unconstrained H-bond relaxation followed by clean constrained steep descent at emstep 0.001 nm; TIP3P SETTLE retained throughout",
+  "attempt_root": "/home/gym/agent-gym-md/validation-007",
+  "started_utc": "2026-10-10T14:04:26Z",
+  "bounds": {
+    "wall_seconds": 1800,
+    "cpu_threads": 2,
+    "memory_mib": 4096,
+    "max_atoms": 100000,
+    "max_md_steps": 50000,
+    "dt_ps": 0.002,
+    "max_output_bytes": 1073741824,
+    "gpu": false,
+    "cloud_spend_usd": 0,
+    "concurrent_simulations": 1
+  },
+  "scientific_agreement_status": "not_assessed",
+  "preparation_status": "topology_generated",
+  "execution_status": "failed_or_interrupted",
+  "analysis_status": "independent_analysis_pending",
+  "sources": {
+    "pdb_1h0a": "https://files.rcsb.org/download/1H0A.pdb",
+    "c36_gromacs": "https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-jul2020.ff.tgz",
+    "popc_bilayer": "https://www.charmm-gui.org/archive/pure_bilayer/popc.tar.gz",
+    "popc_template": "https://www.charmm-gui.org/archive/csml/popc.pdb",
+    "sapi24_template": "https://www.charmm-gui.org/archive/csml/sapi24.pdb"
+  },
+  "inputs": [
+    {
+      "source": "pdb_1h0a",
+      "url": "https://files.rcsb.org/download/1H0A.pdb",
+      "path": "inputs/pdb_1h0a.pdb",
+      "bytes": 172449,
+      "sha256": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681"
+    },
+    {
+      "source": "c36_gromacs",
+      "url": "https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-jul2020.ff.tgz",
+      "path": "inputs/c36.tgz",
+      "bytes": 592201,
+      "sha256": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364"
+    },
+    {
+      "source": "popc_bilayer",
+      "url": "https://www.charmm-gui.org/archive/pure_bilayer/popc.tar.gz",
+      "path": "inputs/popc_bilayer.tar.gz",
+      "bytes": 4550565,
+      "sha256": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8"
+    },
+    {
+      "source": "popc_template",
+      "url": "https://www.charmm-gui.org/archive/csml/popc.pdb",
+      "path": "inputs/popc_template.pdb",
+      "bytes": 10437,
+      "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+    },
+    {
+      "source": "sapi24_template",
+      "url": "https://www.charmm-gui.org/archive/csml/sapi24.pdb",
+      "path": "inputs/sapi24_template.pdb",
+      "bytes": 11669,
+      "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "gmx",
+        "--version"
+      ],
+      "elapsed_seconds": 0.043,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "              :-) GROMACS - gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007\nCommand line:\n  gmx --version\n\nGROMACS version:    2023.3-Ubuntu_2023.3_1ubuntu3\nPrecision:          mixed\nMemory model:       64 bit\nMPI library:        thread_mpi\nOpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 128)\nGPU support:        disabled\nSIMD instructions:  SSE4.1\nCPU FFT library:    fftw-3.3.10-sse2-avx\nGPU FFT library:    none\nMulti-GPU FFT:      none\nRDTSCP usage:       enabled\nTNG support:        enabled\nHwloc support:      hwloc-2.8.0\nTracing support:    disabled\nC compiler:         /usr/bin/cc GNU 13.2.0\nC compiler flags:   -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -O3 -DNDEBUG\nC++ compiler:       /usr/bin/c++ GNU 13.2.0\nC++ compiler flags: -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -Wno-cast-function-type-strict SHELL:-fopenmp -O3 -DNDEBUG\nBLAS library:       External - detected on the system\nLAPACK library:     External - detected on the system\n\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "gmx",
+        "pdb2gmx",
+        "-f",
+        "/home/gym/agent-gym-md/validation-007/run/inserted_complex.pdb",
+        "-o",
+        "processed.gro",
+        "-p",
+        "topol.top",
+        "-ff",
+        "charmm36-jul2020",
+        "-water",
+        "tip3p"
+      ],
+      "elapsed_seconds": 0.773,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Using the Charmm36-jul2020 force field in directory /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff\n\ngoing to rename /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.r2b\nReading /home/gym/agent-gym-md/validation-007/run/inserted_complex.pdb...\nRead '', 16444 atoms\n\nAnalyzing pdb file\nSplitting chemical chains based on TER records or chain id changing.\n\nThere are 3 chains and 0 blocks of water and 271 residues with 16444 atoms\n\n  chain  #res #atoms\n\n  1 ' '   112  15008  \n\n  2 'B'     1    150  \n\n  3 'A'   158   1286  \n\nthere were 0 atoms with zero occupancy and 67 atoms with          occupancy unequal to one (out of 16444 atoms). Check your pdb file.\n\nReading residue database... (Charmm36-jul2020)\n\nProcessing chain 1 (15008 atoms, 112 residues)\n\nProblem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 112 residues with 15008 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 14896, now 14896\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are 39872 dihedrals,  224 impropers, 28672 angles\n          39872 pairs,     14896 bonds and     0 virtual sites\n\nTotal mass 85130.549 a.m.u.\n\nTotal charge 0.000 e\n\nWriting topology\n\nProcessing chain 2 'B' (150 atoms, 1 residues)\n\nProblem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 1 residues with 150 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 150, now 150\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are  392 dihedrals,    2 impropers,  280 angles\n           389 pairs,      150 bonds and     0 virtual sites\n\nTotal mass 1043.076 a.m.u.\n\nTotal charge -4.000 e\n\nWriting topology\n\nProcessing chain 3 'A' (1286 atoms, 158 residues)\n\nIdentified residue MET1 as a starting terminus.\n\nIdentified residue ALA158 as a ending terminus.\nStart terminus MET-1: NH3+\nEnd terminus ALA-158: COO-\n\nChecking for duplicate atoms....\n\nGenerating any missing hydrogen atoms and/or adding termini.\n\nNow there are 158 residues with 2578 atoms\nChain time...\n\nMaking bonds...\n\nNumber of bonds was 2597, now 2597\n\nGenerating angles, dihedrals and pairs...\n\nMaking cmap torsions...\n\nThere are  156 cmap torsion pairs\n\nThere are 6816 dihedrals,  461 impropers, 4684 angles\n          6738 pairs,     2597 bonds and     0 virtual sites\n\nTotal mass 18390.034 a.m.u.\n\nTotal charge 4.000 e\n\nWriting topology\n\nIncluding chain 1 in system: 15008 atoms 112 residues\n\nIncluding chain 2 in system: 150 atoms 1 residues\n\nIncluding chain 3 in system: 2578 atoms 158 residues\n\nNow there are 17736 atoms and 271 residues\n\nTotal mass in system 104563.659 a.m.u.\n\nTotal charge in system 0.000 e\n\nWriting coordinate file...\n\n\t\t--------- PLEASE NOTE ------------\n\nYou have successfully generated a topology from: /home/gym/agent-gym-md/validation-007/run/inserted_complex.pdb.\n\nThe Charmm36-jul2020 force field and the tip3p water model are used.\n\n\t\t--------- ETON ESAELP ------------\n",
+      "stderr": "          :-) GROMACS - gmx pdb2gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx pdb2gmx -f /home/gym/agent-gym-md/validation-007/run/inserted_complex.pdb -o processed.gro -p topol.top -ff charmm36-jul2020 -water tip3p\n\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.r2b\nthere were 0 atoms with zero occupancy and 67 atoms with          occupancy unequal to one (out of 16444 atoms). Check your pdb file.\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.rtp\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.hdb\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb\n8 out of 8 lines of specbond.dat converted successfully\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 39872 pairs\nBefore cleaning: 39872 dihedrals\n8 out of 8 lines of specbond.dat converted successfully\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 392 pairs\nBefore cleaning: 392 dihedrals\nAnalysing hydrogen-bonding network for automated assignment of histidine\n protonation. 262 donors and 245 acceptors were found.\nThere are 297 hydrogen bonds\nWill use HISE for residue 15\nWill use HISE for residue 67\nWill use HISD for residue 73\nWill use HISE for residue 146\n8 out of 8 lines of specbond.dat converted successfully\nSpecial Atom Distance matrix:\n                    MET1   MET10   HIS15   MET40   MET57   MET59   HIS67\n                     SD7    SD79  NE2122   SD314   SD446   SD460  NE2537\n   MET10    SD79   1.513\n   HIS15  NE2122   2.349   1.166\n   MET40   SD314   2.352   2.570   2.309\n   MET57   SD446   3.199   2.814   2.045   1.245\n   MET59   SD460   2.401   1.732   0.934   1.481   1.151\n   HIS67  NE2537   2.904   2.494   1.711   2.212   1.926   1.423\n   HIS73  NE2593   1.770   1.574   1.261   1.471   1.756   0.917   1.226\n   MET78   SD633   2.889   2.950   2.363   1.278   1.355   1.574   1.326\n   MET81   SD656   2.966   2.818   2.127   1.072   0.738   1.232   1.484\n   CYS96   SG777   3.376   3.149   2.389   1.284   0.523   1.480   1.865\n  MET100   SD810   4.009   3.896   3.091   1.983   1.448   2.250   2.038\n  HIS146 NE21196   3.554   4.036   3.775   1.494   2.159   2.890   3.377\n                   HIS73   MET78   MET81   CYS96  MET100\n                  NE2593   SD633   SD656   SG777   SD810\n   MET78   SD633   1.405\n   MET81   SD656   1.432   0.617\n   CYS96   SG777   1.880   1.041   0.504\n  MET100   SD810   2.454   1.178   1.111   0.945\n  HIS146 NE21196   2.897   2.097   2.013   1.951   2.196\nOpening force field file /home/gym/agent-gym-md/validation-007/inputs/forcefield/charmm36-jul2020.ff/merged.arn\nBefore cleaning: 6771 pairs\nBefore cleaning: 6816 dihedrals\n\nGROMACS reminds you: \"It's Time to Move On\" (F. Black)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "editconf",
+        "-f",
+        "processed.gro",
+        "-o",
+        "boxed.gro",
+        "-c",
+        "-box",
+        "6.61151",
+        "6.61151",
+        "8.77339"
+      ],
+      "elapsed_seconds": 0.042,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Note that major changes are planned in future for editconf, to improve usability and utility.\nRead 17736 atoms\nVolume: 278.594 nm^3, corresponds to roughly 125300 electrons\nNo velocities found\n    system size :  8.895  8.769  8.499 (nm)\n    center      :  3.319  3.199  3.505 (nm)\n    box vectors :  6.611  6.611  6.373 (nm)\n    box angles  :  90.00  90.00  90.00 (degrees)\n    box volume  : 278.59               (nm^3)\n    shift       : -0.013  0.107  0.881 (nm)\nnew center      :  3.306  3.306  4.387 (nm)\nnew box vectors :  6.612  6.612  8.773 (nm)\nnew box angles  :  90.00  90.00  90.00 (degrees)\nnew box volume  : 383.50               (nm^3)\n",
+      "stderr": "         :-) GROMACS - gmx editconf, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx editconf -f processed.gro -o boxed.gro -c -box 6.61151 6.61151 8.77339\n\n\nGROMACS reminds you: \"It's Time to Move On\" (F. Black)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "solvate",
+        "-cp",
+        "boxed.gro",
+        "-cs",
+        "spc216.gro",
+        "-o",
+        "solv.gro",
+        "-p",
+        "topol.top"
+      ],
+      "elapsed_seconds": 0.209,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "\nWARNING: Masses and atomic (Van der Waals) radii will be guessed\n         based on residue and atom names, since they could not be\n         definitively assigned from the information in your input\n         files. These guessed numbers might deviate from the mass\n         and radius of the atom type. Please check the output\n         files if necessary. Note, that this functionality may\n         be removed in a future GROMACS version. Please, consider\n         using another file format for your input.\n\nNOTE: From version 5.0 gmx solvate uses the Van der Waals radii\nfrom the source below. This means the results may be different\ncompared to previous GROMACS versions.\n\n++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++\nA. Bondi\nvan der Waals Volumes and Radii\nJ. Phys. Chem. 68 (1964) pp. 441-451\n-------- -------- --- Thank You --- -------- --------\n\nAdding line for 7103 solvent molecules with resname (SOL) to topology file (topol.top)\n",
+      "stderr": "          :-) GROMACS - gmx solvate, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx solvate -cp boxed.gro -cs spc216.gro -o solv.gro -p topol.top\n\nReading solute configuration\nReading solvent configuration\n\nInitialising inter-atomic distances...\nGenerating solvent configuration\nWill generate new solvent configuration of 4x4x5 boxes\nSolvent box contains 43539 atoms in 14513 residues\nRemoved 5865 solvent atoms due to solvent-solvent overlap\nRemoved 16365 solvent atoms due to solute-solvent overlap\nSorting configuration\nFound 1 molecule type:\n    SOL (   3 atoms):  7103 residues\nGenerated solvent containing 21309 atoms in 7103 residues\nWriting generated configuration to solv.gro\n\nOutput configuration contains 39045 atoms in 7374 residues\nVolume                 :     383.503 (nm^3)\nDensity                :     1012.86 (g/l)\nNumber of solvent molecules:   7103   \n\nProcessing topology\n\nBack Off! I just backed up topol.top to ./#topol.top.1#\n\nGROMACS reminds you: \"I ought to warn you, I have no faith\" (Jane Eyre in Jane Eyre by Charlotte Bronte)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "em.mdp",
+        "-c",
+        "solv.gro",
+        "-p",
+        "topol.top",
+        "-o",
+        "ions.tpr"
+      ],
+      "elapsed_seconds": 23.586,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -2238753\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nturning H bonds into constraints...\n\nExcluding 2 bonded neighbours molecule type 'SOL'\n\nturning H bonds into constraints...\nAnalysing residue names:\nThere are:   113      Other residues\nThere are:   158    Protein residues\nThere are:  7103      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.434 nm between atom 15770 and 15778\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 56x56x80, spacing 0.118 0.118 0.110\n\nEstimate for the relative computational load of the PME mesh part: 0.10\n\nThis run will generate roughly 3 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx grompp -f em.mdp -c solv.gro -p topol.top -o ions.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group rest is 85267.00\nThe integrator does not provide a ensemble temperature, there is no system ensemble temperature\n\nGROMACS reminds you: \"We can make it into a friend class. But I don't like having friends.\" (Joe Jordan)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "genion",
+        "-s",
+        "ions.tpr",
+        "-o",
+        "ions.gro",
+        "-p",
+        "topol.top",
+        "-pname",
+        "K",
+        "-nname",
+        "CL",
+        "-neutral",
+        "-conc",
+        "0.00015"
+      ],
+      "elapsed_seconds": 0.518,
+      "returncode": 0,
+      "stdin": "SOL\n",
+      "stdout": "",
+      "stderr": "          :-) GROMACS - gmx genion, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx genion -s ions.tpr -o ions.gro -p topol.top -pname K -nname CL -neutral -conc 0.00015\n\nReading file ions.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file ions.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nNo ions to add, will just copy input configuration.\n\nGROMACS reminds you: \"Proceed, With Fingers Crossed\" (TeX)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "em_relax.mdp",
+        "-c",
+        "ions.gro",
+        "-p",
+        "topol.top",
+        "-o",
+        "em_relax.tpr"
+      ],
+      "elapsed_seconds": 32.843,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -266245\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nExcluding 2 bonded neighbours molecule type 'SOL'\nAnalysing residue names:\nThere are:   113      Other residues\nThere are:   158    Protein residues\nThere are:  7103      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.434 nm between atom 15770 and 15778\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 56x56x80, spacing 0.118 0.118 0.110\n\nEstimate for the relative computational load of the PME mesh part: 0.10\n\nThis run will generate roughly 3 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx grompp -f em_relax.mdp -c ions.gro -p topol.top -o em_relax.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group rest is 95823.00\nThe integrator does not provide a ensemble temperature, there is no system ensemble temperature\n\nGROMACS reminds you: \"Harvard makes mistakes too, you know. Kissinger taught there.\" (Woody Allen)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "mdrun",
+        "-s",
+        "em_relax.tpr",
+        "-deffnm",
+        "em_relax",
+        "-ntmpi",
+        "1",
+        "-ntomp",
+        "2",
+        "-pin",
+        "off",
+        "-nb",
+        "cpu",
+        "-pme",
+        "cpu",
+        "-bonded",
+        "cpu",
+        "-maxh",
+        "0.15"
+      ],
+      "elapsed_seconds": 131.207,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx mdrun, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx mdrun -s em_relax.tpr -deffnm em_relax -ntmpi 1 -ntomp 2 -pin off -nb cpu -pme cpu -bonded cpu -maxh 0.15\n\nCompiled SIMD is SSE4.1, but AVX2_256 might be faster (see log).\nReading file em_relax.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nUsing 1 MPI thread\nUsing 2 OpenMP threads \n\n\nSteepest Descents:\n   Tolerance (Fmax)   =  1.00000e+03\n   Number of steps    =         5000\n\nwriting lowest energy coordinates.\n\nSteepest Descents converged to Fmax < 1000 in 711 steps\nPotential Energy  = -3.7746078e+05\nMaximum force     =  9.2265399e+02 on atom 13967\nNorm of force     =  2.4377313e+01\n\nGROMACS reminds you: \"We haven't the money, so we've got to think.\" (Ernest Rutherford)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "em.mdp",
+        "-c",
+        "em_relax.gro",
+        "-p",
+        "topol.top",
+        "-o",
+        "em.tpr"
+      ],
+      "elapsed_seconds": 28.741,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -8396881\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nturning H bonds into constraints...\n\nExcluding 2 bonded neighbours molecule type 'SOL'\n\nturning H bonds into constraints...\nAnalysing residue names:\nThere are:   113      Other residues\nThere are:   158    Protein residues\nThere are:  7103      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.429 nm between atom 15163 and 15171\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 56x56x80, spacing 0.118 0.118 0.110\n\nEstimate for the relative computational load of the PME mesh part: 0.10\n\nThis run will generate roughly 3 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx grompp -f em.mdp -c em_relax.gro -p topol.top -o em.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group rest is 85267.00\nThe integrator does not provide a ensemble temperature, there is no system ensemble temperature\n\nGROMACS reminds you: \"Live for Liposuction\" (Robbie Williams)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "mdrun",
+        "-s",
+        "em.tpr",
+        "-deffnm",
+        "em",
+        "-ntmpi",
+        "1",
+        "-ntomp",
+        "2",
+        "-pin",
+        "off",
+        "-nb",
+        "cpu",
+        "-pme",
+        "cpu",
+        "-bonded",
+        "cpu",
+        "-maxh",
+        "0.15"
+      ],
+      "elapsed_seconds": 1.864,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx mdrun, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx mdrun -s em.tpr -deffnm em -ntmpi 1 -ntomp 2 -pin off -nb cpu -pme cpu -bonded cpu -maxh 0.15\n\nCompiled SIMD is SSE4.1, but AVX2_256 might be faster (see log).\nReading file em.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nUsing 1 MPI thread\nUsing 2 OpenMP threads \n\n\nSteepest Descents:\n   Tolerance (Fmax)   =  1.00000e+03\n   Number of steps    =         5000\n\nwriting lowest energy coordinates.\n\nSteepest Descents converged to Fmax < 1000 in 2 steps\nPotential Energy  = -3.7711488e+05\nMaximum force     =  4.4291849e+02 on atom 13967\nNorm of force     =  4.7611463e+01\n\nGROMACS reminds you: \"Creativity in science, as in art, cannot be organized. It arises spontaneously from individual talent. Well-run laboratories can foster it, but hierarchical organizations, inflexible bureaucratic rules, and mountains of futile paperwork can kill it.\" (Max Perutz)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "nvt.mdp",
+        "-c",
+        "em.gro",
+        "-r",
+        "em.gro",
+        "-p",
+        "topol.top",
+        "-o",
+        "nvt.tpr"
+      ],
+      "elapsed_seconds": 26.882,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -1252697235\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nturning H bonds into constraints...\n\nExcluding 2 bonded neighbours molecule type 'SOL'\n\nturning H bonds into constraints...\n\nVelocities were taken from a Maxwell distribution at 100 K\nAnalysing residue names:\nThere are:   113      Other residues\nThere are:   158    Protein residues\nThere are:  7103      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.429 nm between atom 15163 and 15171\n\nDetermining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 303.15 K\n\nCalculated rlist for 1x1 atom pair-list as 1.278 nm, buffer size 0.078 nm\n\nSet rlist, assuming 4x4 atom pair-list, to 1.202 nm, buffer size 0.002 nm\n\nNote that mdrun will redetermine rlist based on the actual pair-list setup\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 56x56x80, spacing 0.118 0.118 0.110\n\nEstimate for the relative computational load of the PME mesh part: 0.11\n\nThis run will generate roughly 4 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr\n\nGenerating 1-4 interactions: fudge = 1\nSimulated annealing for group System: Single, 2 timepoints\nTime (ps)   Temperature (K)\n      0.0      100.0\n     10.0-     303.1\nNumber of degrees of freedom in T-Coupling group System is 85267.00\n\nNOTE 1 [file nvt.mdp]:\n  Removing center of mass motion in the presence of position restraints\n  might cause artifacts. When you are using position restraints to\n  equilibrate a macro-molecule, the artifacts are usually negligible.\n\n\nThere was 1 NOTE\n\nGROMACS reminds you: \"Now it's filled with hundreds and hundreds of chemicals\" (Midlake)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "mdrun",
+        "-s",
+        "nvt.tpr",
+        "-deffnm",
+        "nvt",
+        "-ntmpi",
+        "1",
+        "-ntomp",
+        "2",
+        "-pin",
+        "off",
+        "-nb",
+        "cpu",
+        "-pme",
+        "cpu",
+        "-bonded",
+        "cpu",
+        "-maxh",
+        "0.10"
+      ],
+      "elapsed_seconds": 376.898,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx mdrun, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx mdrun -s nvt.tpr -deffnm nvt -ntmpi 1 -ntomp 2 -pin off -nb cpu -pme cpu -bonded cpu -maxh 0.10\n\nCompiled SIMD is SSE4.1, but AVX2_256 might be faster (see log).\nReading file nvt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nChanging nstlist from 20 to 100, rlist from 1.202 to 1.315\n\nUsing 1 MPI thread\nUsing 2 OpenMP threads \n\nstarting mdrun 'Protein in water'\n5000 steps,     10.0 ps.\n\nStep 3400: Run time exceeded 0.099 hours, will terminate the run within 200 steps\n\n               Core t (s)   Wall t (s)        (%)\n       Time:      747.862      373.931      200.0\n                 (ns/day)    (hour/ns)\nPerformance:        1.618       14.834\n\nGROMACS reminds you: \"Shit Happens\" (Pulp Fiction)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "mdrun",
+        "-s",
+        "nvt.tpr",
+        "-deffnm",
+        "nvt",
+        "-cpi",
+        "nvt.cpt",
+        "-append",
+        "-ntmpi",
+        "1",
+        "-ntomp",
+        "2",
+        "-pin",
+        "off",
+        "-nb",
+        "cpu",
+        "-pme",
+        "cpu",
+        "-bonded",
+        "cpu"
+      ],
+      "elapsed_seconds": 163.851,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx mdrun, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx mdrun -s nvt.tpr -deffnm nvt -cpi nvt.cpt -append -ntmpi 1 -ntomp 2 -pin off -nb cpu -pme cpu -bonded cpu\n\nCompiled SIMD is SSE4.1, but AVX2_256 might be faster (see log).\nReading file nvt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nChanging nstlist from 20 to 100, rlist from 1.201 to 1.314\n\nUsing 1 MPI thread\nUsing 2 OpenMP threads \n\nstarting mdrun 'Protein in water'\n5000 steps,     10.0 ps (continuing from step 3500,      7.0 ps).\n\nWriting final coordinates.\n\n               Core t (s)   Wall t (s)        (%)\n       Time:      323.046      161.523      200.0\n                 (ns/day)    (hour/ns)\nPerformance:        1.606       14.946\n\nGROMACS reminds you: \"You are wrong!\" (NOFX)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "npt_restraint.mdp",
+        "-c",
+        "nvt.gro",
+        "-r",
+        "nvt.gro",
+        "-t",
+        "nvt.cpt",
+        "-p",
+        "topol.top",
+        "-o",
+        "npt_restraint.tpr"
+      ],
+      "elapsed_seconds": 45.609,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -834668545\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nturning H bonds into constraints...\n\nExcluding 2 bonded neighbours molecule type 'SOL'\n\nturning H bonds into constraints...\n\nThe center of mass of the position restraint coord's is  3.359  3.450  4.509\n\nThe center of mass of the position restraint coord's is  3.359  3.450  4.509\nAnalysing residue names:\nThere are:   113      Other residues\nThere are:   158    Protein residues\nThere are:  7103      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.438 nm between atom 16452 and 16460\n\nDetermining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 303.15 K\n\nCalculated rlist for 1x1 atom pair-list as 1.278 nm, buffer size 0.078 nm\n\nSet rlist, assuming 4x4 atom pair-list, to 1.202 nm, buffer size 0.002 nm\n\nNote that mdrun will redetermine rlist based on the actual pair-list setup\n\nReading Coordinates, Velocities and Box size from old trajectory\n\nWill read whole trajectory\n\nUsing frame at t = 10 ps\n\nStarting time for run is 0 ps\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 56x56x80, spacing 0.118 0.118 0.110\n\nEstimate for the relative computational load of the PME mesh part: 0.11\n\nThis run will generate roughly 4 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx grompp -f npt_restraint.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -o npt_restraint.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group System is 85267.00\n\nNOTE 1 [file npt_restraint.mdp]:\n  Removing center of mass motion in the presence of position restraints\n  might cause artifacts. When you are using position restraints to\n  equilibrate a macro-molecule, the artifacts are usually negligible.\n\n\nLast frame         -1 time   10.000   \n\nThere was 1 NOTE\n\nGROMACS reminds you: \"There are only two hard things in computer science - cache invalidation, naming things and off-by-one errors.\" (Anonymous)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "mdrun",
+        "-s",
+        "npt_restraint.tpr",
+        "-deffnm",
+        "npt_restraint",
+        "-ntmpi",
+        "1",
+        "-ntomp",
+        "2",
+        "-pin",
+        "off",
+        "-nb",
+        "cpu",
+        "-pme",
+        "cpu",
+        "-bonded",
+        "cpu"
+      ],
+      "elapsed_seconds": 439.803,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx mdrun, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx mdrun -s npt_restraint.tpr -deffnm npt_restraint -ntmpi 1 -ntomp 2 -pin off -nb cpu -pme cpu -bonded cpu\n\nCompiled SIMD is SSE4.1, but AVX2_256 might be faster (see log).\nReading file npt_restraint.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nChanging nstlist from 20 to 100, rlist from 1.201 to 1.314\n\nUsing 1 MPI thread\nUsing 2 OpenMP threads \n\nstarting mdrun 'Protein in water'\n5000 steps,     10.0 ps.\n\nWriting final coordinates.\n\n               Core t (s)   Wall t (s)        (%)\n       Time:      871.058      435.529      200.0\n                 (ns/day)    (hour/ns)\nPerformance:        1.984       12.096\n\nGROMACS reminds you: \"Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live.\" (Martin Golding)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "grompp",
+        "-f",
+        "npt_release.mdp",
+        "-c",
+        "npt_restraint.gro",
+        "-t",
+        "npt_restraint.cpt",
+        "-p",
+        "topol.top",
+        "-o",
+        "npt.tpr"
+      ],
+      "elapsed_seconds": 21.057,
+      "returncode": 0,
+      "stdin": null,
+      "stdout": "Setting the LD random seed to -2013332485\n\nGenerated 100474 of the 100576 non-bonded parameter combinations\n\nGenerated 66298 of the 100576 1-4 parameter combinations\n\nExcluding 3 bonded neighbours molecule type 'Other'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Other_chain_B'\n\nturning H bonds into constraints...\n\nExcluding 3 bonded neighbours molecule type 'Protein_chain_A'\n\nturning H bonds into constraints...\n\nExcluding 2 bonded neighbours molecule type 'SOL'\n\nturning H bonds into constraints...\nAnalysing residue names:\nThere are:   113      Other residues\nThere are:   158    Protein residues\nThere are:  7103      Water residues\nAnalysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...\nAnalysing Protein...\n\nThe largest distance between excluded atoms is 0.437 nm between atom 15163 and 15171\n\nDetermining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 303.15 K\n\nCalculated rlist for 1x1 atom pair-list as 1.278 nm, buffer size 0.078 nm\n\nSet rlist, assuming 4x4 atom pair-list, to 1.202 nm, buffer size 0.002 nm\n\nNote that mdrun will redetermine rlist based on the actual pair-list setup\n\nReading Coordinates, Velocities and Box size from old trajectory\n\nWill read whole trajectory\n\nUsing frame at t = 10 ps\n\nStarting time for run is 0 ps\nCalculating fourier grid dimensions for X Y Z\nUsing a fourier grid of 56x56x72, spacing 0.118 0.118 0.120\n\nEstimate for the relative computational load of the PME mesh part: 0.10\n\nThis run will generate roughly 11 Mb of data\n",
+      "stderr": "          :-) GROMACS - gmx grompp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx grompp -f npt_release.mdp -c npt_restraint.gro -t npt_restraint.cpt -p topol.top -o npt.tpr\n\nGenerating 1-4 interactions: fudge = 1\nNumber of degrees of freedom in T-Coupling group System is 85267.00\n\nLast frame         -1 time   10.000   \n\nGROMACS reminds you: \"They Were So Quiet About It\" (Pixies)\n\n"
+    },
+    {
+      "command": [
+        "gmx",
+        "mdrun",
+        "-s",
+        "npt.tpr",
+        "-deffnm",
+        "npt",
+        "-ntmpi",
+        "1",
+        "-ntomp",
+        "2",
+        "-pin",
+        "off",
+        "-nb",
+        "cpu",
+        "-pme",
+        "cpu",
+        "-bonded",
+        "cpu"
+      ],
+      "elapsed_seconds": 277.946,
+      "returncode": 1,
+      "stdin": null,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx mdrun, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx mdrun -s npt.tpr -deffnm npt -ntmpi 1 -ntomp 2 -pin off -nb cpu -pme cpu -bonded cpu\n\nCompiled SIMD is SSE4.1, but AVX2_256 might be faster (see log).\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nChanging nstlist from 20 to 100, rlist from 1.202 to 1.315\n\nUsing 1 MPI thread\nUsing 2 OpenMP threads \n\nstarting mdrun 'Protein in water'\n40000 steps,     80.0 ps.\n\n\nReceived the TERM signal, stopping within 200 steps\n\n\n               Core t (s)   Wall t (s)        (%)\n       Time:      553.402      276.701      200.0\n                 (ns/day)    (hour/ns)\nPerformance:        2.624        9.148\n\nGROMACS reminds you: \"May the Force Be With You\" (Star Wars)\n\n"
+    }
+  ],
+  "forcefield": {
+    "name": "charmm36-jul2020",
+    "directory": "inputs/forcefield/charmm36-jul2020.ff",
+    "release": "MacKerell CHARMM36 July 2020",
+    "protein_model_toggle": "USE_OLD_C36 enabled",
+    "sapi24_pdb_alias": {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.rtp",
+      "original_sha256": "a1af35d25eda0bdf7cec29d666b148e0e99cfed11ea2c1525688d399287c038d",
+      "aliased_sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082",
+      "change": "RTP section label [ SAPI24 ] renamed to [ SAP ]; all atom and bonded parameter records retained unchanged"
+    }
+  },
+  "elapsed_seconds": 1746.74,
+  "gromacs_version_command_returncode": 0,
+  "gromacs_version_excerpt": "              :-) GROMACS - gmx, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007\nCommand line:\n  gmx --version\n\nGROMACS version:    2023.3-Ubuntu_2023.3_1ubuntu3\nPrecision:          mixed\nMemory model:       64 bit\nMPI library:        thread_mpi\nOpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 128)\nGPU support:        disabled\nSIMD instructions:  SSE4.1\nCPU FFT library:    fftw-3.3.10-sse2-avx\nGPU FFT library:    none\nMulti-GPU FFT:      none\nRDTSCP usage:       enabled\nTNG support:        enabled\nHwloc support:      hwloc-2.8.0\nTracing support:    disabled\nC compiler:         /usr/bin/cc GNU 13.2.0\nC compiler flags:   -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -O3 -DNDEBUG\nC++ compiler:       /usr/bin/c++ GNU 13.2.0\nC++ compiler flags: -fexcess-precision=fast -funroll-all-loops -msse4.1 -Wno-missing-field-initializers -Wno-cast-function-type-strict SHELL:-fopenmp -O3 -DNDEBUG\nBLAS library:       External - detected on the system\nLAPACK library:     External - detected on the system\n\n",
+  "popc_atom_name_translation": {
+    "method": "colored molecular graph isomorphism from CHARMM-GUI archived CHARMM27 PSF to the official CHARMM36 GROMACS POPC RTP; source PDB coordinates are unchanged",
+    "source_psf": {
+      "path": "inputs/pdb_archive/popc/popc_n128.psf",
+      "bytes": 6508711,
+      "sha256": "26a765e9bbc80575985631a6f8d947026de6708f65843296f7af828c322e9aa5"
+    },
+    "source_char27_rtf": {
+      "path": "inputs/pdb_archive/popc/top_all27_prot_lipid.rtf",
+      "bytes": 305058,
+      "sha256": "de119216a9ffa5c963abfd741f66b3040afb19ccc7e8c9ac912e6398f36b11bb"
+    },
+    "target_c36_rtp": {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.rtp",
+      "bytes": 2132134,
+      "sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082"
+    },
+    "psf_counts": {
+      "psf_popc_residue_count": 128,
+      "psf_atoms_per_popc": 134
+    },
+    "target_atom_count": 134,
+    "renamed_coordinate_residues": 128,
+    "atom_name_mapping": {
+      "C1": "C1",
+      "C11": "C12",
+      "C15": "C11",
+      "C2": "C2",
+      "C211": "C211",
+      "C212": "C212",
+      "C213": "C213",
+      "C214": "C214",
+      "C215": "C215",
+      "C216": "C216",
+      "C217": "C217",
+      "C218": "C218",
+      "C22": "C22",
+      "C23": "C23",
+      "C24": "C24",
+      "C25": "C25",
+      "C26": "C26",
+      "C27": "C27",
+      "C28": "C28",
+      "C3": "C3",
+      "C310": "C310",
+      "C311": "C311",
+      "C312": "C312",
+      "C313": "C313",
+      "C314": "C314",
+      "C315": "C315",
+      "C316": "C316",
+      "C32": "C32",
+      "C33": "C33",
+      "C34": "C34",
+      "C35": "C35",
+      "C36": "C36",
+      "C37": "C37",
+      "C38": "C38",
+      "C39": "C39",
+      "N": "N",
+      "P1": "P",
+      "C21": "C21",
+      "C210": "C210",
+      "C29": "C29",
+      "C31": "C31",
+      "O1": "O12",
+      "O2": "O11",
+      "O21": "O21",
+      "O31": "O31",
+      "H101": "H101",
+      "H91": "H91",
+      "HS": "HS",
+      "O22": "O22",
+      "O32": "O32",
+      "H10X": "H10X",
+      "H10Y": "H10Y",
+      "H11": "H12A",
+      "H12": "H12B",
+      "H11R": "H11R",
+      "H11S": "H11S",
+      "H11X": "H11X",
+      "H11Y": "H11Y",
+      "H12R": "H12R",
+      "H12S": "H12S",
+      "H12X": "H12X",
+      "H12Y": "H12Y",
+      "H13R": "H13R",
+      "H13S": "H13S",
+      "H13X": "H13X",
+      "H13Y": "H13Y",
+      "H14R": "H14R",
+      "H14S": "H14S",
+      "H14X": "H14X",
+      "H14Y": "H14Y",
+      "H15R": "H15R",
+      "H15S": "H15S",
+      "H15X": "H15X",
+      "H15Y": "H15Y",
+      "H16R": "H16R",
+      "H16S": "H16S",
+      "H17R": "H17R",
+      "H17S": "H17S",
+      "H2R": "H2R",
+      "H2S": "H2S",
+      "H2X": "H2X",
+      "H2Y": "H2Y",
+      "H3R": "H3R",
+      "H3S": "H3S",
+      "H3X": "H3X",
+      "H3Y": "H3Y",
+      "H4R": "H4R",
+      "H4S": "H4S",
+      "H4X": "H4X",
+      "H4Y": "H4Y",
+      "H51": "H11A",
+      "H52": "H11B",
+      "H5R": "H5R",
+      "H5S": "H5S",
+      "H5X": "H5X",
+      "H5Y": "H5Y",
+      "H6R": "H6R",
+      "H6S": "H6S",
+      "H6X": "H6X",
+      "H6Y": "H6Y",
+      "H7R": "H7R",
+      "H7S": "H7S",
+      "H7X": "H7X",
+      "H7Y": "H7Y",
+      "H8R": "H8R",
+      "H8S": "H8S",
+      "H8X": "H8X",
+      "H8Y": "H8Y",
+      "H9X": "H9X",
+      "H9Y": "H9Y",
+      "HA": "HA",
+      "HB": "HB",
+      "HX": "HX",
+      "HY": "HY",
+      "O3": "O13",
+      "O4": "O14",
+      "C12": "C13",
+      "C13": "C14",
+      "C14": "C15",
+      "H16X": "H16X",
+      "H16Y": "H16Y",
+      "H16Z": "H16Z",
+      "H18R": "H18R",
+      "H18S": "H18S",
+      "H18T": "H18T",
+      "H21": "H13A",
+      "H22": "H13B",
+      "H23": "H13C",
+      "H31": "H14A",
+      "H32": "H14B",
+      "H33": "H14C",
+      "H41": "H15A",
+      "H42": "H15B",
+      "H43": "H15C"
+    },
+    "old_bond_count": 133,
+    "new_bond_count": 133,
+    "parameters_changed": false
+  },
+  "lipid_template_atom_evidence": {
+    "popc_coordinate_template": {
+      "atoms": 134,
+      "hydrogens": 82,
+      "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+    },
+    "popc_bilayer_coordinate_atoms": 17152,
+    "popc_bilayer_hydrogens": 10496,
+    "sapi24_coordinate_template": {
+      "atoms": 150,
+      "hydrogens": 81,
+      "pdb_resname": "SAP",
+      "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+    },
+    "hydrogen_policy": "Preserve supplied all-atom POPC and SAPI24 coordinates; do not pass -ignh. Protein hydrogens absent from 1H0A are built from CHARMM amino-acid HDB."
+  },
+  "reconstruction": {
+    "bilayer_archive_structure": "inputs/pdb_archive/popc/popc_n128.pdb",
+    "box_angstrom": [
+      66.1151,
+      66.1151,
+      63.73387
+    ],
+    "protein_minimum_xy_image_clearance_angstrom": 20.503100000000003,
+    "popc_start_count": 128,
+    "popc_removed_for_protein_and_pip2": 16,
+    "popc_retained": 112,
+    "leaflet_counts": {
+      "upper_popc_start": 64,
+      "lower_popc_start": 64,
+      "upper_popc_retained": 48,
+      "lower_popc_retained": 64,
+      "upper_pip2_inserted": 1
+    },
+    "paper_composition_deviation": "Scaled to 128 total archived POPC molecules due the 100,000 atom cap; additional POPCs were removed near the protein to avoid overlaps. The paper reports 99 POPC plus one PIP2 above and 100 POPC below.",
+    "pip2": "one CHARMM-GUI SAPI24, P4-protonated, net charge -4",
+    "pip2_pdb_resname": "SAP",
+    "protein_chain": "rat epsin ENTH 1H0A chain A, residues modeled 1-158",
+    "assumed_h0": "chain A residues 1-18; paper-specific residue definition unavailable",
+    "anchor_angstrom": [
+      33.05755,
+      33.05755,
+      49.636875000000025
+    ],
+    "upper_headgroup_z_angstrom": 49.636875000000025,
+    "placement_assumption": "align crystallographic I3P centroid to upper-leaflet phosphate plane; orient protein centroid away from membrane along I3P-to-protein vector; replace nearest upper-leaflet POPC by SAPI24",
+    "pdb": {
+      "path": "run/inserted_complex.pdb",
+      "bytes": 1271485,
+      "sha256": "c682671bf3d2e2757266d80ac03b6ee39097b1abb899a976b68e9d66ba5a0124"
+    }
+  },
+  "position_restraint_files": [
+    {
+      "path": "run/posre_Other.itp",
+      "bytes": 180817,
+      "sha256": "dc406a044ff414c001bbb86bca07152d1d5b689de4155c39c717c3706bb18a0a"
+    },
+    {
+      "path": "run/posre_Other_chain_B.itp",
+      "bytes": 2412,
+      "sha256": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e"
+    },
+    {
+      "path": "run/posre_Protein_chain_A.itp",
+      "bytes": 40170,
+      "sha256": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0"
+    }
+  ],
+  "atom_count": 39045,
+  "relaxation_gate": {
+    "clean_constraints": true,
+    "converged": true
+  },
+  "minimization_gate": {
+    "clean_constraints": true,
+    "converged": true
+  },
+  "summary": "Checkpoint continuation stopped; inspect observed trajectory duration and independent analysis.",
+  "interpretation": "Reconstructed inserted-state workflow only; no scientific agreement assessed.",
+  "output_bytes": 102760809,
+  "output_files": [
+    {
+      "path": "__pycache__/worker.executed.cpython-311.pyc",
+      "bytes": 98358,
+      "sha256": "edb9d5d3d87523da69fb79b75af8d950d131ac4d3169663be2c0a90f53b7511e"
+    },
+    {
+      "path": "command-ledger-before-continuation.json",
+      "bytes": 26679,
+      "sha256": "bb17f40b9f338dbd8d7c0ec59d504c344435146920cf9cb9ab609c4625985f83"
+    },
+    {
+      "path": "command-ledger.json",
+      "bytes": 36471,
+      "sha256": "52275c05af863f4f1862ba3b8f349809b0c40e34ce6c1e2a8856f3ef551847f7"
+    },
+    {
+      "path": "continuation-01-result.json",
+      "bytes": 14641,
+      "sha256": "4975e1fe08157a23993bf2ba670b68b9fb8819e1837eb4d7aaac8629e372c771"
+    },
+    {
+      "path": "continuation-01-start.json",
+      "bytes": 375,
+      "sha256": "bfbe43e09ee0f5179b110d3f04b9e875610517f2e42065b323a7908527eb3c3c"
+    },
+    {
+      "path": "continuation-01.executed.py",
+      "bytes": 7991,
+      "sha256": "f00c70825cc4cc278b5e27f385b63aaf56a7d928cc20d89f9a94c74720d831da"
+    },
+    {
+      "path": "continuation-01.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "continuation-01.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "continuation-result.json",
+      "bytes": 14641,
+      "sha256": "4975e1fe08157a23993bf2ba670b68b9fb8819e1837eb4d7aaac8629e372c771"
+    },
+    {
+      "path": "continuation-start.json",
+      "bytes": 375,
+      "sha256": "587f20e31906c84ae4e46f562023719ae7a85a7af9a3b0f7b9a27f575eb99f23"
+    },
+    {
+      "path": "continuation.executed.py",
+      "bytes": 9204,
+      "sha256": "f9532be8779d85134489a6f6d8c41d57aee1fc4663b83b60857cac3c0090ee3f"
+    },
+    {
+      "path": "continuation.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "continuation.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "inputs/c36.tgz",
+      "bytes": 592201,
+      "sha256": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp",
+      "bytes": 24025,
+      "sha256": "6a0b57cde3eb0784d4481f7b25291cd7a95696ed5d3b67afb73e9a6d92544ecd"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/cmap.itp",
+      "bytes": 82367,
+      "sha256": "e458027fcf39c7b2bea3d98afbe0ddc8b60c3d13a4f3fe6259c9e49c7e585241"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/ffbonded.itp",
+      "bytes": 1225536,
+      "sha256": "c523f2f1c5482f3884cf7dba02cf7dbfeb7858a2f161c062592f90bb6be474cc"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/ffnonbonded.itp",
+      "bytes": 1843981,
+      "sha256": "46d767047a18a1d0081b7207601743d809f361daa5e82795dc053805eab1a01e"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/forcefield.doc",
+      "bytes": 10363,
+      "sha256": "64fe10e4bfe7036def8b811bf3af61af81f5562038bcbd213eaac930fcc4ae55"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/forcefield.itp",
+      "bytes": 650,
+      "sha256": "fa4bd60d5a16bdaaeea078a7532ed9bd1b4bb4c3a1ce065f1f8074c4b14b3796"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/gb.itp",
+      "bytes": 1873,
+      "sha256": "f52bf473c68c3116131a7f041dbb596c316b8718a12d542575e38582fb57f284"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/ions.itp",
+      "bytes": 1568,
+      "sha256": "739ee08ddac7b07ba4c00f40252f924521c5ae0a5b04d97a7a9128181a7b2d43"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.arn",
+      "bytes": 78,
+      "sha256": "3f932f441307ef90c024c50e80d1c3afa786c37b5f1a19c6ecf3e5ff30199a9b"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb",
+      "bytes": 942,
+      "sha256": "46503d5b654ec76e8ecd89936bf491819a4009a0c39b3db8f079dfca260cdcd3"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.hdb",
+      "bytes": 6911,
+      "sha256": "0650c0f1584cb74c6f3f485b7679c6a342b51d4bef56bdae46a2b06446bc7cd8"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb",
+      "bytes": 1186,
+      "sha256": "4fb4a3a8004a5c8fcbc7b8aeea12a829adb57198e1739718f8a74379e344cf6b"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.r2b",
+      "bytes": 161,
+      "sha256": "8af60fc0c27ad5e9b8470f3dbc8c2c9ee5beaa887934d5fa58a8ef7e13dba75d"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.rtp",
+      "bytes": 2132134,
+      "sha256": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/merged.vsd",
+      "bytes": 4292,
+      "sha256": "7d012b350964ac4d2490a950eb191aadbc2946c0a60931931d8177ff13deb01c"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/nbfix.itp",
+      "bytes": 5009,
+      "sha256": "50cec9395a30fa8338e612b468e499f2f83ed09d790b91689f4e52d0ade3eedc"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/old_c36_cmap.itp",
+      "bytes": 54970,
+      "sha256": "0ce42fd9ee0bc34e802207542cd6c6ddbd939aa1644024c9772e90990f1f4165"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/spc.itp",
+      "bytes": 484,
+      "sha256": "322005f9af5398ae6ebf502ae8e00ad877ce6036a39d751040c50c98b35b2f47"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/spce.itp",
+      "bytes": 490,
+      "sha256": "7b9f79b2d6d03bfbcdf8de2e9eb80f707acec7285fc2b4029c3849ba45851d14"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/tip3p.itp",
+      "bytes": 817,
+      "sha256": "9ad5e7cbf08c82c59d9173141802e6601ffec4f74ed303a3276b2cd9f67228c5"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/tip4p.itp",
+      "bytes": 1011,
+      "sha256": "dcb5363aca163b8dcc9e69d5cadda0d3708ebcd2ba0157499da2189aec0732ba"
+    },
+    {
+      "path": "inputs/forcefield/charmm36-jul2020.ff/watermodels.dat",
+      "bytes": 198,
+      "sha256": "46b7afe5f33e8353d3cce4a615dcfe4119cda9f01fb7cbd08d7ffd27a42ebe1a"
+    },
+    {
+      "path": "inputs/pdb_1h0a.pdb",
+      "bytes": 172449,
+      "sha256": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/crystal_image.str",
+      "bytes": 1031,
+      "sha256": "6c742cb86c01e0c845596fcb402cf3f69969151c2752b94d3a6aa9d852300c25"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n128.crd",
+      "bytes": 2078471,
+      "sha256": "0fd1ccd451e6c729464bf3490f9f045674ffa4458c5c745e51e2ded78223f829"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n128.pdb",
+      "bytes": 2254142,
+      "sha256": "352419bf25b110e9d12ab894d04e4ce7448e233fb5367d490486fec2d544c8e2"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n128.psf",
+      "bytes": 6508711,
+      "sha256": "26a765e9bbc80575985631a6f8d947026de6708f65843296f7af828c322e9aa5"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n256.crd",
+      "bytes": 3840691,
+      "sha256": "f6670bfe4c8335121761abfd817fb8542544b76e09e8a812daed5540eb8d7ebd"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n256.pdb",
+      "bytes": 4165284,
+      "sha256": "ce0c198415e0f3e4f59cd28ba3390714c094fab02baf700c89f4ee5414e0ce13"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/popc_n256.psf",
+      "bytes": 12335151,
+      "sha256": "3809e67eafd3b7dacce7f9f64f39a9260b13728826ae2d0dc583449e185338eb"
+    },
+    {
+      "path": "inputs/pdb_archive/popc/top_all27_prot_lipid.rtf",
+      "bytes": 305058,
+      "sha256": "de119216a9ffa5c963abfd741f66b3040afb19ccc7e8c9ac912e6398f36b11bb"
+    },
+    {
+      "path": "inputs/popc_bilayer.tar.gz",
+      "bytes": 4550565,
+      "sha256": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8"
+    },
+    {
+      "path": "inputs/popc_template.pdb",
+      "bytes": 10437,
+      "sha256": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4"
+    },
+    {
+      "path": "inputs/sapi24_template.pdb",
+      "bytes": 11669,
+      "sha256": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5"
+    },
+    {
+      "path": "run/#topol.top.1#",
+      "bytes": 1687,
+      "sha256": "cd9728c7ee5ab9c09129d91e11b48ce752e86e306e4a85bd756dfa919bce6770"
+    },
+    {
+      "path": "run/boxed.gro",
+      "bytes": 798207,
+      "sha256": "7b01ed9819f381e4e90456a445fca2d621092da89395b8d8ec81470bfe37bb73"
+    },
+    {
+      "path": "run/em.edr",
+      "bytes": 1196,
+      "sha256": "bdbd857313bd909508759931e670c9dc228e5aa254d4f805530f4a3996181f46"
+    },
+    {
+      "path": "run/em.gro",
+      "bytes": 1757079,
+      "sha256": "1155067540c6319ab848a9a17c3e1ae37132ed12a016833821842370a4171ead"
+    },
+    {
+      "path": "run/em.log",
+      "bytes": 18806,
+      "sha256": "84df79f45c2d08838e0f69b5a5a7dfbf2a4764512b54a624cae54be46bceb717"
+    },
+    {
+      "path": "run/em.mdp",
+      "bytes": 261,
+      "sha256": "6b0a868263e88a3fbb536fb10271ccc8c89ac837ae1659bdaef3911964dc586b"
+    },
+    {
+      "path": "run/em.tpr",
+      "bytes": 4830168,
+      "sha256": "d395afc5e125532e3160c3d2f6b6624dcba5d6a6c09c5d575c104d7cce723a60"
+    },
+    {
+      "path": "run/em.trr",
+      "bytes": 468660,
+      "sha256": "5bdaaec44cafc176a6c77c12bb945437a8d3c3d7daeb8c8b94787234d17a0fb0"
+    },
+    {
+      "path": "run/em_relax.edr",
+      "bytes": 113368,
+      "sha256": "5a5d45a663869b401a1ced5cb029bb9afd7f6d8ea13675388afd208951cef615"
+    },
+    {
+      "path": "run/em_relax.gro",
+      "bytes": 1757079,
+      "sha256": "2502e3b6e00f06eee6a6fd52f13e1ae61ff7e2b70842581fc47974d530780b9c"
+    },
+    {
+      "path": "run/em_relax.log",
+      "bytes": 280740,
+      "sha256": "c0bd76d480292c40be008d7bfaa89f8c8d41308278d6b07c3cfbd517c1f0e08b"
+    },
+    {
+      "path": "run/em_relax.mdp",
+      "bytes": 257,
+      "sha256": "ed263d21cf60e4342a42d6afb6ea6b6e2a9bd60eab0098a1c00728c591d4bf5f"
+    },
+    {
+      "path": "run/em_relax.tpr",
+      "bytes": 4830416,
+      "sha256": "1259bd80349ecaf74fcab3a5229fdc856077b4d518c5328d25dd2f751e3a2b02"
+    },
+    {
+      "path": "run/em_relax.trr",
+      "bytes": 468660,
+      "sha256": "91aef6359fd1d2837bf3ddd896494c5892ec927f7958aa4bd26df74acbbb44c2"
+    },
+    {
+      "path": "run/inserted_complex.pdb",
+      "bytes": 1271485,
+      "sha256": "c682671bf3d2e2757266d80ac03b6ee39097b1abb899a976b68e9d66ba5a0124"
+    },
+    {
+      "path": "run/ions.gro",
+      "bytes": 1757079,
+      "sha256": "888a4a33669db2092615205c5939857b32575cfc9b507498846e54a8513c652d"
+    },
+    {
+      "path": "run/ions.tpr",
+      "bytes": 4830168,
+      "sha256": "89fa4e290bf10574a5fa99666db2a924ec3fbb4ba02424b758ac41224749c594"
+    },
+    {
+      "path": "run/mdout.mdp",
+      "bytes": 10598,
+      "sha256": "4a828d88791b10525c79fbba153261fbb2ad9f462d3fe7492a39d5946c7c01e9"
+    },
+    {
+      "path": "run/npt.cpt",
+      "bytes": 938300,
+      "sha256": "662af4492592042be768ef2b2696ff292e54c777bd5cd3a74a217b566fa36511"
+    },
+    {
+      "path": "run/npt.edr",
+      "bytes": 11904,
+      "sha256": "210da8399b46a0cee7d05c4900ee90603193156392bba3cc2ae0c9e44103bcf9"
+    },
+    {
+      "path": "run/npt.log",
+      "bytes": 29035,
+      "sha256": "e1416f5e56a89c8c46ec88e4eff419bbeecbf91bbe97a56ebf2373547c6e9cda"
+    },
+    {
+      "path": "run/npt.tpr",
+      "bytes": 5298708,
+      "sha256": "11486a0e045ad6598e251570ed5a4d317b6b78d55d57cb24cb62640989c6e65b"
+    },
+    {
+      "path": "run/npt.xtc",
+      "bytes": 713996,
+      "sha256": "0795561bc2dc86ffed4c053440df3cd4094b0e1d6b0cd635ddd2fc2259a238f6"
+    },
+    {
+      "path": "run/npt_release.mdp",
+      "bytes": 640,
+      "sha256": "b2dea2de81a293d10d6cb9fd4a6901cc7f1e049ece3af1f56c8268d57d7848dc"
+    },
+    {
+      "path": "run/npt_restraint.cpt",
+      "bytes": 938344,
+      "sha256": "5456d978ad63d82dcc8e6e907f8d9c37b1334d144b8450b1178cb540ec16e60d"
+    },
+    {
+      "path": "run/npt_restraint.edr",
+      "bytes": 14156,
+      "sha256": "c2d1271df3283696f175dda66db286a968e0b552fb194759b7205e846e84a3e5"
+    },
+    {
+      "path": "run/npt_restraint.gro",
+      "bytes": 2694159,
+      "sha256": "7e70a2df1e1c7e0c183087bce8557f8dc2a26de915903f9de058cbbae1056a21"
+    },
+    {
+      "path": "run/npt_restraint.log",
+      "bytes": 29350,
+      "sha256": "fe227cae82a00abd8b145fd82101f6518ddb859f58db221cb389d084d22d8d89"
+    },
+    {
+      "path": "run/npt_restraint.mdp",
+      "bytes": 648,
+      "sha256": "bdc9f5bdaa09d7c7289d383a8f2ecfd8c80eba6c43f7f08ee412cb9abfdac063"
+    },
+    {
+      "path": "run/npt_restraint.tpr",
+      "bytes": 6155172,
+      "sha256": "7a57a8c0adcc63c91b6768b71083a2e0c0877bf4a3c777d58449b7096bd17794"
+    },
+    {
+      "path": "run/npt_restraint.xtc",
+      "bytes": 857028,
+      "sha256": "9671c93e3871aeec6b09a4df4e5669ed6d321d5046d562d02d3767bed75289bc"
+    },
+    {
+      "path": "run/nvt.cpt",
+      "bytes": 938192,
+      "sha256": "a4ec68904be168a7dd41959ec1757f367b5c9dec59ef976a84667d73673ae46a"
+    },
+    {
+      "path": "run/nvt.edr",
+      "bytes": 12580,
+      "sha256": "0190f5603dd51bb02bfc8ef7002a87f8e0866e911819bceb271a321b4ef43b7b"
+    },
+    {
+      "path": "run/nvt.gro",
+      "bytes": 2694159,
+      "sha256": "16479743c9cc978f92bbe9c611dff98cb93450355ecb2fc5bbe88420999177d7"
+    },
+    {
+      "path": "run/nvt.log",
+      "bytes": 35685,
+      "sha256": "499b60029a8ec46fa49389ff0741506494fc9e602e50bf1f4ffc7145f5489b21"
+    },
+    {
+      "path": "run/nvt.mdp",
+      "bytes": 619,
+      "sha256": "7376f2881bb2e12a25692c1d44e0e6b343b96a521a365abc3aec1720cde610c7"
+    },
+    {
+      "path": "run/nvt.tpr",
+      "bytes": 6155188,
+      "sha256": "511647a730f2ec6805c870dbe47f435e132d42f6019e1d0ff54b3440fe6a996f"
+    },
+    {
+      "path": "run/nvt.xtc",
+      "bytes": 857584,
+      "sha256": "5b945c4936239f808ec3b017870179a3b813dfb0d3ddc6be286ab3abe30bd6fe"
+    },
+    {
+      "path": "run/nvt_prev.cpt",
+      "bytes": 938192,
+      "sha256": "7e4c3583faf1259b90f71c1752207a000d254e16ccd3d0b9dca39e1b14e5ecc2"
+    },
+    {
+      "path": "run/posre_Other.itp",
+      "bytes": 180817,
+      "sha256": "dc406a044ff414c001bbb86bca07152d1d5b689de4155c39c717c3706bb18a0a"
+    },
+    {
+      "path": "run/posre_Other_chain_B.itp",
+      "bytes": 2412,
+      "sha256": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e"
+    },
+    {
+      "path": "run/posre_Protein_chain_A.itp",
+      "bytes": 40170,
+      "sha256": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0"
+    },
+    {
+      "path": "run/processed.gro",
+      "bytes": 798207,
+      "sha256": "e637e003d215d89ba93703ee678028a195c9f60621fbc1f9d8742bcf6b5bc524"
+    },
+    {
+      "path": "run/solv.gro",
+      "bytes": 1757112,
+      "sha256": "fdc97c095ae73660b031848a18f2c5fee7ec5a395b8daaa68270f865e7d7f3ad"
+    },
+    {
+      "path": "run/topol.top",
+      "bytes": 1718,
+      "sha256": "d6f29ac66a71a3e69b795cfaf57c806723e99947dadd0904510064e2e13d9d10"
+    },
+    {
+      "path": "run/topol_Other.itp",
+      "bytes": 4027680,
+      "sha256": "3ee853ffa4d63b77be0264cc8b9e504dd65dc9e832d627295e3b3c074738291f"
+    },
+    {
+      "path": "run/topol_Other_chain_B.itp",
+      "bytes": 41334,
+      "sha256": "385da0a1e2d45f55b588a839a71184750afafdaa591a76a2b748b08990f8bb2e"
+    },
+    {
+      "path": "run/topol_Protein_chain_A.itp",
+      "bytes": 709927,
+      "sha256": "14d5efa345c1acbb283d514c08662556f44b1fc3ceea7781344e70b74535e432"
+    },
+    {
+      "path": "supervisor-result.json",
+      "bytes": 13198,
+      "sha256": "36b609398dee7f0f0ca8804bb37ca345ba6e9abcea5b47621004703adb45aa4e"
+    },
+    {
+      "path": "supervisor-start.json",
+      "bytes": 553,
+      "sha256": "5020f3c8453fb40ce137549c172dfe7900ee087bff8c0c2f6b97ae017fc7b9c3"
+    },
+    {
+      "path": "supervisor.executed.py",
+      "bytes": 4764,
+      "sha256": "5ce0526d21afb448789d46846e0d2ad2c3197fd1889e8b07e8eee0a59b847dd6"
+    },
+    {
+      "path": "validation-after-nvt-continuation.json",
+      "bytes": 62961,
+      "sha256": "3c3d361dadb2fb89055482fbee336c82b703b5691448ba46ed815bd646f88e89"
+    },
+    {
+      "path": "validation-before-continuation.json",
+      "bytes": 58634,
+      "sha256": "f6bbbe5970bd7080e1b97bfebcfe1e54d6ef0962b08357f57b972b6a5c8145fb"
+    },
+    {
+      "path": "worker.executed.py",
+      "bytes": 53052,
+      "sha256": "f8332cdad68b18c9ecc4a1c02afc09a8c3dfccc5afeac1069ae3ff6e4f03f7a7"
+    },
+    {
+      "path": "workflow.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workflow.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifact_hashes": {
+    "__pycache__/worker.executed.cpython-311.pyc": "edb9d5d3d87523da69fb79b75af8d950d131ac4d3169663be2c0a90f53b7511e",
+    "command-ledger-before-continuation.json": "bb17f40b9f338dbd8d7c0ec59d504c344435146920cf9cb9ab609c4625985f83",
+    "command-ledger.json": "52275c05af863f4f1862ba3b8f349809b0c40e34ce6c1e2a8856f3ef551847f7",
+    "continuation-01-result.json": "4975e1fe08157a23993bf2ba670b68b9fb8819e1837eb4d7aaac8629e372c771",
+    "continuation-01-start.json": "bfbe43e09ee0f5179b110d3f04b9e875610517f2e42065b323a7908527eb3c3c",
+    "continuation-01.executed.py": "f00c70825cc4cc278b5e27f385b63aaf56a7d928cc20d89f9a94c74720d831da",
+    "continuation-01.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "continuation-01.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "continuation-result.json": "4975e1fe08157a23993bf2ba670b68b9fb8819e1837eb4d7aaac8629e372c771",
+    "continuation-start.json": "587f20e31906c84ae4e46f562023719ae7a85a7af9a3b0f7b9a27f575eb99f23",
+    "continuation.executed.py": "f9532be8779d85134489a6f6d8c41d57aee1fc4663b83b60857cac3c0090ee3f",
+    "continuation.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "continuation.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inputs/c36.tgz": "58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364",
+    "inputs/forcefield/charmm36-jul2020.ff/atomtypes.atp": "6a0b57cde3eb0784d4481f7b25291cd7a95696ed5d3b67afb73e9a6d92544ecd",
+    "inputs/forcefield/charmm36-jul2020.ff/cmap.itp": "e458027fcf39c7b2bea3d98afbe0ddc8b60c3d13a4f3fe6259c9e49c7e585241",
+    "inputs/forcefield/charmm36-jul2020.ff/ffbonded.itp": "c523f2f1c5482f3884cf7dba02cf7dbfeb7858a2f161c062592f90bb6be474cc",
+    "inputs/forcefield/charmm36-jul2020.ff/ffnonbonded.itp": "46d767047a18a1d0081b7207601743d809f361daa5e82795dc053805eab1a01e",
+    "inputs/forcefield/charmm36-jul2020.ff/forcefield.doc": "64fe10e4bfe7036def8b811bf3af61af81f5562038bcbd213eaac930fcc4ae55",
+    "inputs/forcefield/charmm36-jul2020.ff/forcefield.itp": "fa4bd60d5a16bdaaeea078a7532ed9bd1b4bb4c3a1ce065f1f8074c4b14b3796",
+    "inputs/forcefield/charmm36-jul2020.ff/gb.itp": "f52bf473c68c3116131a7f041dbb596c316b8718a12d542575e38582fb57f284",
+    "inputs/forcefield/charmm36-jul2020.ff/ions.itp": "739ee08ddac7b07ba4c00f40252f924521c5ae0a5b04d97a7a9128181a7b2d43",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.arn": "3f932f441307ef90c024c50e80d1c3afa786c37b5f1a19c6ecf3e5ff30199a9b",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.c.tdb": "46503d5b654ec76e8ecd89936bf491819a4009a0c39b3db8f079dfca260cdcd3",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.hdb": "0650c0f1584cb74c6f3f485b7679c6a342b51d4bef56bdae46a2b06446bc7cd8",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.n.tdb": "4fb4a3a8004a5c8fcbc7b8aeea12a829adb57198e1739718f8a74379e344cf6b",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.r2b": "8af60fc0c27ad5e9b8470f3dbc8c2c9ee5beaa887934d5fa58a8ef7e13dba75d",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.rtp": "6c7de3e717261afcf0fe3dcf6109c38a1ea1c357b22e2782baa0d4a9e43b4082",
+    "inputs/forcefield/charmm36-jul2020.ff/merged.vsd": "7d012b350964ac4d2490a950eb191aadbc2946c0a60931931d8177ff13deb01c",
+    "inputs/forcefield/charmm36-jul2020.ff/nbfix.itp": "50cec9395a30fa8338e612b468e499f2f83ed09d790b91689f4e52d0ade3eedc",
+    "inputs/forcefield/charmm36-jul2020.ff/old_c36_cmap.itp": "0ce42fd9ee0bc34e802207542cd6c6ddbd939aa1644024c9772e90990f1f4165",
+    "inputs/forcefield/charmm36-jul2020.ff/spc.itp": "322005f9af5398ae6ebf502ae8e00ad877ce6036a39d751040c50c98b35b2f47",
+    "inputs/forcefield/charmm36-jul2020.ff/spce.itp": "7b9f79b2d6d03bfbcdf8de2e9eb80f707acec7285fc2b4029c3849ba45851d14",
+    "inputs/forcefield/charmm36-jul2020.ff/tip3p.itp": "9ad5e7cbf08c82c59d9173141802e6601ffec4f74ed303a3276b2cd9f67228c5",
+    "inputs/forcefield/charmm36-jul2020.ff/tip4p.itp": "dcb5363aca163b8dcc9e69d5cadda0d3708ebcd2ba0157499da2189aec0732ba",
+    "inputs/forcefield/charmm36-jul2020.ff/watermodels.dat": "46b7afe5f33e8353d3cce4a615dcfe4119cda9f01fb7cbd08d7ffd27a42ebe1a",
+    "inputs/pdb_1h0a.pdb": "d070edd278be539aed006ea16c97578c1a867dc597d9ab7918686795a5fd7681",
+    "inputs/pdb_archive/popc/crystal_image.str": "6c742cb86c01e0c845596fcb402cf3f69969151c2752b94d3a6aa9d852300c25",
+    "inputs/pdb_archive/popc/popc_n128.crd": "0fd1ccd451e6c729464bf3490f9f045674ffa4458c5c745e51e2ded78223f829",
+    "inputs/pdb_archive/popc/popc_n128.pdb": "352419bf25b110e9d12ab894d04e4ce7448e233fb5367d490486fec2d544c8e2",
+    "inputs/pdb_archive/popc/popc_n128.psf": "26a765e9bbc80575985631a6f8d947026de6708f65843296f7af828c322e9aa5",
+    "inputs/pdb_archive/popc/popc_n256.crd": "f6670bfe4c8335121761abfd817fb8542544b76e09e8a812daed5540eb8d7ebd",
+    "inputs/pdb_archive/popc/popc_n256.pdb": "ce0c198415e0f3e4f59cd28ba3390714c094fab02baf700c89f4ee5414e0ce13",
+    "inputs/pdb_archive/popc/popc_n256.psf": "3809e67eafd3b7dacce7f9f64f39a9260b13728826ae2d0dc583449e185338eb",
+    "inputs/pdb_archive/popc/top_all27_prot_lipid.rtf": "de119216a9ffa5c963abfd741f66b3040afb19ccc7e8c9ac912e6398f36b11bb",
+    "inputs/popc_bilayer.tar.gz": "ed53840283467cdfb270d30742a35175d940df731d4237b569915db66a8b5dc8",
+    "inputs/popc_template.pdb": "a45e2a6f3934ec441da4bb621d63d812868c27f3751bee00784db87458f5cdd4",
+    "inputs/sapi24_template.pdb": "ea88087c01230cfef593b4b12868a1251216daf0a0a4907f52c09b0510b9c4a5",
+    "run/#topol.top.1#": "cd9728c7ee5ab9c09129d91e11b48ce752e86e306e4a85bd756dfa919bce6770",
+    "run/boxed.gro": "7b01ed9819f381e4e90456a445fca2d621092da89395b8d8ec81470bfe37bb73",
+    "run/em.edr": "bdbd857313bd909508759931e670c9dc228e5aa254d4f805530f4a3996181f46",
+    "run/em.gro": "1155067540c6319ab848a9a17c3e1ae37132ed12a016833821842370a4171ead",
+    "run/em.log": "84df79f45c2d08838e0f69b5a5a7dfbf2a4764512b54a624cae54be46bceb717",
+    "run/em.mdp": "6b0a868263e88a3fbb536fb10271ccc8c89ac837ae1659bdaef3911964dc586b",
+    "run/em.tpr": "d395afc5e125532e3160c3d2f6b6624dcba5d6a6c09c5d575c104d7cce723a60",
+    "run/em.trr": "5bdaaec44cafc176a6c77c12bb945437a8d3c3d7daeb8c8b94787234d17a0fb0",
+    "run/em_relax.edr": "5a5d45a663869b401a1ced5cb029bb9afd7f6d8ea13675388afd208951cef615",
+    "run/em_relax.gro": "2502e3b6e00f06eee6a6fd52f13e1ae61ff7e2b70842581fc47974d530780b9c",
+    "run/em_relax.log": "c0bd76d480292c40be008d7bfaa89f8c8d41308278d6b07c3cfbd517c1f0e08b",
+    "run/em_relax.mdp": "ed263d21cf60e4342a42d6afb6ea6b6e2a9bd60eab0098a1c00728c591d4bf5f",
+    "run/em_relax.tpr": "1259bd80349ecaf74fcab3a5229fdc856077b4d518c5328d25dd2f751e3a2b02",
+    "run/em_relax.trr": "91aef6359fd1d2837bf3ddd896494c5892ec927f7958aa4bd26df74acbbb44c2",
+    "run/inserted_complex.pdb": "c682671bf3d2e2757266d80ac03b6ee39097b1abb899a976b68e9d66ba5a0124",
+    "run/ions.gro": "888a4a33669db2092615205c5939857b32575cfc9b507498846e54a8513c652d",
+    "run/ions.tpr": "89fa4e290bf10574a5fa99666db2a924ec3fbb4ba02424b758ac41224749c594",
+    "run/mdout.mdp": "4a828d88791b10525c79fbba153261fbb2ad9f462d3fe7492a39d5946c7c01e9",
+    "run/npt.cpt": "662af4492592042be768ef2b2696ff292e54c777bd5cd3a74a217b566fa36511",
+    "run/npt.edr": "210da8399b46a0cee7d05c4900ee90603193156392bba3cc2ae0c9e44103bcf9",
+    "run/npt.log": "e1416f5e56a89c8c46ec88e4eff419bbeecbf91bbe97a56ebf2373547c6e9cda",
+    "run/npt.tpr": "11486a0e045ad6598e251570ed5a4d317b6b78d55d57cb24cb62640989c6e65b",
+    "run/npt.xtc": "0795561bc2dc86ffed4c053440df3cd4094b0e1d6b0cd635ddd2fc2259a238f6",
+    "run/npt_release.mdp": "b2dea2de81a293d10d6cb9fd4a6901cc7f1e049ece3af1f56c8268d57d7848dc",
+    "run/npt_restraint.cpt": "5456d978ad63d82dcc8e6e907f8d9c37b1334d144b8450b1178cb540ec16e60d",
+    "run/npt_restraint.edr": "c2d1271df3283696f175dda66db286a968e0b552fb194759b7205e846e84a3e5",
+    "run/npt_restraint.gro": "7e70a2df1e1c7e0c183087bce8557f8dc2a26de915903f9de058cbbae1056a21",
+    "run/npt_restraint.log": "fe227cae82a00abd8b145fd82101f6518ddb859f58db221cb389d084d22d8d89",
+    "run/npt_restraint.mdp": "bdc9f5bdaa09d7c7289d383a8f2ecfd8c80eba6c43f7f08ee412cb9abfdac063",
+    "run/npt_restraint.tpr": "7a57a8c0adcc63c91b6768b71083a2e0c0877bf4a3c777d58449b7096bd17794",
+    "run/npt_restraint.xtc": "9671c93e3871aeec6b09a4df4e5669ed6d321d5046d562d02d3767bed75289bc",
+    "run/nvt.cpt": "a4ec68904be168a7dd41959ec1757f367b5c9dec59ef976a84667d73673ae46a",
+    "run/nvt.edr": "0190f5603dd51bb02bfc8ef7002a87f8e0866e911819bceb271a321b4ef43b7b",
+    "run/nvt.gro": "16479743c9cc978f92bbe9c611dff98cb93450355ecb2fc5bbe88420999177d7",
+    "run/nvt.log": "499b60029a8ec46fa49389ff0741506494fc9e602e50bf1f4ffc7145f5489b21",
+    "run/nvt.mdp": "7376f2881bb2e12a25692c1d44e0e6b343b96a521a365abc3aec1720cde610c7",
+    "run/nvt.tpr": "511647a730f2ec6805c870dbe47f435e132d42f6019e1d0ff54b3440fe6a996f",
+    "run/nvt.xtc": "5b945c4936239f808ec3b017870179a3b813dfb0d3ddc6be286ab3abe30bd6fe",
+    "run/nvt_prev.cpt": "7e4c3583faf1259b90f71c1752207a000d254e16ccd3d0b9dca39e1b14e5ecc2",
+    "run/posre_Other.itp": "dc406a044ff414c001bbb86bca07152d1d5b689de4155c39c717c3706bb18a0a",
+    "run/posre_Other_chain_B.itp": "da6334c3ec41c1ef5d5494159118fc217407756f2d1eb186b2b35454b35a9a2e",
+    "run/posre_Protein_chain_A.itp": "0dcd82d827eb0c126012250946724223d5347c5c175301e457d3b8ee51e0dad0",
+    "run/processed.gro": "e637e003d215d89ba93703ee678028a195c9f60621fbc1f9d8742bcf6b5bc524",
+    "run/solv.gro": "fdc97c095ae73660b031848a18f2c5fee7ec5a395b8daaa68270f865e7d7f3ad",
+    "run/topol.top": "d6f29ac66a71a3e69b795cfaf57c806723e99947dadd0904510064e2e13d9d10",
+    "run/topol_Other.itp": "3ee853ffa4d63b77be0264cc8b9e504dd65dc9e832d627295e3b3c074738291f",
+    "run/topol_Other_chain_B.itp": "385da0a1e2d45f55b588a839a71184750afafdaa591a76a2b748b08990f8bb2e",
+    "run/topol_Protein_chain_A.itp": "14d5efa345c1acbb283d514c08662556f44b1fc3ceea7781344e70b74535e432",
+    "supervisor-result.json": "36b609398dee7f0f0ca8804bb37ca345ba6e9abcea5b47621004703adb45aa4e",
+    "supervisor-start.json": "5020f3c8453fb40ce137549c172dfe7900ee087bff8c0c2f6b97ae017fc7b9c3",
+    "supervisor.executed.py": "5ce0526d21afb448789d46846e0d2ad2c3197fd1889e8b07e8eee0a59b847dd6",
+    "validation-after-nvt-continuation.json": "3c3d361dadb2fb89055482fbee336c82b703b5691448ba46ed815bd646f88e89",
+    "validation-before-continuation.json": "f6bbbe5970bd7080e1b97bfebcfe1e54d6ef0962b08357f57b972b6a5c8145fb",
+    "worker.executed.py": "f8332cdad68b18c9ecc4a1c02afc09a8c3dfccc5afeac1069ae3ff6e4f03f7a7",
+    "workflow.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workflow.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation.md": "f900f688ad6ffc3111e0de3b85b841861f597571bcbcc7ed5b5fa00cbd5e1c51"
+  },
+  "artifact_hashes_note": "The JSON report's own SHA256 is omitted to avoid a self-referential hash; compute it after the final write.",
+  "continuation": {
+    "reason": "Inherited 0.10-hour warmup sublimit stopped at 7 ps; continue checkpoint within original 1800-second deadline",
+    "initial_supervisor_report": "supervisor-result.json",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "independent_model_score": false
+  },
+  "nvt_gate": {
+    "clean_constraints": true,
+    "observed_duration_ps": 10.0,
+    "source": "final log step/time row plus final coordinates"
+  },
+  "npt_restraint_gate": {
+    "clean_constraints": true,
+    "observed_duration_ps": 10.0,
+    "source": "final log step/time row plus final coordinates"
+  },
+  "error": "RuntimeError: Released NPT failed"
+}

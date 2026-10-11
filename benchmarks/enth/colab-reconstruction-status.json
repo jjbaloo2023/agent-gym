@@ -1,0 +1,31 @@
+{
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "attribution": "Astra scientific reconstruction assisted by inherited worker code and parent Colab orchestration",
+  "accepted_preparation": "validation-010",
+  "status": "preprocessed_pending_gpu_minimization_and_validation",
+  "regression_tests_passed": 29,
+  "atom_count": 78954,
+  "upper_leaflet": {"POPC": 99, "PIP2": 1},
+  "lower_leaflet": {"POPC": 100},
+  "area_per_leaflet_lipid_A2": 68.29999688,
+  "crystal_headgroup_heavy_atoms_retained": 24,
+  "crystal_headgroup_rmsd_in_protein_frame_A": 0.00476286856373284,
+  "minimum_periodic_intermolecular_heavy_distance_A": 1.9625238852049673,
+  "intermolecular_heavy_pairs_below_1_8_A": 0,
+  "superseded_preparations": [
+    {"id": "validation-008", "reason": "Tail-upright joint orientation placed H0 above the membrane; stopped and preserved."},
+    {"id": "validation-009", "reason": "Independent final-coordinate audit found 36 short tail contacts omitted by a phosphate-distance neighbor cutoff; all-pair packing fixed this in validation-010."}
+  ],
+  "archive_revisions": [
+    {"name": "colab-input-010.tar.gz", "status": "superseded", "reason": "Final portability inspection found absolute force-field include paths."},
+    {"name": "colab-input-010-portable.tar.gz", "status": "portable_revision", "change": "Force-field include paths made relative; standalone grompp preflight required; no coordinates or force-field parameters changed."}
+  ],
+  "scientific_limits": [
+    "Reconstructed packing and placement, not the original CHARMM-GUI job.",
+    "P4-protonated SAPI24 and H0 residue mapping remain documented assumptions.",
+    "Literal published 0.15 mM salt rounds to no added ion pair in this neutral box.",
+    "Original pulling constants, rates, state coordinates and replicate protocols unavailable.",
+    "No paper helicity ranking or three-state replication demonstrated."
+  ]
+}

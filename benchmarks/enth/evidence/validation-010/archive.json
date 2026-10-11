@@ -1,0 +1,55 @@
+{
+  "archive": "/mnt/c/Users/Jophi/OneDrive/Documents/ChatGPT/Agent_gym/artifacts/enth/colab-input-010.tar.gz",
+  "bytes": 12017487,
+  "sha256": "f755b04f513213184a2b0a1cb6878e784b7342dc46bd89ad4cd2c5d770204086",
+  "status": "preprocessed_not_minimized",
+  "checks": {
+    "contact_audit": {
+      "available": true,
+      "search_radius_nm": 0.25,
+      "minimum_distance_nm_within_radius": 0.19625238852049673,
+      "shortest_pair": [
+        "POPC:40:C316",
+        "POPC:137:C218"
+      ],
+      "intermolecular_heavy_pairs_below_0_18nm": 0,
+      "scope": "protein/lipid and lipid/lipid heavy atoms; water and ions excluded; periodic minimum-image distances"
+    },
+    "leaflets": {
+      "status": "checked",
+      "recognized_lipid_P_count": 200,
+      "membrane_center_z_A": 52.34240690641374,
+      "leaflet_separation_A": 36.558199999999985,
+      "upper": {
+        "POPC": 99,
+        "PIP2": 1,
+        "total": 100
+      },
+      "lower": {
+        "POPC": 100,
+        "PIP2": 0,
+        "total": 100
+      },
+      "pbc_method": "Circular mean for membrane center; phosphate z displacements wrapped to [-Lz/2,Lz/2).",
+      "checks": {
+        "both_leaflets_present": true,
+        "exactly_one_pip2": true,
+        "pip2_in_upper_leaflet": true,
+        "separation_plausible": true
+      }
+    },
+    "atom_count": 78954,
+    "grompp_passed_without_maxwarn": true,
+    "minimization_performed": false,
+    "dynamics_performed": false,
+    "gpu_gate_required": "Unconstrained bond relaxation, then clean constrained minimization, then restrained warmup; stop on physical warnings",
+    "checkpoint_included": false,
+    "checkpoint_reason": "Fresh corrected coordinates cannot reuse the old proxy checkpoint",
+    "crystal_headgroup_in_protein_frame": {
+      "mapped_heavy_atoms": 24,
+      "rmsd_angstrom": 0.00476286856373284,
+      "maximum_deviation_angstrom": 0.007008922225357806
+    }
+  },
+  "export_note": "Archive completed; metadata-preserving text export failed on OneDrive, resumed with byte-identical copies without metadata changes."
+}

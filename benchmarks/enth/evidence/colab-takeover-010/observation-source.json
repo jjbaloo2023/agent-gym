@@ -1,0 +1,14 @@
+{
+  "source": "Saved Colab notebook cell12 output, read through browser DOM snapshot",
+  "raw_snapshot": "artifacts/enth/colab-takeover-observed.txt",
+  "binary_checkpoint_recovered": false,
+  "full_trajectory_recovered": false,
+  "long_run_launched": false,
+  "recovery_check": {
+    "validation_directory": false,
+    "validation_checkpoint": false,
+    "gromacs_executable": false,
+    "drive_mount": false
+  },
+  "download_tests": "Both notebook download and file-pane download failed to produce a confirmed download; file-pane operation stalled controller."
+}

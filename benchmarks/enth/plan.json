@@ -1,0 +1,59 @@
+{
+  "benchmark": "epsin-enth-md-v1",
+  "status": "partial_run_physical_checks_passed",
+  "validation_run": "validation-007",
+  "validation_report": "validation-results.md",
+  "saved_dynamics_ps": 28,
+  "checkpoint_dynamics_ps": 28.4,
+  "requested_100ps_completed": false,
+  "physical_checks_passed": true,
+  "biological_agreement": "not_tested",
+  "paper": "https://doi.org/10.1038/s42003-020-01471-6",
+  "target": "Figure 4: H0 helicity in inserted, adsorbed and solvent states",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "attribution": "Assisted retry with inherited reconstruction/code and parent orchestration; not an independent model score",
+  "attempts": 1,
+  "attempt_scope": "One Astra retry; two checkpoint/workflow continuation segments retain the original absolute deadline and TPR endpoints",
+  "total_execution_elapsed_seconds": 1749.978316,
+  "post_run_analysis": "Separate read-only analysis outside the MD execution window; two seven-command passes plus checkpoint inspection",
+  "previous_validation": {
+    "model": "gpt-6-luna",
+    "run": "validation-006",
+    "saved_dynamics_ps": 58,
+    "status": "validation_partial_failed_strict_checks"
+  },
+  "bounds": {
+    "wall_seconds": 1800,
+    "cpu_threads": 2,
+    "memory_mib": 4096,
+    "gpu": false,
+    "cloud_spend_usd": 0,
+    "max_tool_calls": 20,
+    "tool_call_budget_scope": "Scientific worker subprocesses; 17 used. Orchestration and read-only post-run analysis are reported separately.",
+    "max_atoms": 100000,
+    "max_md_steps": 50000,
+    "max_timestep_fs": 2,
+    "max_output_mib": 1024,
+    "concurrent_simulations": 1
+  },
+  "production_gate": "Smoke test only; full replication requires a separate compute budget and resolved scientific inputs.",
+  "unresolved": [
+    "Published KCl is 0.15 mM; confirm whether intended value is 0.15 M",
+    "Original CHARMM-GUI topology, coordinates, equilibration and restraint inputs",
+    "H0 residue mapping, pulling constants, positions and PIP2 protonation"
+  ],
+  "colab_followup": "colab-feasibility.json",
+  "colab_guide": "colab-gpu-guide.md",
+  "corrected_reconstruction": "evidence/validation-010-portable/README.md",
+  "gpu_validation": {
+    "status": "short_gpu_validation_completed",
+    "report": "evidence/colab-takeover-010/validation-observed.json",
+    "total_dynamics_ps": 700,
+    "released_validation_ps": 100,
+    "ns_per_day": 24.147,
+    "binary_state_recovered": false,
+    "biological_agreement": "not_tested",
+    "long_run_launched": false
+  }
+}

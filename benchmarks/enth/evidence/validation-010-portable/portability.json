@@ -1,0 +1,23 @@
+{
+  "command": [
+    "gmx",
+    "grompp",
+    "-f",
+    "em_relax.mdp",
+    "-c",
+    "ions.gro",
+    "-p",
+    "topol.top",
+    "-o",
+    "portable-preflight.tpr"
+  ],
+  "returncode": 0,
+  "include_path_changes": [
+    {
+      "path": "run/topol.top",
+      "source_sha256": "30376fcc30096bee22ef6796204c0abcce22efeb7c69f940223a8f0411effdaa",
+      "portable_sha256": "f99b325612da857b95b6c8e7e94ee26dc8f1237fb58562c58e8a09f8db87a475"
+    }
+  ],
+  "scientific_parameters_changed": false
+}

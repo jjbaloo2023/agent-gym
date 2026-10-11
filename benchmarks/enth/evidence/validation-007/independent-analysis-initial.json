@@ -1,0 +1,864 @@
+{
+  "analyzer": "scripts/enth_analysis.py",
+  "status": "bounded_validation_failed_or_incomplete",
+  "workdir": "/home/gym/agent-gym-md/validation-007",
+  "checks": {
+    "all_stage_logs_present": true,
+    "no_lincs_or_constraint_warnings_any_stage": true,
+    "no_fatal_errors_any_stage": true,
+    "no_nonfinite_tokens_any_stage": false,
+    "requested_100ps_dynamics_completed": false,
+    "each_stage_reached_expected_time": false,
+    "minimization_converged_below_requested_fmax": true,
+    "finite_energy_observables": true,
+    "temperature_in_broad_target_band": true,
+    "positive_limited_volume": true,
+    "membrane_leaflets_and_pip2": true,
+    "h0_dssp_positive_control": true
+  },
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "check",
+        "-f",
+        "npt.xtc"
+      ],
+      "returncode": 0,
+      "stdout": "Checking file npt.xtc\n",
+      "stderr": "           :-) GROMACS - gmx check, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx check -f npt.xtc\n\n\nReading frame       0 time    0.000   \n# Atoms  39045\nPrecision 0.001 (nm)\n\nReading frame       1 time    2.000   \nReading frame       2 time    4.000   \nReading frame       3 time    6.000   \nReading frame       4 time    8.000   \nLast frame          4 time    8.000   \n\n\nItem        #frames Timestep (ps)\nStep             5    2\nTime             5    2\nLambda           0\nCoords           5    2\nVelocities       0\nForces           0\nBox              5    2\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.018
+    },
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "trjconv",
+        "-s",
+        "npt.tpr",
+        "-f",
+        "npt.xtc",
+        "-o",
+        "independent-final.gro",
+        "-dump",
+        "8.0000"
+      ],
+      "returncode": 0,
+      "stdout": "Note that major changes are planned in future for trjconv, to improve usability and utility.\nSelect group for output\nSelected 0: 'System'\n",
+      "stderr": "          :-) GROMACS - gmx trjconv, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx trjconv -s npt.tpr -f npt.xtc -o independent-final.gro -dump 8.0000\n\nWill write gro: Coordinate file in Gromos-87 format\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nGroup     0 (         System) has 39045 elements\nGroup     1 (          Other) has 15158 elements\nGroup     2 (           POPC) has 15008 elements\nGroup     3 (            SAP) has   150 elements\nGroup     4 (        Protein) has  2578 elements\nGroup     5 (      Protein-H) has  1287 elements\nGroup     6 (        C-alpha) has   158 elements\nGroup     7 (       Backbone) has   474 elements\nGroup     8 (      MainChain) has   631 elements\nGroup     9 (   MainChain+Cb) has   784 elements\nGroup    10 (    MainChain+H) has   789 elements\nGroup    11 (      SideChain) has  1789 elements\nGroup    12 (    SideChain-H) has   656 elements\nGroup    13 (    Prot-Masses) has  2578 elements\nGroup    14 (    non-Protein) has 36467 elements\nGroup    15 (          Water) has 21309 elements\nGroup    16 (            SOL) has 21309 elements\nGroup    17 (      non-Water) has 17736 elements\nSelect a group: \nReading frame       0 time    0.000   \nPrecision of npt.xtc is 0.001 (nm)\n\nReading frame       1 time    2.000   \nReading frame       2 time    4.000   \nReading frame       3 time    6.000   \nReading frame       4 time    8.000   \nLast frame          4 time    8.000   \n\nDumping frame at t= 8 ps\n ->  frame      0 time    8.000      \nLast written: frame      0 time    8.000\n\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.092
+    },
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "energy",
+        "-f",
+        "npt.edr",
+        "-o",
+        "independent-energy.xvg"
+      ],
+      "returncode": 0,
+      "stdout": "\nStatistics over 4201 steps [ 0.0000 through 8.4000 ps ], 4 data sets\nAll statistics are over 43 points (frames)\n\nEnergy                      Average   Err.Est.       RMSD  Tot-Drift\n-------------------------------------------------------------------------------\nPotential                   -305663        330    777.726   -1981.65  (kJ/mol)\nTemperature                 303.514       0.78     1.9508    3.54681  (K)\nPressure                    43.5702         25    194.743   -86.6504  (bar)\nVolume                      378.155      0.055   0.378403    0.32554  (nm^3)\n",
+      "stderr": "          :-) GROMACS - gmx energy, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx energy -f npt.edr -o independent-energy.xvg\n\nOpened npt.edr as single precision energy file\n\nSelect the terms you want from the following list by\nselecting either (part of) the name or the number or a combination.\nEnd your selection with an empty line or a zero.\n-------------------------------------------------------------------\n  1  Bond             2  U-B              3  Proper-Dih.      4  Improper-Dih. \n  5  CMAP-Dih.        6  LJ-14            7  Coulomb-14       8  LJ-(SR)       \n  9  Coulomb-(SR)    10  Coul.-recip.    11  Potential       12  Kinetic-En.   \n 13  Total-Energy    14  Conserved-En.   15  Temperature     16  Pressure      \n 17  Constr.-rmsd    18  Box-X           19  Box-Y           20  Box-Z         \n 21  Volume          22  Density         23  pV              24  Enthalpy      \n 25  Vir-XX          26  Vir-XY          27  Vir-XZ          28  Vir-YX        \n 29  Vir-YY          30  Vir-YZ          31  Vir-ZX          32  Vir-ZY        \n 33  Vir-ZZ          34  Pres-XX         35  Pres-XY         36  Pres-XZ       \n 37  Pres-YX         38  Pres-YY         39  Pres-YZ         40  Pres-ZX       \n 41  Pres-ZY         42  Pres-ZZ         43  #Surf*SurfTen   44  T-System      \n 45  Lamb-System   \n\n\nReading energy frame      0 time    0.000         \nReading energy frame      1 time    0.200         \nReading energy frame      2 time    0.400         \nReading energy frame      3 time    0.600         \nReading energy frame      4 time    0.800         \nReading energy frame      5 time    1.000         \nReading energy frame      6 time    1.200         \nReading energy frame      7 time    1.400         \nReading energy frame      8 time    1.600         \nReading energy frame      9 time    1.800         \nReading energy frame     10 time    2.000         \nReading energy frame     11 time    2.200         \nReading energy frame     12 time    2.400         \nReading energy frame     13 time    2.600         \nReading energy frame     14 time    2.800         \nReading energy frame     15 time    3.000         \nReading energy frame     16 time    3.200         \nReading energy frame     17 time    3.400         \nReading energy frame     18 time    3.600         \nReading energy frame     19 time    3.800         \nReading energy frame     20 time    4.000         \nReading energy frame     30 time    6.000         \nReading energy frame     40 time    8.000         \nLast energy frame read 42 time    8.400         \n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.005
+    },
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "dssp",
+        "-s",
+        "npt.tpr",
+        "-f",
+        "em.gro",
+        "-o",
+        "dssp-control-gromacs.dat",
+        "-sel",
+        "protein",
+        "-xvg",
+        "none",
+        "-tu",
+        "ps",
+        "-hmode",
+        "gromacs"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx dssp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx dssp -s npt.tpr -f em.gro -o dssp-control-gromacs.dat -sel protein -xvg none -tu ps -hmode gromacs\n\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading frames from gro file 'Protein in water', 39045 atoms.\n\nReading frame       0 time    0.000   \nLast frame          0 time    0.000   \nAnalyzed 1 frames, last time 0.000\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.12
+    },
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "dssp",
+        "-s",
+        "npt.tpr",
+        "-f",
+        "npt.xtc",
+        "-o",
+        "protein-dssp-gromacs.dat",
+        "-sel",
+        "protein",
+        "-xvg",
+        "none",
+        "-tu",
+        "ps",
+        "-hmode",
+        "gromacs"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx dssp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx dssp -s npt.tpr -f npt.xtc -o protein-dssp-gromacs.dat -sel protein -xvg none -tu ps -hmode gromacs\n\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\n\nReading frame       0 time    0.000   \nReading frame       1 time    2.000   \nReading frame       2 time    4.000   \nReading frame       3 time    6.000   \nReading frame       4 time    8.000   \nLast frame          4 time    8.000   \nAnalyzed 5 frames, last time 8.000\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.061
+    },
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "dssp",
+        "-s",
+        "npt.tpr",
+        "-f",
+        "em.gro",
+        "-o",
+        "dssp-control-dssp.dat",
+        "-sel",
+        "protein",
+        "-xvg",
+        "none",
+        "-tu",
+        "ps",
+        "-hmode",
+        "dssp"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx dssp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx dssp -s npt.tpr -f em.gro -o dssp-control-dssp.dat -sel protein -xvg none -tu ps -hmode dssp\n\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading frames from gro file 'Protein in water', 39045 atoms.\n\nReading frame       0 time    0.000   \nLast frame          0 time    0.000   \nAnalyzed 1 frames, last time 0.000\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.116
+    },
+    {
+      "command": [
+        "/usr/bin/gmx",
+        "dssp",
+        "-s",
+        "npt.tpr",
+        "-f",
+        "npt.xtc",
+        "-o",
+        "protein-dssp-dssp.dat",
+        "-sel",
+        "protein",
+        "-xvg",
+        "none",
+        "-tu",
+        "ps",
+        "-hmode",
+        "dssp"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "           :-) GROMACS - gmx dssp, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx dssp -s npt.tpr -f npt.xtc -o protein-dssp-dssp.dat -sel protein -xvg none -tu ps -hmode dssp\n\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\nReading file npt.tpr, VERSION 2023.3-Ubuntu_2023.3_1ubuntu3 (single precision)\n\nReading frame       0 time    0.000   \nReading frame       1 time    2.000   \nReading frame       2 time    4.000   \nReading frame       3 time    6.000   \nReading frame       4 time    8.000   \nLast frame          4 time    8.000   \nAnalyzed 5 frames, last time 8.000\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+      "elapsed_seconds": 0.062
+    }
+  ],
+  "scientific_agreement_status": "not_assessed",
+  "stages": {
+    "em": {
+      "log": {
+        "exists": true,
+        "finished_mdrun_marker": true,
+        "time_limit_marker": false,
+        "lincs_warning_count": 0,
+        "lincs_warnings": [],
+        "constraint_error_count": 0,
+        "constraint_errors": [],
+        "fatal_errors": [],
+        "last_step_time_rows": [
+          {
+            "step": 0,
+            "time_ps": 1.0
+          },
+          {
+            "step": 0,
+            "time_ps": 0.0
+          },
+          {
+            "step": 1,
+            "time_ps": 1.0
+          }
+        ],
+        "has_nan_or_inf": true,
+        "steepest_descent_converged": true,
+        "minimization_convergence": {
+          "fmax_threshold": 1000.0,
+          "steps": 2
+        }
+      },
+      "mdp": {
+        "integrator": "steep",
+        "emtol": "1000",
+        "emstep": "0.001",
+        "nsteps": "5000",
+        "nstlist": "20",
+        "cutoff-scheme": "Verlet",
+        "coulombtype": "PME",
+        "rcoulomb": "1.2",
+        "rvdw": "1.2",
+        "rvdw-switch": "1.0",
+        "vdw-modifier": "Force-switch",
+        "constraints": "h-bonds",
+        "constraint-algorithm": "lincs",
+        "define": "-DUSE_OLD_C36"
+      },
+      "expected_nsteps": 5000,
+      "dt_ps": null
+    },
+    "nvt": {
+      "log": {
+        "exists": true,
+        "finished_mdrun_marker": true,
+        "time_limit_marker": false,
+        "lincs_warning_count": 0,
+        "lincs_warnings": [],
+        "constraint_error_count": 0,
+        "constraint_errors": [],
+        "fatal_errors": [],
+        "last_step_time_rows": [
+          {
+            "step": 3500,
+            "time_ps": 7.0
+          },
+          {
+            "step": 4000,
+            "time_ps": 8.0
+          },
+          {
+            "step": 5000,
+            "time_ps": 10.0
+          }
+        ],
+        "has_nan_or_inf": true,
+        "steepest_descent_converged": false,
+        "minimization_convergence": null
+      },
+      "mdp": {
+        "integrator": "md",
+        "dt": "0.002",
+        "nsteps": "5000",
+        "continuation": "no",
+        "constraint-algorithm": "lincs",
+        "constraints": "h-bonds",
+        "lincs-order": "4",
+        "lincs-iter": "1",
+        "cutoff-scheme": "Verlet",
+        "nstlist": "20",
+        "coulombtype": "PME",
+        "rcoulomb": "1.2",
+        "rvdw": "1.2",
+        "rvdw-switch": "1.0",
+        "vdw-modifier": "Force-switch",
+        "dispcorr": "no",
+        "tcoupl": "V-rescale",
+        "tc-grps": "System",
+        "tau-t": "1.0",
+        "ref-t": "303.15",
+        "annealing": "single",
+        "annealing-npoints": "2",
+        "annealing-time": "0 10",
+        "annealing-temp": "100 303.15",
+        "pcoupl": "no",
+        "gen-vel": "yes",
+        "gen-temp": "100",
+        "gen-seed": "1357911",
+        "nstxout": "0",
+        "nstvout": "0",
+        "nstfout": "0",
+        "nstenergy": "100",
+        "nstlog": "1000",
+        "nstxout-compressed": "1000",
+        "define": "-DPOSRES -DUSE_OLD_C36"
+      },
+      "expected_nsteps": 5000,
+      "dt_ps": 0.002
+    },
+    "npt_restraint": {
+      "log": {
+        "exists": true,
+        "finished_mdrun_marker": true,
+        "time_limit_marker": false,
+        "lincs_warning_count": 0,
+        "lincs_warnings": [],
+        "constraint_error_count": 0,
+        "constraint_errors": [],
+        "fatal_errors": [],
+        "last_step_time_rows": [
+          {
+            "step": 3000,
+            "time_ps": 6.0
+          },
+          {
+            "step": 4000,
+            "time_ps": 8.0
+          },
+          {
+            "step": 5000,
+            "time_ps": 10.0
+          }
+        ],
+        "has_nan_or_inf": true,
+        "steepest_descent_converged": false,
+        "minimization_convergence": null
+      },
+      "mdp": {
+        "integrator": "md",
+        "dt": "0.002",
+        "nsteps": "5000",
+        "continuation": "yes",
+        "constraint-algorithm": "lincs",
+        "constraints": "h-bonds",
+        "lincs-order": "4",
+        "lincs-iter": "1",
+        "cutoff-scheme": "Verlet",
+        "nstlist": "20",
+        "coulombtype": "PME",
+        "rcoulomb": "1.2",
+        "rvdw": "1.2",
+        "rvdw-switch": "1.0",
+        "vdw-modifier": "Force-switch",
+        "dispcorr": "no",
+        "tcoupl": "V-rescale",
+        "tc-grps": "System",
+        "tau-t": "1.0",
+        "ref-t": "303.15",
+        "pcoupl": "C-rescale",
+        "pcoupltype": "semiisotropic",
+        "tau-p": "5.0",
+        "ref-p": "1.0 1.0",
+        "compressibility": "4.5e-5 4.5e-5",
+        "refcoord-scaling": "com",
+        "gen-vel": "no",
+        "gen-temp": "303.15",
+        "gen-seed": "1357911",
+        "nstxout": "0",
+        "nstvout": "0",
+        "nstfout": "0",
+        "nstenergy": "100",
+        "nstlog": "1000",
+        "nstxout-compressed": "1000",
+        "define": "-DPOSRES -DUSE_OLD_C36"
+      },
+      "expected_nsteps": 5000,
+      "dt_ps": 0.002
+    },
+    "npt_release": {
+      "log": {
+        "exists": true,
+        "finished_mdrun_marker": true,
+        "time_limit_marker": false,
+        "lincs_warning_count": 0,
+        "lincs_warnings": [],
+        "constraint_error_count": 0,
+        "constraint_errors": [],
+        "fatal_errors": [],
+        "last_step_time_rows": [
+          {
+            "step": 3000,
+            "time_ps": 6.0
+          },
+          {
+            "step": 4000,
+            "time_ps": 8.0
+          },
+          {
+            "step": 4200,
+            "time_ps": 8.4
+          }
+        ],
+        "has_nan_or_inf": true,
+        "steepest_descent_converged": false,
+        "minimization_convergence": null
+      },
+      "mdp": {
+        "integrator": "md",
+        "dt": "0.002",
+        "nsteps": "40000",
+        "continuation": "yes",
+        "constraint-algorithm": "lincs",
+        "constraints": "h-bonds",
+        "lincs-order": "4",
+        "lincs-iter": "1",
+        "cutoff-scheme": "Verlet",
+        "nstlist": "20",
+        "coulombtype": "PME",
+        "rcoulomb": "1.2",
+        "rvdw": "1.2",
+        "rvdw-switch": "1.0",
+        "vdw-modifier": "Force-switch",
+        "dispcorr": "no",
+        "tcoupl": "V-rescale",
+        "tc-grps": "System",
+        "tau-t": "1.0",
+        "ref-t": "303.15",
+        "pcoupl": "C-rescale",
+        "pcoupltype": "semiisotropic",
+        "tau-p": "5.0",
+        "ref-p": "1.0 1.0",
+        "compressibility": "4.5e-5 4.5e-5",
+        "refcoord-scaling": "com",
+        "gen-vel": "no",
+        "gen-temp": "303.15",
+        "gen-seed": "1357911",
+        "nstxout": "0",
+        "nstvout": "0",
+        "nstfout": "0",
+        "nstenergy": "100",
+        "nstlog": "1000",
+        "nstxout-compressed": "1000",
+        "define": "-DUSE_OLD_C36"
+      },
+      "expected_nsteps": 40000,
+      "dt_ps": 0.002
+    },
+    "em_relax": {
+      "log": {
+        "exists": true,
+        "finished_mdrun_marker": true,
+        "time_limit_marker": false,
+        "lincs_warning_count": 0,
+        "lincs_warnings": [],
+        "constraint_error_count": 0,
+        "constraint_errors": [],
+        "fatal_errors": [],
+        "last_step_time_rows": [
+          {
+            "step": 708,
+            "time_ps": 708.0
+          },
+          {
+            "step": 709,
+            "time_ps": 709.0
+          },
+          {
+            "step": 710,
+            "time_ps": 710.0
+          }
+        ],
+        "has_nan_or_inf": true,
+        "steepest_descent_converged": true,
+        "minimization_convergence": {
+          "fmax_threshold": 1000.0,
+          "steps": 711
+        }
+      },
+      "mdp": {
+        "integrator": "steep",
+        "emtol": "1000",
+        "emstep": "0.01",
+        "nsteps": "5000",
+        "nstlist": "20",
+        "cutoff-scheme": "Verlet",
+        "coulombtype": "PME",
+        "rcoulomb": "1.2",
+        "rvdw": "1.2",
+        "rvdw-switch": "1.0",
+        "vdw-modifier": "Force-switch",
+        "constraints": "none",
+        "constraint-algorithm": "lincs",
+        "define": "-DUSE_OLD_C36"
+      },
+      "expected_nsteps": 5000,
+      "dt_ps": null
+    }
+  },
+  "starting_contact_audit": {
+    "ions": {
+      "available": true,
+      "search_radius_nm": 0.25,
+      "minimum_distance_nm_within_radius": 0.057489129407219265,
+      "shortest_pair": [
+        "SAP:159:O14",
+        "ARG:7:CG"
+      ],
+      "intermolecular_heavy_pairs_below_0_18nm": 21,
+      "scope": "protein/lipid and lipid/lipid heavy atoms; water and ions excluded; periodic minimum-image distances"
+    },
+    "em_relax": {
+      "available": true,
+      "search_radius_nm": 0.25,
+      "minimum_distance_nm_within_radius": null,
+      "shortest_pair": null,
+      "intermolecular_heavy_pairs_below_0_18nm": 0,
+      "scope": "protein/lipid and lipid/lipid heavy atoms; water and ions excluded; periodic minimum-image distances"
+    },
+    "em": {
+      "available": true,
+      "search_radius_nm": 0.25,
+      "minimum_distance_nm_within_radius": null,
+      "shortest_pair": null,
+      "intermolecular_heavy_pairs_below_0_18nm": 0,
+      "scope": "protein/lipid and lipid/lipid heavy atoms; water and ions excluded; periodic minimum-image distances"
+    }
+  },
+  "all_stage_lincs_warning_count": 0,
+  "all_stage_constraint_error_count": 0,
+  "fatal_errors": [],
+  "trajectory": {
+    "gmx_check_returncode": 0,
+    "gmx_check_excerpt": "Checking file npt.xtc\n\n           :-) GROMACS - gmx check, 2023.3-Ubuntu_2023.3_1ubuntu3 (-:\n\nExecutable:   /usr/bin/gmx\nData prefix:  /usr\nWorking dir:  /home/gym/agent-gym-md/validation-007/run\nCommand line:\n  gmx check -f npt.xtc\n\n\nReading frame       0 time    0.000   \n# Atoms  39045\nPrecision 0.001 (nm)\n\nReading frame       1 time    2.000   \nReading frame       2 time    4.000   \nReading frame       3 time    6.000   \nReading frame       4 time    8.000   \nLast frame          4 time    8.000   \n\n\nItem        #frames Timestep (ps)\nStep             5    2\nTime             5    2\nLambda           0\nCoords           5    2\nVelocities       0\nForces           0\nBox              5    2\n\nGROMACS reminds you: \"I can't go to a restaurant and order food because I keep looking at the fonts on the menu. Five minutes later I realize that it's also talking about food.\" (Donald Knuth)\n\n",
+    "final_gro_time_ps": 8.0,
+    "last_valid_frame_recovery_returncode": 0,
+    "trajectory_parsed_times_ps": [
+      6.0,
+      8.0,
+      8.0,
+      5.0
+    ],
+    "release_mdp_nsteps": 40000,
+    "release_mdp_dt_ps": 0.002,
+    "release_duration_ps": 80.0,
+    "observed_stage_local_times_ps": {
+      "nvt": 10.0,
+      "npt_restraint": 10.0,
+      "npt_release": 8.0
+    },
+    "observed_cumulative_stage_times_ps": {
+      "nvt": 10.0,
+      "npt_restraint": 20.0,
+      "npt_release": 28.0
+    },
+    "expected_cumulative_stage_times_ps": {
+      "nvt": 10.0,
+      "npt_restraint": 20.0,
+      "npt_release": 100.0
+    },
+    "full_requested_run_duration_ps": 100.0,
+    "release_finished_marker": true,
+    "time_limit_marker": false,
+    "observed_last_time_ps": 28.0,
+    "completion_check": false,
+    "stage_time_checks": {
+      "nvt": true,
+      "npt_restraint": true,
+      "npt_release": false
+    },
+    "observed_stage_durations": {
+      "nvt": {
+        "observed_duration_ps": 10.0,
+        "observed_steps_estimate": 5000,
+        "requested_steps": 5000,
+        "requested_duration_ps": 10.0
+      },
+      "npt_restraint": {
+        "observed_duration_ps": 10.0,
+        "observed_steps_estimate": 5000,
+        "requested_steps": 5000,
+        "requested_duration_ps": 10.0
+      },
+      "npt_release": {
+        "observed_duration_ps": 8.0,
+        "observed_steps_estimate": 4000,
+        "requested_steps": 40000,
+        "requested_duration_ps": 80.0
+      }
+    }
+  },
+  "energy": {
+    "path": "/home/gym/agent-gym-md/validation-007/run/independent-energy.xvg",
+    "columns_and_labels": [
+      "Time (ps)",
+      "Potential",
+      "Temperature",
+      "Pressure",
+      "Volume"
+    ],
+    "sample_count": 43,
+    "summary": {
+      "Time (ps)": {
+        "n": 43,
+        "finite": true,
+        "mean": 4.2,
+        "min": 0.0,
+        "max": 8.4,
+        "first": 0.0,
+        "last": 8.4
+      },
+      "Potential": {
+        "n": 43,
+        "finite": true,
+        "mean": -305663.3851744186,
+        "min": -307215.875,
+        "max": -304111.65625,
+        "first": -306127.40625,
+        "last": -305823.71875
+      },
+      "Temperature": {
+        "n": 43,
+        "finite": true,
+        "mean": 303.51381806976735,
+        "min": 299.081726,
+        "max": 307.158264,
+        "first": 302.947784,
+        "last": 303.42981
+      },
+      "Pressure": {
+        "n": 43,
+        "finite": true,
+        "mean": 43.570229837209304,
+        "min": -441.626251,
+        "max": 405.868652,
+        "first": 129.264801,
+        "last": 96.877663
+      },
+      "Volume": {
+        "n": 43,
+        "finite": true,
+        "mean": 378.1551606976744,
+        "min": 377.087433,
+        "max": 378.737793,
+        "first": 377.087433,
+        "last": 378.555878
+      }
+    },
+    "time_first_ps": 0.0,
+    "time_last_ps": 8.4,
+    "finite_all_columns": true,
+    "returncode": 0,
+    "recent_20ps_temperature_K": {
+      "n": 43,
+      "finite": true,
+      "mean": 303.51381806976735,
+      "min": 299.081726,
+      "max": 307.158264,
+      "first": 302.947784,
+      "last": 303.42981
+    },
+    "volume_fractional_first_to_last_change": 0.003894176446872021,
+    "observed_labels": {
+      "potential": "Potential",
+      "temperature": "Temperature",
+      "pressure": "Pressure",
+      "volume": "Volume"
+    }
+  },
+  "final_structure": {
+    "exists": true,
+    "header": "Protein in water t=   8.00000 step= 4000",
+    "time_ps": 8.0,
+    "declared_atom_count": 39045,
+    "parsed_atom_count": 39045,
+    "box_nm": [
+      6.6158,
+      6.6158,
+      8.64698
+    ]
+  },
+  "membrane": {
+    "status": "checked",
+    "recognized_lipid_P_count": 113,
+    "membrane_center_z_A": 30.835401777590874,
+    "leaflet_separation_A": 38.03825255102041,
+    "upper": {
+      "POPC": 48,
+      "PIP2": 1,
+      "total": 49
+    },
+    "lower": {
+      "POPC": 64,
+      "PIP2": 0,
+      "total": 64
+    },
+    "pbc_method": "Circular mean for membrane center; phosphate z displacements wrapped to [-Lz/2,Lz/2).",
+    "checks": {
+      "both_leaflets_present": true,
+      "exactly_one_pip2": true,
+      "pip2_in_upper_leaflet": true,
+      "separation_plausible": true
+    }
+  },
+  "h0_dssp": {
+    "runs": {
+      "starting_structure_gromacs": {
+        "output_bytes": 159,
+        "frame_or_structure_rows": 1,
+        "sequence_rows": [
+          "~~SSSSSSSSSSSSS~~~SSSSSSSSSS~SSSSPPPSSSSSSSSSSSSSSSSSSSSSSSSSSSSS~~SS~~SSSSSSSSSSSSSSSSS~SSSSSSSSSS~SSSSSSSS~~~~~SSS~~~SSSSSSSSSSSSSSSS~SSSSSSSSSSSSSSSSSSSS~~"
+        ],
+        "alpha_counts": [
+          0
+        ],
+        "first18_alpha_fraction": [
+          0.0
+        ],
+        "state_counts_per_first18": [
+          {
+            "~": 5,
+            "S": 13
+          }
+        ],
+        "returncode": 0
+      },
+      "trajectory_gromacs": {
+        "output_bytes": 795,
+        "frame_or_structure_rows": 5,
+        "sequence_rows": [
+          "~~SSSSSSSSSSSSS~~~SSSSSSSSSS~SSSSPP~SSSSSSSSSSSSSSSSSSSSSSSSSSSSS~~SS~~SSSSSSSSSSSSSSSSS~SSSSSSSSSS~SSSSSSSS~~~~~SSS~~~SSSSSSSSSSSSSSSS~SSSSSSSSSSSSSSSSSSSS~~",
+          "~~SSSSSSSSSSSSS~~~SSSSSSSSSS~~SSSPPPSSSSSSSSSSSSSSSSSSSSSSSSSSSSS~~SS~SSSSSSSSSSSSSSSSSS~SSSSSSSSSS~SSSSSSSS~~~~~SSS~~~SSSSSSSSSSSSSSSS~SSSSSSSSSSSSSSSSSSSS~~",
+          "~~SSSSSSSSSSSSS~~~SSSSSSSSSSS~SSSPP~SSSSSSSSSSSSSSSSSSSSSSSSSSSSS~~SS~~SSSSSSSSSSSSSSSSS~SSSSSSSSS~~SSSSSSSS~~~~~SSS~~~SSSSSSSSSSSSSSSS~SSSSSSSSSSSSSSSSSSSS~~",
+          "~~SSSSSSSSSSSSS~~~SSSSSSSSSSSS~SS~~~SSSSSSSSSSSSSSSSSSSSSSSSSSSSS~~SS~~SSSSSSSSSSSSSSSSS~SSSSSSSSSS~SSSSSSSS~~~~~SSS~~SSSSSSSSSSSSSSSSS~SSSSSSSSSSSSSSSSSSSS~~",
+          "~~SSSSSSSSSSSSS~~~SSSSSSSSSS~SSSSPPPSSSSSSSSSSSSSSSSSSSSSSSSSSSSS~~SS~~SSSSSSSSSSSSSSSSS~SSSSSSSSSS~SSSSSSSS~~~~~SSS~~SSSSSSSSSSSSSSSSS~SSSSSSSSSSSSSSSSSSSS~~"
+        ],
+        "alpha_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "first18_alpha_fraction": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "state_counts_per_first18": [
+          {
+            "~": 5,
+            "S": 13
+          },
+          {
+            "~": 5,
+            "S": 13
+          },
+          {
+            "~": 5,
+            "S": 13
+          },
+          {
+            "~": 5,
+            "S": 13
+          },
+          {
+            "~": 5,
+            "S": 13
+          }
+        ],
+        "returncode": 0
+      },
+      "starting_structure_dssp": {
+        "output_bytes": 159,
+        "frame_or_structure_rows": 1,
+        "sequence_rows": [
+          "~HHHHHHHHHHHHHHT~~HHHHHHHHHT~SSSSPPPHHHHHHHHHHTTSHHHHHHHHHHHHHHHT~~GGGHHHHHHHHHHHHHHHHHS~HHHHHHHHHTHHHHHHGGG~~~B~TTS~B~HHHHHHHHHHHHHHHT~HHHHHHHHHHHHHHHHHHHH~~"
+        ],
+        "alpha_counts": [
+          115
+        ],
+        "first18_alpha_fraction": [
+          0.7777777777777778
+        ],
+        "state_counts_per_first18": [
+          {
+            "~": 3,
+            "H": 14,
+            "T": 1
+          }
+        ],
+        "returncode": 0
+      },
+      "trajectory_dssp": {
+        "output_bytes": 795,
+        "frame_or_structure_rows": 5,
+        "sequence_rows": [
+          "~HHHHHHHHHHHHHTT~~HHHHHHHHHT~SSSSPP~HHHHHHHHHHTTSHHHHHHHHHHHHHHHT~~GGGHHHHHHHHHHHHHHHHHS~HHHHHHHHHTHHHHTTGGG~~~B~TTS~B~SHHHHHHHHHHHHHHH~HHHHHHHHHHHHHHHHHHHHT~",
+          "~HHHHHHHHHHHHHHT~~HHHHHHHHHT~~SSSPPPHHHHHHHHHHTTSHHHHHHHHHHHHHHHT~~TTTHHHHHHHHHHHHHHHHHS~HHHHHHHHTTHHHHHHHTT~~~B~SSS~B~HHHHHHHHHHHHHHHH~HHHHHHHHHHHHHHHHHHHHT~",
+          "~HHHHHHHHHHHHHTT~~HHHHHHHHHHS~SSSPP~HHHHHHHHHGGGSHHHHHHHHHHHHHHHT~~GGGHHHHHHHHHHHHHHHHHS~HHHHHHHTT~HHHHHTTTT~~~B~TTS~B~THHHHHHHHHHHHHHH~HHHHHHHHHHHHHHHHHHHTT~",
+          "~HHHHHHHHHHHHHHT~~HHHHHHHHHHSS~SS~~~HHHHHHHHHHTSSHHHHHHHHHHHHHHTT~~GGGHHHHHHHHHHHHHHHHHS~HHHHHHHHHTHHHHHGGGG~~~B~SSS~BSSHHHHHHHHHHHHHHT~HHHHHHHHHHHHHHHHHHHHT~",
+          "~~HHHHHHHHHHHHHT~~HHHHHHHHHH~SSSSPPPHHHHHHHHHTTSSHHHHHHHHHHHHHHHT~~GGGHHHHHHHHHHHHHHHHHS~HHHHHHHHHSHHHHHTTTT~~~B~SSS~BSHHHHHHHHHHHHHHHH~HHHHHHHHHHHHHHHHHHHHT~"
+        ],
+        "alpha_counts": [
+          112,
+          116,
+          110,
+          113,
+          114
+        ],
+        "first18_alpha_fraction": [
+          0.7222222222222222,
+          0.7777777777777778,
+          0.7222222222222222,
+          0.7777777777777778,
+          0.7222222222222222
+        ],
+        "state_counts_per_first18": [
+          {
+            "~": 3,
+            "H": 13,
+            "T": 2
+          },
+          {
+            "~": 3,
+            "H": 14,
+            "T": 1
+          },
+          {
+            "~": 3,
+            "H": 13,
+            "T": 2
+          },
+          {
+            "~": 3,
+            "H": 14,
+            "T": 1
+          },
+          {
+            "~": 4,
+            "H": 13,
+            "T": 1
+          }
+        ],
+        "returncode": 0
+      }
+    },
+    "positive_control_has_alpha": true,
+    "observed_residue_count": 158,
+    "status": "validated_for_descriptive_assignments",
+    "assumed_h0_first18_alpha_fraction_by_frame": [
+      0.7222222222222222,
+      0.7777777777777778,
+      0.7222222222222222,
+      0.7777777777777778,
+      0.7222222222222222
+    ],
+    "assumed_h0_first18_states_by_frame": [
+      {
+        "~": 3,
+        "H": 13,
+        "T": 2
+      },
+      {
+        "~": 3,
+        "H": 14,
+        "T": 1
+      },
+      {
+        "~": 3,
+        "H": 13,
+        "T": 2
+      },
+      {
+        "~": 3,
+        "H": 14,
+        "T": 1
+      },
+      {
+        "~": 4,
+        "H": 13,
+        "T": 1
+      }
+    ],
+    "residue_mapping_status": "unverified proxy: first 18 residues in selected protein order; paper-specific H0 mapping unavailable",
+    "interpretation_limit": "If neither starting-structure hydrogen mode yields alpha assignments, DSSP is unvalidated and no H0-disorder inference is made."
+  },
+  "physical_checks_passed": false,
+  "required_checks_passed": false,
+  "summary": "One or more physical checks failed or were unavailable; see check details and raw logs.",
+  "interpretation": "No 100-ps completion is claimed unless the trajectory and all stage durations confirm it. This is only a reconstructed inserted-state CPU validation; it does not reproduce Figure 4, assess the authors' pull protocol, validate the uncertain salt unit or exact H0 residue mapping, or establish biological agreement."
+}

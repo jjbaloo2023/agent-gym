@@ -1,0 +1,9 @@
+{
+  "command": "wsl -d Ubuntu-24.04 -u gym -- /opt/agent-gym-cad/bin/python -m unittest discover -s /mnt/c/Users/Jophi/OneDrive/Documents/ChatGPT/Agent_gym/tests",
+  "date": "2026-10-10",
+  "returncode": 0,
+  "tests_run": 23,
+  "reported_duration_seconds": 1.323,
+  "result": "OK",
+  "coverage_added": ["Convergence does not override constraint errors", "Graceful exit does not establish requested duration", "Checkpoint-only stops are incomplete", "GRO titles without time use explicit log endpoint", "Periodic contact distances", "Legitimate infinite dielectric parameter differs from nonfinite energies"]
+}

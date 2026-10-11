@@ -1,0 +1,66 @@
+{
+  "checked_date": "2026-10-11",
+  "notebook_url": "https://colab.research.google.com/drive/1W8Tw4ml0GNN6bkT97n9v2csIg55SmKe4",
+  "status": "real_gpu_validation_passed_binary_state_lost_on_runtime_expiry",
+  "observed_hardware": {
+    "gpu": "Tesla T4",
+    "gpu_memory_mib": 15360,
+    "driver_version": "580.82.07",
+    "cpu_cores": 2,
+    "system_memory_gb_ui": 12.67,
+    "cuda_compiler": "/usr/local/cuda/bin/nvcc",
+    "gromacs_executable": "/content/enth-gpu/build/bin/gmx2026.4 CUDA13 SM75, verified in completed validation"
+  },
+  "premium_gpu_options": "H100, G4, A100 and L4 disabled in this account's runtime selector",
+  "simulation_inputs_uploaded": true,
+  "md_run_on_colab": true,
+  "paid_purchase_made": false,
+  "local_long_run_launched": false,
+  "next_gate": "Authorize persistent checkpoint storage, then rebuild/rerun fresh validation before long continuation. Browser downloads stalled and did not confirm any local binary transfer.",
+  "runtime_limits_source": "https://research.google.com/colaboratory/faq.html",
+  "gromacs_gpu_source": "https://manual.gromacs.org/documentation/current/install-guide/index.html",
+  "paper_source": "https://www.nature.com/articles/s42003-020-01471-6",
+  "notes": "Availability and speed are not guaranteed by a successful allocation. Preserve checkpoints outside ephemeral runtime storage for multi-session work. Paper acknowledges clusters but does not specify CPU core count.",
+  "input_archive": {
+    "path": "artifacts/enth/colab-input-010-portable.tar.gz",
+    "sha256": "dfb0d6eb2ea4a54b4b5dc225a678b28147bfc9585485b7dfd6568f89224814a1",
+    "bytes": 13715543,
+    "all_60_file_hashes_verified_in_colab": true,
+    "atoms": 78954,
+    "upper_leaflet": {
+      "POPC": 99,
+      "PIP2": 1
+    },
+    "lower_leaflet": {
+      "POPC": 100
+    },
+    "dynamics_validated": false
+  },
+  "validation_job": {
+    "status": "short_gpu_validation_completed",
+    "hours_cap": 1.5,
+    "nvt_ps": 100,
+    "restrained_npt_ps": 500,
+    "released_npt_ps": 100,
+    "working_directory": "/content/enth-gpu/gpu-validation-010",
+    "backups": "/content/enth-gpu/validation-backups",
+    "backups_are_persistent": false,
+    "backups_recovered": false,
+    "actual_dynamics_ps": 700,
+    "observed_report": "evidence/colab-takeover-010/validation-observed.json",
+    "elapsed_seconds": 2976.943,
+    "gpu_ns_per_day": 24.147,
+    "binary_state_survived_reconnect": false
+  },
+  "long_job": {
+    "status": "not_launched",
+    "wall_hours_cap": 8,
+    "additional_equilibration_target_ns": 70,
+    "gpu_count": 1,
+    "cpu_threads": 2,
+    "work_and_checkpoint_output_cap_gib": 2,
+    "persistent_checkpoint_mount": "awaiting_user_approval",
+    "reason": "Automatic approval review rejected Google Drive mount because it grants broad private Drive access beyond the authorized Colab upload/run."
+  },
+  "recovery": "New runtime explicitly checked: prior validation directory, checkpoint and GROMACS executable all absent. Saved notebook report recovered."
+}
