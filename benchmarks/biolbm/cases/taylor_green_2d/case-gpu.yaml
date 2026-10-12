@@ -1,0 +1,11 @@
+schema_version: 1
+flow: taylor_green_2d
+resolution: 32
+reynolds_number: 20
+mach_number: 0.05
+steps: 100
+report_interval: 10
+device: cuda
+precision: float64
+max_mass_drift: 1.0e-8
+max_velocity_error: 0.05

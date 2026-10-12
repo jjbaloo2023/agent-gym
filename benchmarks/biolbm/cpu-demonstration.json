@@ -1,0 +1,74 @@
+{
+  "state": "completed",
+  "elapsed_wall_seconds": 151.92384789500102,
+  "engine": "Lettuce D3Q19 BGK on CPU float64",
+  "lettuce_version": "0.3.0",
+  "validation_status": "experimental transient only; no validated tank, torque, or mixing prediction",
+  "limitations": [
+    "diffuse volumetric rotor penalty; blade thickness and shaft are under-resolved",
+    "full-way voxel vessel walls; rigid no-slip lid at liquid level; no free surface",
+    "no turbulence, scalar mixing, or steady-state claim",
+    "torque is total penalty estimate for shaft + hub + blades, not validated impeller torque"
+  ],
+  "case": {
+    "schema_version": 1,
+    "rpm": 180,
+    "rotation": "ccw_from_above",
+    "spacing_m": 0.003,
+    "density_kg_m3": 998,
+    "viscosity_pa_s": 0.1,
+    "lattice_tip_mach": 0.1,
+    "steps": 1200,
+    "report_interval": 50,
+    "threads": 2
+  },
+  "scaling": {
+    "tip_speed_m_s": 0.5649588900803596,
+    "dt_s": 0.0003065799720971753,
+    "tau": 0.5102398120272937,
+    "grid_shape": [
+      58,
+      58,
+      63
+    ],
+    "grid_cells": 211932,
+    "impeller_reynolds": 107.58289709183998,
+    "requested_simulation_time_s": 0.36789596651661033,
+    "nominal_revolutions": 1.1036878995498312,
+    "passes_tau_envelope": true,
+    "working_memory_planning_bytes": 317050272,
+    "note": "Planning memory only; diffuse rotor and stepped walls require validation/refinement."
+  },
+  "geometry": {
+    "capacity_m3": 0.005,
+    "working_volume_m3": 0.003,
+    "vessel_radius_m": 0.08,
+    "impeller_diameter_m": 0.059944,
+    "impeller_height_m": 0.0508,
+    "shaft_radius_m": 0.003,
+    "hub_radius_m": 0.006,
+    "hub_height_m": 0.01,
+    "blade_count": 4,
+    "blade_chord_m": 0.012,
+    "blade_thickness_m": 0.002,
+    "blade_pitch_deg": 45.0,
+    "vessel_height_m": 0.27534626524775313,
+    "fill_height_m": 0.17621249880095138,
+    "volume_definition": "3 L liquid after analytic hub, shaft, and blade displacement; vessel capacity before internals",
+    "shape": "hemispherical bottom plus cylinder; synthetic proportions; no baffles",
+    "rotation_convention": "positive about +z is counterclockwise viewed from above",
+    "surface_model": "closed rigid lid at the liquid level; headspace not simulated"
+  },
+  "final": {
+    "step": 1200,
+    "time_s": 0.36789596651661033,
+    "rpm": 180.0,
+    "max_speed_m_s": 0.5465783778653314,
+    "mean_speed_m_s": 0.022495644348223817,
+    "max_lattice_mach": 0.09674657527516493,
+    "envelope_mass_drift": 4.998760987362516e-07,
+    "closed_grid_mass_drift": 6.861178292183467e-14,
+    "drive_torque_nm_estimate": 0.0030193451927105997,
+    "drive_power_w_estimate": 0.05691331605642766
+  }
+}

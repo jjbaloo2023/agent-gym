@@ -6,6 +6,7 @@ The goal is to see how agents connect scientific tools, handle failures, resume 
 
 Current experiments include:
 
+- **BioLBM:** Lettuce-backed CPU/GPU flow benchmarks and an experimental synthetic 5 L stirred-vessel workflow, exposed through bounded agent tools. [Setup and Colab testing](benchmarks/biolbm/README.md).
 - **Pipe-flow optimization:** a lightweight analytical baseline with deterministic search, checkpoint/restart, and parallel replicas.
 - **Venturi CAD and CFD:** geometry construction in FreeCAD, meshing with Gmsh, and OpenFOAM experiments covering solver execution, correction, and recovery.
 - **ENTH molecular dynamics:** GROMACS preparation, bounded simulation runs, restart workflows, and analysis toward a published protein–membrane benchmark.

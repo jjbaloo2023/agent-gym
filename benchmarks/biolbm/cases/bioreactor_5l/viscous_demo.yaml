@@ -1,0 +1,11 @@
+# Deliberate low-Re demonstration, not a prediction for water.
+schema_version: 1
+rpm: 180
+rotation: ccw_from_above
+spacing_m: 0.003
+density_kg_m3: 998
+viscosity_pa_s: 0.1
+lattice_tip_mach: 0.1
+steps: 1200
+report_interval: 50
+threads: 2
