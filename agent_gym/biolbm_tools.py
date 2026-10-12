@@ -49,10 +49,10 @@ def _run_path(run_id):
 def inspect_run(run_id):
     folder = _run_path(run_id)
     result = {'run_id': run_id, 'status': json.loads((folder / 'job-status.json').read_text())}
-    for name in ('status.json', 'summary.json'):
+    for name, key in (('status.json', 'solver_status'), ('summary.json', 'summary')):
         path = folder / 'results' / name
         if path.is_file():
-            result[name[:-5]] = json.loads(path.read_text())
+            result[key] = json.loads(path.read_text())
     return result
 
 
