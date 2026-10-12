@@ -1,6 +1,7 @@
 """Scientific Agent Gym stdio MCP server; no arbitrary shell or code tools."""
 from mcp.server.fastmcp import FastMCP
 from .science import ROOT, build, mesh, inspect_run
+from . import biolbm_tools
 
 mcp = FastMCP("scientific-agent-gym")
 
@@ -34,6 +35,24 @@ def list_designs() -> list[dict]:
     if not ROOT.exists():
         return []
     return [{"run_id": p.name} for p in sorted(ROOT.iterdir()) if p.is_dir() and len(p.name) == 32]
+
+@mcp.tool()
+def validate_lbm_case(kind: str, config: dict) -> dict:
+    """Check a BioLBM benchmark or synthetic vessel case and numerical/resource limits.
+    Does not run CFD or verify GPU availability. Never changes submitted viscosity."""
+    return biolbm_tools.validate_case(kind, config)
+
+@mcp.tool()
+def run_lbm_case(kind: str, config: dict) -> dict:
+    """Run a bounded Lettuce case inline: one local job, max ten minutes.
+    Returns an opaque run ID and status. Vessel results are experimental;
+    execution success does not establish validated mixing or impeller torque."""
+    return biolbm_tools.run_case(kind, config)
+
+@mcp.tool()
+def inspect_lbm_run(run_id: str) -> dict:
+    """Read a BioLBM job status and numerical summary for an opaque run ID."""
+    return biolbm_tools.inspect_run(run_id)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

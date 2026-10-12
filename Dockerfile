@@ -5,6 +5,8 @@ RUN groupadd --gid 10001 gym && useradd --uid 10001 --gid gym --create-home gym 
     && mkdir /data && chown gym:gym /data
 COPY agent_gym/ ./agent_gym/
 COPY tests/ ./tests/
+COPY scripts/*.py ./scripts/
+COPY evidence/cfd-interruption-v1/ ./evidence/cfd-interruption-v1/
 USER gym
 ENTRYPOINT ["python", "-m", "agent_gym"]
 CMD ["--help"]

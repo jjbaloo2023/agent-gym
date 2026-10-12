@@ -10,6 +10,13 @@ requires-python = ">=3.11"
 
 [project.optional-dependencies]
 mcp = ["mcp==1.30.0"]
+biolbm = [
+    "lettucecfd @ git+https://github.com/lettucecfd/lettuce.git@d57b061e6ea498ff959c549c58d352dac06ecf99 ; python_version >= '3.12'",
+    "PyYAML>=6,<7 ; python_version >= '3.12'",
+]
 
 [tool.setuptools.packages.find]
 include = ["agent_gym*"]
+
+[tool.setuptools.package-data]
+"agent_gym.biolbm" = ["LICENSE", "THIRD_PARTY_NOTICES.md"]

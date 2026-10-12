@@ -1,6 +1,13 @@
 *
 !Dockerfile
 !agent_gym/
-!agent_gym/*.py
+!agent_gym/**
 !tests/
 !tests/*.py
+!scripts/
+!scripts/*.py
+!evidence/
+!evidence/cfd-interruption-v1/
+!evidence/cfd-interruption-v1/**
+**/__pycache__/
+**/*.pyc

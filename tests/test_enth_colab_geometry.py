@@ -1,13 +1,19 @@
 """Geometry invariants used in crystal-pose reconstruction."""
 import importlib.util
 from pathlib import Path
+import sys
 import unittest
-import numpy as np
+from unittest.mock import patch
+HAS_NUMPY = importlib.util.find_spec('numpy') is not None
+if HAS_NUMPY:
+    import numpy as np
+    spec=importlib.util.spec_from_file_location('enth_colab',Path(__file__).parents[1]/'scripts/prepare-enth-colab.py')
+    module=importlib.util.module_from_spec(spec)
+    with patch.object(sys, 'path', [str(Path(__file__).parents[1]/'scripts'), *sys.path]):
+        spec.loader.exec_module(module)
 
-spec=importlib.util.spec_from_file_location('enth_colab',Path(__file__).parents[1]/'scripts/prepare-enth-colab.py')
-module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 
-
+@unittest.skipUnless(HAS_NUMPY, 'Requires NumPy for ENTH geometry tests')
 class CrystalGeometry(unittest.TestCase):
     def test_fit_preserves_chirality_even_for_mirrored_target(self):
         source=np.array([[0.,0,0],[1,0,0],[0,2,0],[0,0,3]])
